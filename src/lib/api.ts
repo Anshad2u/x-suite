@@ -39,13 +39,18 @@ export interface AnalysisResult {
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE || 'http://localhost:5000';
 
+const BYPASS_HEADERS = {
+  'Content-Type': 'application/json',
+  'bypass-tunnel-reminder': 'true'
+};
+
 export async function analyzeProfile(
   username: string,
   maxTweets: number = 100
 ): Promise<AnalysisResult> {
   const resp = await fetch(`${API_BASE}/api/analyze-tweets/${username}`, {
     method: 'GET',
-    headers: { 'Content-Type': 'application/json' },
+    headers: BYPASS_HEADERS,
     next: { revalidate: 0 }
   });
 
@@ -60,7 +65,8 @@ export async function analyzeProfile(
   return {
     username: data.username || username,
     total_tweets: data.total_tweets || 0,
-    formula: data.formula || 'Score = (Replies * 20) + (Reposts * 2) + (Likes * 0.5) + (Bookmarks * 80)',
+    formula:
+      data.formula || 'Score = (Replies * 20) + (Reposts * 2) + (Likes * 0.5) + (Bookmarks * 80)',
     tweets: data.tweets || []
   };
 }
