@@ -1,0 +1,14 @@
+.git
+__pycache__/
+**/__pycache__/
+*.pyc
+.env
+scweet_state.db
+scweet_state.db-shm
+scweet_state.db-wal
+tweet_analysis_*.json
+.geminiignore
+start.bat
+README.md
+context.md
+CONTEXT.md

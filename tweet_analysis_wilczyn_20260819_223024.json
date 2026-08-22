@@ -1,0 +1,270 @@
+{
+  "username": "wilczyn",
+  "total_tweets": 5,
+  "generated_at": "20260819_223024",
+  "formula": "Score = (Replies * 20) + (Reposts * 2) + (Likes * 0.5) + (Bookmarks * 80)",
+  "top_25_tweets": [
+    {
+      "tweet_id": "2072387994917691507",
+      "url": "https://x.com/wilczyn/status/2072387994917691507",
+      "date": "2012-09-15T21:25:57",
+      "content": "1 week ago i shipped https://t.co/kjxN0iT0pm - AI-powered on-brand animated carousel generator for Instagram, TikTok, LinkedIn, X, and more.\n\ni'm still working on it, but really struggling with gettin",
+      "full_content": "1 week ago i shipped https://t.co/kjxN0iT0pm - AI-powered on-brand animated carousel generator for Instagram, TikTok, LinkedIn, X, and more.\n\ni'm still working on it, but really struggling with getting actual feedback from users.\n\nwould really appreciate any feedback (it's free https://t.co/B9b7q6whK7",
+      "score": {
+        "engagement_score": 788.0,
+        "view_weighted_score": 205.74,
+        "bookmark_score": 400,
+        "engagement_rate": 20.57,
+        "breakdown": {
+          "replies_x20": 360,
+          "reposts_x2": 2,
+          "likes_x0_5": 26.0,
+          "bookmarks_x80": 400
+        }
+      },
+      "raw_metrics": {
+        "replies": 18,
+        "reposts": 1,
+        "likes": 52,
+        "bookmarks": 5,
+        "views": 3830
+      }
+    },
+    {
+      "tweet_id": "2090091423588573354",
+      "url": "https://x.com/wilczyn/status/2090091423588573354",
+      "date": "2026-08-19T21:30:03",
+      "content": "hey builders 👋\n\nlooking to connect with people building in:\n\n📦 saas\n🤖 ai tools\n🔌 apis\n🌐 web apps\n📱 mobile apps\n🧪 experiments\n💡 solo builds\n\ndrop yours below and let's connect 👇",
+      "full_content": "hey builders 👋\n\nlooking to connect with people building in:\n\n📦 saas\n🤖 ai tools\n🔌 apis\n🌐 web apps\n📱 mobile apps\n🧪 experiments\n💡 solo builds\n\ndrop yours below and let's connect 👇",
+      "score": {
+        "engagement_score": 206.5,
+        "view_weighted_score": 472.54,
+        "bookmark_score": 0,
+        "engagement_rate": 47.25,
+        "breakdown": {
+          "replies_x20": 200,
+          "reposts_x2": 0,
+          "likes_x0_5": 6.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 10,
+        "reposts": 0,
+        "likes": 13,
+        "bookmarks": 0,
+        "views": 437
+      }
+    },
+    {
+      "tweet_id": "2090076335485899192",
+      "url": "https://x.com/wilczyn/status/2090076335485899192",
+      "date": "2026-08-19T20:30:02",
+      "content": "your landing page is doing more selling than your product.\n\nagree or disagree?",
+      "full_content": "your landing page is doing more selling than your product.\n\nagree or disagree?",
+      "score": {
+        "engagement_score": 126.0,
+        "view_weighted_score": 288.33,
+        "bookmark_score": 0,
+        "engagement_rate": 28.83,
+        "breakdown": {
+          "replies_x20": 120,
+          "reposts_x2": 0,
+          "likes_x0_5": 6.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 6,
+        "reposts": 0,
+        "likes": 12,
+        "bookmarks": 0,
+        "views": 437
+      }
+    },
+    {
+      "tweet_id": "2090106528015532041",
+      "url": "https://x.com/wilczyn/status/2090106528015532041",
+      "date": "2026-08-19T22:30:03",
+      "content": "quit your job to build, or build on the side?",
+      "full_content": "quit your job to build, or build on the side?",
+      "score": {
+        "engagement_score": 41.5,
+        "view_weighted_score": 102.72,
+        "bookmark_score": 0,
+        "engagement_rate": 10.27,
+        "breakdown": {
+          "replies_x20": 40,
+          "reposts_x2": 0,
+          "likes_x0_5": 1.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 2,
+        "reposts": 0,
+        "likes": 3,
+        "bookmarks": 0,
+        "views": 404
+      }
+    },
+    {
+      "tweet_id": "2090121630282379627",
+      "url": "https://x.com/wilczyn/status/2090121630282379627",
+      "date": "2026-07-02T00:02:55",
+      "content": "what's something you believed about building that turned out completely wrong?",
+      "full_content": "what's something you believed about building that turned out completely wrong?",
+      "score": {
+        "engagement_score": 0.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 0,
+        "bookmarks": 0,
+        "views": 125
+      }
+    }
+  ],
+  "all_tweets": [
+    {
+      "tweet_id": "2072387994917691507",
+      "url": "https://x.com/wilczyn/status/2072387994917691507",
+      "date": "2012-09-15T21:25:57",
+      "content": "1 week ago i shipped https://t.co/kjxN0iT0pm - AI-powered on-brand animated carousel generator for Instagram, TikTok, LinkedIn, X, and more.\n\ni'm still working on it, but really struggling with gettin",
+      "full_content": "1 week ago i shipped https://t.co/kjxN0iT0pm - AI-powered on-brand animated carousel generator for Instagram, TikTok, LinkedIn, X, and more.\n\ni'm still working on it, but really struggling with getting actual feedback from users.\n\nwould really appreciate any feedback (it's free https://t.co/B9b7q6whK7",
+      "score": {
+        "engagement_score": 788.0,
+        "view_weighted_score": 205.74,
+        "bookmark_score": 400,
+        "engagement_rate": 20.57,
+        "breakdown": {
+          "replies_x20": 360,
+          "reposts_x2": 2,
+          "likes_x0_5": 26.0,
+          "bookmarks_x80": 400
+        }
+      },
+      "raw_metrics": {
+        "replies": 18,
+        "reposts": 1,
+        "likes": 52,
+        "bookmarks": 5,
+        "views": 3830
+      }
+    },
+    {
+      "tweet_id": "2090091423588573354",
+      "url": "https://x.com/wilczyn/status/2090091423588573354",
+      "date": "2026-08-19T21:30:03",
+      "content": "hey builders 👋\n\nlooking to connect with people building in:\n\n📦 saas\n🤖 ai tools\n🔌 apis\n🌐 web apps\n📱 mobile apps\n🧪 experiments\n💡 solo builds\n\ndrop yours below and let's connect 👇",
+      "full_content": "hey builders 👋\n\nlooking to connect with people building in:\n\n📦 saas\n🤖 ai tools\n🔌 apis\n🌐 web apps\n📱 mobile apps\n🧪 experiments\n💡 solo builds\n\ndrop yours below and let's connect 👇",
+      "score": {
+        "engagement_score": 206.5,
+        "view_weighted_score": 472.54,
+        "bookmark_score": 0,
+        "engagement_rate": 47.25,
+        "breakdown": {
+          "replies_x20": 200,
+          "reposts_x2": 0,
+          "likes_x0_5": 6.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 10,
+        "reposts": 0,
+        "likes": 13,
+        "bookmarks": 0,
+        "views": 437
+      }
+    },
+    {
+      "tweet_id": "2090076335485899192",
+      "url": "https://x.com/wilczyn/status/2090076335485899192",
+      "date": "2026-08-19T20:30:02",
+      "content": "your landing page is doing more selling than your product.\n\nagree or disagree?",
+      "full_content": "your landing page is doing more selling than your product.\n\nagree or disagree?",
+      "score": {
+        "engagement_score": 126.0,
+        "view_weighted_score": 288.33,
+        "bookmark_score": 0,
+        "engagement_rate": 28.83,
+        "breakdown": {
+          "replies_x20": 120,
+          "reposts_x2": 0,
+          "likes_x0_5": 6.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 6,
+        "reposts": 0,
+        "likes": 12,
+        "bookmarks": 0,
+        "views": 437
+      }
+    },
+    {
+      "tweet_id": "2090106528015532041",
+      "url": "https://x.com/wilczyn/status/2090106528015532041",
+      "date": "2026-08-19T22:30:03",
+      "content": "quit your job to build, or build on the side?",
+      "full_content": "quit your job to build, or build on the side?",
+      "score": {
+        "engagement_score": 41.5,
+        "view_weighted_score": 102.72,
+        "bookmark_score": 0,
+        "engagement_rate": 10.27,
+        "breakdown": {
+          "replies_x20": 40,
+          "reposts_x2": 0,
+          "likes_x0_5": 1.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 2,
+        "reposts": 0,
+        "likes": 3,
+        "bookmarks": 0,
+        "views": 404
+      }
+    },
+    {
+      "tweet_id": "2090121630282379627",
+      "url": "https://x.com/wilczyn/status/2090121630282379627",
+      "date": "2026-07-02T00:02:55",
+      "content": "what's something you believed about building that turned out completely wrong?",
+      "full_content": "what's something you believed about building that turned out completely wrong?",
+      "score": {
+        "engagement_score": 0.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 0,
+        "bookmarks": 0,
+        "views": 125
+      }
+    }
+  ]
+}

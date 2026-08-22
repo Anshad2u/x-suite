@@ -56,10 +56,50 @@ Click on a group and set:
 
 Then click "Start Scraping" to scrape tweets from that group's followers.
 
+## Tweet Analyzer
+
+Analyze any X/Twitter user's tweets and score them by engagement.
+
+### Usage
+
+```bash
+python tweet_analyzer.py <username> [max_tweets]
+```
+
+**Example:**
+```bash
+python tweet_analyzer.py wilczyn 500
+```
+
+### Formula
+
+```
+Score = (Replies * 20) + (Reposts * 2) + (Likes * 0.5) + (Bookmarks * 80)
+```
+
+Also calculates:
+- **View-Weighted Score**: engagement per 1,000 views
+- **Engagement Rate**: score as % of views
+
+### API Endpoint
+
+```
+GET /api/analyze-tweets/<username>
+```
+
+Returns JSON with scored tweets sorted by engagement.
+
+### Limitations
+
+- X's free tier HTML only shows the latest ~5 tweets per profile
+- For full tweet history, add both `X_AUTH_TOKEN` and `CT0` to your `.env`
+- To get `CT0`: Log into x.com > F12 > Application > Cookies > x.com > `ct0`
+
 ## Files
 
 - `app.py` - Flask backend API
 - `data_models.py` - SQLite database functions
 - `scraper.py` - Scweet wrapper for scraping
 - `config.py` - Configuration
+- `tweet_analyzer.py` - Tweet analysis and scoring
 - `index.html` - Dashboard frontend (Vue.js)

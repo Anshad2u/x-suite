@@ -1,0 +1,63 @@
+{
+  "username": "wilczyn",
+  "total_tweets": 1,
+  "generated_at": "20260819_014810",
+  "formula": "Score = (Replies * 20) + (Reposts * 2) + (Likes * 0.5) + (Bookmarks * 80)",
+  "note": "View counts not available via public HTML scraping. Use browser-based method for views.",
+  "top_20_tweets": [
+    {
+      "tweet_id": "2072387994917691507",
+      "url": "https://x.com/wilczyn/status/2072387994917691507",
+      "date": "",
+      "content": "",
+      "full_content": "",
+      "score": {
+        "engagement_score": 765.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 400,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 340,
+          "reposts_x2": 0,
+          "likes_x0.5": 25.0,
+          "bookmarks_x80": 400
+        }
+      },
+      "raw_metrics": {
+        "replies": 17,
+        "reposts": 0,
+        "likes": 50,
+        "bookmarks": 5,
+        "views": 0
+      }
+    }
+  ],
+  "all_tweets": [
+    {
+      "tweet_id": "2072387994917691507",
+      "url": "https://x.com/wilczyn/status/2072387994917691507",
+      "date": "",
+      "content": "",
+      "full_content": "",
+      "score": {
+        "engagement_score": 765.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 400,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 340,
+          "reposts_x2": 0,
+          "likes_x0.5": 25.0,
+          "bookmarks_x80": 400
+        }
+      },
+      "raw_metrics": {
+        "replies": 17,
+        "reposts": 0,
+        "likes": 50,
+        "bookmarks": 5,
+        "views": 0
+      }
+    }
+  ]
+}

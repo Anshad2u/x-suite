@@ -1,0 +1,170 @@
+{
+  "username": "wilczyn",
+  "total_tweets": 4,
+  "generated_at": "20260819_013925",
+  "formula": "Score = (Replies * 20) + (Reposts * 2) + (Likes * 0.5) + (Bookmarks * 80)",
+  "top_20_tweets": [
+    {
+      "tweet_id": "2089744137037717820",
+      "url": "https://x.com/wilczyn/status/2089744137037717820",
+      "date": "",
+      "content": "consistency, or intensity?",
+      "full_content": "consistency, or intensity?",
+      "score": {
+        "engagement_score": 488.0,
+        "view_weighted_score": 917.29,
+        "bookmark_score": 0,
+        "engagement_rate": 91.73
+      },
+      "raw_metrics": {
+        "replies": 24,
+        "reposts": 0,
+        "likes": 16,
+        "bookmarks": 0,
+        "views": 532
+      }
+    },
+    {
+      "tweet_id": "2089789436393304493",
+      "url": "https://x.com/wilczyn/status/2089789436393304493",
+      "date": "",
+      "content": "last month 779 people visited my app. 39 signed up. 0 paid. i'm rebuilding the pricing this week. what finally got you your first paying customer?",
+      "full_content": "last month 779 people visited my app. 39 signed up. 0 paid. i'm rebuilding the pricing this week. what finally got you your first paying customer?",
+      "score": {
+        "engagement_score": 225.0,
+        "view_weighted_score": 503.36,
+        "bookmark_score": 0,
+        "engagement_rate": 50.34
+      },
+      "raw_metrics": {
+        "replies": 11,
+        "reposts": 0,
+        "likes": 10,
+        "bookmarks": 0,
+        "views": 447
+      }
+    },
+    {
+      "tweet_id": "2089759236796317742",
+      "url": "https://x.com/wilczyn/status/2089759236796317742",
+      "date": "",
+      "content": "what are you stuck on right now? maybe someone here has already solved it",
+      "full_content": "what are you stuck on right now? maybe someone here has already solved it",
+      "score": {
+        "engagement_score": 144.5,
+        "view_weighted_score": 412.86,
+        "bookmark_score": 0,
+        "engagement_rate": 41.29
+      },
+      "raw_metrics": {
+        "replies": 7,
+        "reposts": 0,
+        "likes": 9,
+        "bookmarks": 0,
+        "views": 350
+      }
+    },
+    {
+      "tweet_id": "2089774344650002700",
+      "url": "https://x.com/wilczyn/status/2089774344650002700",
+      "date": "",
+      "content": "1100 followers 🎉 two days ago it was 1000. almost at 1200 already. still the same thing every day: show up, reply to everyone, repeat. if you're building something, say hi below and let's connect 👇",
+      "full_content": "1100 followers 🎉 two days ago it was 1000. almost at 1200 already. still the same thing every day: show up, reply to everyone, repeat. if you're building something, say hi below and let's connect 👇",
+      "score": {
+        "engagement_score": 62.0,
+        "view_weighted_score": 319.59,
+        "bookmark_score": 0,
+        "engagement_rate": 31.96
+      },
+      "raw_metrics": {
+        "replies": 3,
+        "reposts": 0,
+        "likes": 4,
+        "bookmarks": 0,
+        "views": 194
+      }
+    }
+  ],
+  "all_tweets": [
+    {
+      "tweet_id": "2089744137037717820",
+      "url": "https://x.com/wilczyn/status/2089744137037717820",
+      "date": "",
+      "content": "consistency, or intensity?",
+      "full_content": "consistency, or intensity?",
+      "score": {
+        "engagement_score": 488.0,
+        "view_weighted_score": 917.29,
+        "bookmark_score": 0,
+        "engagement_rate": 91.73
+      },
+      "raw_metrics": {
+        "replies": 24,
+        "reposts": 0,
+        "likes": 16,
+        "bookmarks": 0,
+        "views": 532
+      }
+    },
+    {
+      "tweet_id": "2089789436393304493",
+      "url": "https://x.com/wilczyn/status/2089789436393304493",
+      "date": "",
+      "content": "last month 779 people visited my app. 39 signed up. 0 paid. i'm rebuilding the pricing this week. what finally got you your first paying customer?",
+      "full_content": "last month 779 people visited my app. 39 signed up. 0 paid. i'm rebuilding the pricing this week. what finally got you your first paying customer?",
+      "score": {
+        "engagement_score": 225.0,
+        "view_weighted_score": 503.36,
+        "bookmark_score": 0,
+        "engagement_rate": 50.34
+      },
+      "raw_metrics": {
+        "replies": 11,
+        "reposts": 0,
+        "likes": 10,
+        "bookmarks": 0,
+        "views": 447
+      }
+    },
+    {
+      "tweet_id": "2089759236796317742",
+      "url": "https://x.com/wilczyn/status/2089759236796317742",
+      "date": "",
+      "content": "what are you stuck on right now? maybe someone here has already solved it",
+      "full_content": "what are you stuck on right now? maybe someone here has already solved it",
+      "score": {
+        "engagement_score": 144.5,
+        "view_weighted_score": 412.86,
+        "bookmark_score": 0,
+        "engagement_rate": 41.29
+      },
+      "raw_metrics": {
+        "replies": 7,
+        "reposts": 0,
+        "likes": 9,
+        "bookmarks": 0,
+        "views": 350
+      }
+    },
+    {
+      "tweet_id": "2089774344650002700",
+      "url": "https://x.com/wilczyn/status/2089774344650002700",
+      "date": "",
+      "content": "1100 followers 🎉 two days ago it was 1000. almost at 1200 already. still the same thing every day: show up, reply to everyone, repeat. if you're building something, say hi below and let's connect 👇",
+      "full_content": "1100 followers 🎉 two days ago it was 1000. almost at 1200 already. still the same thing every day: show up, reply to everyone, repeat. if you're building something, say hi below and let's connect 👇",
+      "score": {
+        "engagement_score": 62.0,
+        "view_weighted_score": 319.59,
+        "bookmark_score": 0,
+        "engagement_rate": 31.96
+      },
+      "raw_metrics": {
+        "replies": 3,
+        "reposts": 0,
+        "likes": 4,
+        "bookmarks": 0,
+        "views": 194
+      }
+    }
+  ]
+}

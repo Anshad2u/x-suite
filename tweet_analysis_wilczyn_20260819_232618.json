@@ -1,0 +1,4066 @@
+{
+  "username": "wilczyn",
+  "total_tweets": 131,
+  "generated_at": "20260819_232618",
+  "formula": "Score = (Replies * 20) + (Reposts * 2) + (Likes * 0.5) + (Bookmarks * 80)",
+  "top_25_tweets": [
+    {
+      "tweet_id": "2087569808829149399",
+      "url": "https://x.com/wilczyn/status/2087569808829149399",
+      "date": "2026-08-12T16:00:02.000Z",
+      "content": "build in public, or build in silence?",
+      "full_content": "build in public, or build in silence?",
+      "score": {
+        "engagement_score": 6502.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 6360,
+          "reposts_x2": 24,
+          "likes_x0_5": 118.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 318,
+        "reposts": 12,
+        "likes": 237,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2086452447875051865",
+      "url": "https://x.com/wilczyn/status/2086452447875051865",
+      "date": "2026-08-09T14:00:02.000Z",
+      "content": "building solo, or with a co-founder?",
+      "full_content": "building solo, or with a co-founder?",
+      "score": {
+        "engagement_score": 2525.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 2480,
+          "reposts_x2": 10,
+          "likes_x0_5": 35.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 124,
+        "reposts": 5,
+        "likes": 71,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2089366649631572398",
+      "url": "https://x.com/wilczyn/status/2089366649631572398",
+      "date": "2026-08-17T15:00:02.000Z",
+      "content": "hey builders \n\nlooking to connect with people building in:\n\n saas\n ai tools\n web apps\n mobile apps\n experiments\n dev tools\n solo builds\n\ndrop yours below and let's connect",
+      "full_content": "hey builders \n\nlooking to connect with people building in:\n\n saas\n ai tools\n web apps\n mobile apps\n experiments\n dev tools\n solo builds\n\ndrop yours below and let's connect",
+      "score": {
+        "engagement_score": 1683.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 1640,
+          "reposts_x2": 4,
+          "likes_x0_5": 39.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 82,
+        "reposts": 2,
+        "likes": 79,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2086814835006668872",
+      "url": "https://x.com/wilczyn/status/2086814835006668872",
+      "date": "2026-08-10T14:00:02.000Z",
+      "content": "nobody cares about your tech stack\n\nthey care whether it solves their problem\n\nagree or disagree?",
+      "full_content": "nobody cares about your tech stack\n\nthey care whether it solves their problem\n\nagree or disagree?",
+      "score": {
+        "engagement_score": 1509.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 1460,
+          "reposts_x2": 10,
+          "likes_x0_5": 39.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 73,
+        "reposts": 5,
+        "likes": 78,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2087553212249248157",
+      "url": "https://x.com/wilczyn/status/2087553212249248157",
+      "date": "2026-08-12T14:54:05.000Z",
+      "content": "i woke up to 800 followers today \n\njune 18 i started with 65. no tricks, just showing up every day and talking to people.\n\nif you're a builder or a solo founder, say hi below and let's connect \n\n900 n",
+      "full_content": "i woke up to 800 followers today \n\njune 18 i started with 65. no tricks, just showing up every day and talking to people.\n\nif you're a builder or a solo founder, say hi below and let's connect \n\n900 next?",
+      "score": {
+        "engagement_score": 1463.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 1420,
+          "reposts_x2": 2,
+          "likes_x0_5": 41.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 71,
+        "reposts": 1,
+        "likes": 83,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2086195758114480350",
+      "url": "https://x.com/wilczyn/status/2086195758114480350",
+      "date": "2026-08-08T21:00:03.000Z",
+      "content": "hey builders \n\nlooking to connect with people working on:\n\n saas\n ai\n web apps\n mobile\n automation\n dev tools\n solo projects\n\ndrop yours below and let's connect",
+      "full_content": "hey builders \n\nlooking to connect with people working on:\n\n saas\n ai\n web apps\n mobile\n automation\n dev tools\n solo projects\n\ndrop yours below and let's connect",
+      "score": {
+        "engagement_score": 1454.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 1420,
+          "reposts_x2": 4,
+          "likes_x0_5": 30.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 71,
+        "reposts": 2,
+        "likes": 60,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2087615107845038145",
+      "url": "https://x.com/wilczyn/status/2087615107845038145",
+      "date": "2026-08-12T19:00:02.000Z",
+      "content": "builders, help me test something.\n\ndrop your product url below and i'll make you an animated carousel for it. free, no catch.\n\ngo",
+      "full_content": "builders, help me test something.\n\ndrop your product url below and i'll make you an animated carousel for it. free, no catch.\n\ngo",
+      "score": {
+        "engagement_score": 1383.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 1360,
+          "reposts_x2": 4,
+          "likes_x0_5": 19.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 68,
+        "reposts": 2,
+        "likes": 38,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2087539611249561826",
+      "url": "https://x.com/wilczyn/status/2087539611249561826",
+      "date": "2026-08-12T14:00:02.000Z",
+      "content": "what do you use for payments?\n\n- stripe\n- paddle\n- lemon squeezy\n- haven't charged anyone yet",
+      "full_content": "what do you use for payments?\n\n- stripe\n- paddle\n- lemon squeezy\n- haven't charged anyone yet",
+      "score": {
+        "engagement_score": 1265.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 1240,
+          "reposts_x2": 6,
+          "likes_x0_5": 19.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 62,
+        "reposts": 3,
+        "likes": 38,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2087282918607433985",
+      "url": "https://x.com/wilczyn/status/2087282918607433985",
+      "date": "2026-08-11T21:00:02.000Z",
+      "content": "hey builders \n\nlooking to connect with people building in:\n\n saas\n ai tools\n web apps\n mobile\n automation\n dev tools\n solo projects\n\ndrop yours below and let's connect",
+      "full_content": "hey builders \n\nlooking to connect with people building in:\n\n saas\n ai tools\n web apps\n mobile\n automation\n dev tools\n solo projects\n\ndrop yours below and let's connect",
+      "score": {
+        "engagement_score": 1190.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 1160,
+          "reposts_x2": 4,
+          "likes_x0_5": 26.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 58,
+        "reposts": 2,
+        "likes": 52,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2089729038768115752",
+      "url": "https://x.com/wilczyn/status/2089729038768115752",
+      "date": "2026-08-18T15:00:02.000Z",
+      "content": "hey builders \n\nlooking to connect with people building in:\n\n saas\n ai\n web apps\n mobile\n apis\n growth tools\n nights and weekends\n\ndrop yours below and let's connect",
+      "full_content": "hey builders \n\nlooking to connect with people building in:\n\n saas\n ai\n web apps\n mobile\n apis\n growth tools\n nights and weekends\n\ndrop yours below and let's connect",
+      "score": {
+        "engagement_score": 1187.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 1160,
+          "reposts_x2": 2,
+          "likes_x0_5": 25.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 58,
+        "reposts": 1,
+        "likes": 50,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2089713939315650742",
+      "url": "https://x.com/wilczyn/status/2089713939315650742",
+      "date": "2026-08-18T14:00:02.000Z",
+      "content": "launch it ugly, or wait until you're proud of it?",
+      "full_content": "launch it ugly, or wait until you're proud of it?",
+      "score": {
+        "engagement_score": 1117.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 1100,
+          "reposts_x2": 0,
+          "likes_x0_5": 17.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 55,
+        "reposts": 0,
+        "likes": 35,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2086920541437354299",
+      "url": "https://x.com/wilczyn/status/2086920541437354299",
+      "date": "2026-08-10T21:00:04.000Z",
+      "content": "monday. looking to connect with people building in:\n\n saas\n ai tools\n web apps\n mobile apps\n automation\n design tools\n indie hackers\n\nsay hi and let's connect",
+      "full_content": "monday. looking to connect with people building in:\n\n saas\n ai tools\n web apps\n mobile apps\n automation\n design tools\n indie hackers\n\nsay hi and let's connect",
+      "score": {
+        "engagement_score": 1017.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 1000,
+          "reposts_x2": 0,
+          "likes_x0_5": 17.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 50,
+        "reposts": 0,
+        "likes": 34,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2089427054970261548",
+      "url": "https://x.com/wilczyn/status/2089427054970261548",
+      "date": "2026-08-17T19:00:04.000Z",
+      "content": "what are you building?\n\ndrop the link and one line about what it does",
+      "full_content": "what are you building?\n\ndrop the link and one line about what it does",
+      "score": {
+        "engagement_score": 1012.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 1000,
+          "reposts_x2": 2,
+          "likes_x0_5": 10.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 50,
+        "reposts": 1,
+        "likes": 21,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2086890344495382655",
+      "url": "https://x.com/wilczyn/status/2086890344495382655",
+      "date": "2026-08-10T19:00:05.000Z",
+      "content": "ship fast and fix later, or get it right first?",
+      "full_content": "ship fast and fix later, or get it right first?",
+      "score": {
+        "engagement_score": 976.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 960,
+          "reposts_x2": 0,
+          "likes_x0_5": 16.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 48,
+        "reposts": 0,
+        "likes": 32,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2089351556306997447",
+      "url": "https://x.com/wilczyn/status/2089351556306997447",
+      "date": "2026-08-17T14:00:03.000Z",
+      "content": "i never believed in consistency. i kept posting anyway.\n\nnew follows per week:\n\nweek 1: 30\nweek 2: 143\nweek 3: 476\nweek 4: 395\n\n168,312 views in 28 days. week 1 felt like shouting into an empty room.\n",
+      "full_content": "i never believed in consistency. i kept posting anyway.\n\nnew follows per week:\n\nweek 1: 30\nweek 2: 143\nweek 3: 476\nweek 4: 395\n\n168,312 views in 28 days. week 1 felt like shouting into an empty room.\n\ni changed nothing, i just didn't stop.\n\nwhat did you quit too early?",
+      "score": {
+        "engagement_score": 943.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 900,
+          "reposts_x2": 4,
+          "likes_x0_5": 39.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 45,
+        "reposts": 2,
+        "likes": 78,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2085833369347035638",
+      "url": "https://x.com/wilczyn/status/2085833369347035638",
+      "date": "2026-08-07T21:00:02.000Z",
+      "content": "looking to connect with people building in:\n\n saas\n ai tools\n mobile apps\n web apps\n automation\n analytics\n dev tools\n\nsay hi and let's connect",
+      "full_content": "looking to connect with people building in:\n\n saas\n ai tools\n mobile apps\n web apps\n automation\n analytics\n dev tools\n\nsay hi and let's connect",
+      "score": {
+        "engagement_score": 919.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 900,
+          "reposts_x2": 0,
+          "likes_x0_5": 19.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 45,
+        "reposts": 0,
+        "likes": 39,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2089094859449626937",
+      "url": "https://x.com/wilczyn/status/2089094859449626937",
+      "date": "2026-08-16T21:00:02.000Z",
+      "content": "hey builders \n\nlooking to connect with people building in:\n\n saas\n ai tools\n web apps\n mobile apps\n automation\n marketing tools\n indie hackers\n\ndrop yours below and let's connect",
+      "full_content": "hey builders \n\nlooking to connect with people building in:\n\n saas\n ai tools\n web apps\n mobile apps\n automation\n marketing tools\n indie hackers\n\ndrop yours below and let's connect",
+      "score": {
+        "engagement_score": 883.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 860,
+          "reposts_x2": 2,
+          "likes_x0_5": 21.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 43,
+        "reposts": 1,
+        "likes": 43,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2086482643592339737",
+      "url": "https://x.com/wilczyn/status/2086482643592339737",
+      "date": "2026-08-09T16:00:01.000Z",
+      "content": "one ai subscription for the whole year:\n\n- claude\n- chatgpt\n- gemini\n- cursor\n\nwhich one survives?",
+      "full_content": "one ai subscription for the whole year:\n\n- claude\n- chatgpt\n- gemini\n- cursor\n\nwhich one survives?",
+      "score": {
+        "engagement_score": 869.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 860,
+          "reposts_x2": 0,
+          "likes_x0_5": 9.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 43,
+        "reposts": 0,
+        "likes": 19,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2089321352234770813",
+      "url": "https://x.com/wilczyn/status/2089321352234770813",
+      "date": "2026-08-17T12:00:02.000Z",
+      "content": "what are you building this week?",
+      "full_content": "what are you building this week?",
+      "score": {
+        "engagement_score": 854.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 840,
+          "reposts_x2": 0,
+          "likes_x0_5": 14.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 42,
+        "reposts": 0,
+        "likes": 29,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2089396848154853708",
+      "url": "https://x.com/wilczyn/status/2089396848154853708",
+      "date": "2026-08-17T17:00:02.000Z",
+      "content": "what made your first user actually sign up?",
+      "full_content": "what made your first user actually sign up?",
+      "score": {
+        "engagement_score": 852.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 840,
+          "reposts_x2": 0,
+          "likes_x0_5": 12.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 42,
+        "reposts": 0,
+        "likes": 24,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2089064667675062695",
+      "url": "https://x.com/wilczyn/status/2089064667675062695",
+      "date": "2026-08-16T19:00:04.000Z",
+      "content": "1000 followers \n\nmy goal was to hit 1k by the end of the year. i did it in 2 months.\n\nturns out i was dreaming too small. so let's go for 10k.\n\nif you're building in public, let's connect",
+      "full_content": "1000 followers \n\nmy goal was to hit 1k by the end of the year. i did it in 2 months.\n\nturns out i was dreaming too small. so let's go for 10k.\n\nif you're building in public, let's connect",
+      "score": {
+        "engagement_score": 851.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 820,
+          "reposts_x2": 0,
+          "likes_x0_5": 31.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 41,
+        "reposts": 0,
+        "likes": 62,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2089457249995370748",
+      "url": "https://x.com/wilczyn/status/2089457249995370748",
+      "date": "2026-08-17T21:00:03.000Z",
+      "content": "hey builders \n\nlooking to connect with people building in:\n\n saas\n ai tools\n web apps\n mobile apps\n automation\n dev tools\n side projects\n\ndrop yours below and let's connect",
+      "full_content": "hey builders \n\nlooking to connect with people building in:\n\n saas\n ai tools\n web apps\n mobile apps\n automation\n dev tools\n side projects\n\ndrop yours below and let's connect",
+      "score": {
+        "engagement_score": 841.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 820,
+          "reposts_x2": 0,
+          "likes_x0_5": 21.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 41,
+        "reposts": 0,
+        "likes": 42,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2089744137037717820",
+      "url": "https://x.com/wilczyn/status/2089744137037717820",
+      "date": "2026-08-18T16:00:02.000Z",
+      "content": "consistency, or intensity?",
+      "full_content": "consistency, or intensity?",
+      "score": {
+        "engagement_score": 778.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 760,
+          "reposts_x2": 4,
+          "likes_x0_5": 14.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 38,
+        "reposts": 2,
+        "likes": 28,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2086558143912280545",
+      "url": "https://x.com/wilczyn/status/2086558143912280545",
+      "date": "2026-08-09T21:00:02.000Z",
+      "content": "sunday. looking to connect with people building in:\n\n saas\n ai tools\n web apps\n mobile apps\n automation\n marketing tools\n indie hackers\n\nsay hi below",
+      "full_content": "sunday. looking to connect with people building in:\n\n saas\n ai tools\n web apps\n mobile apps\n automation\n marketing tools\n indie hackers\n\nsay hi below",
+      "score": {
+        "engagement_score": 777.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 760,
+          "reposts_x2": 0,
+          "likes_x0_5": 17.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 38,
+        "reposts": 0,
+        "likes": 35,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2087645305734926586",
+      "url": "https://x.com/wilczyn/status/2087645305734926586",
+      "date": "2026-08-12T21:00:02.000Z",
+      "content": "hey builders \n\nlooking to connect with people building in:\n\n saas\n ai\n web apps\n mobile apps\n automation\n dev tools\n indie hackers\n\ndrop yours below and let's connect",
+      "full_content": "hey builders \n\nlooking to connect with people building in:\n\n saas\n ai\n web apps\n mobile apps\n automation\n dev tools\n indie hackers\n\ndrop yours below and let's connect",
+      "score": {
+        "engagement_score": 735.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 720,
+          "reposts_x2": 0,
+          "likes_x0_5": 15.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 36,
+        "reposts": 0,
+        "likes": 30,
+        "bookmarks": 0,
+        "views": 0
+      }
+    }
+  ],
+  "all_tweets": [
+    {
+      "tweet_id": "2087569808829149399",
+      "url": "https://x.com/wilczyn/status/2087569808829149399",
+      "date": "2026-08-12T16:00:02.000Z",
+      "content": "build in public, or build in silence?",
+      "full_content": "build in public, or build in silence?",
+      "score": {
+        "engagement_score": 6502.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 6360,
+          "reposts_x2": 24,
+          "likes_x0_5": 118.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 318,
+        "reposts": 12,
+        "likes": 237,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2086452447875051865",
+      "url": "https://x.com/wilczyn/status/2086452447875051865",
+      "date": "2026-08-09T14:00:02.000Z",
+      "content": "building solo, or with a co-founder?",
+      "full_content": "building solo, or with a co-founder?",
+      "score": {
+        "engagement_score": 2525.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 2480,
+          "reposts_x2": 10,
+          "likes_x0_5": 35.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 124,
+        "reposts": 5,
+        "likes": 71,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2089366649631572398",
+      "url": "https://x.com/wilczyn/status/2089366649631572398",
+      "date": "2026-08-17T15:00:02.000Z",
+      "content": "hey builders \n\nlooking to connect with people building in:\n\n saas\n ai tools\n web apps\n mobile apps\n experiments\n dev tools\n solo builds\n\ndrop yours below and let's connect",
+      "full_content": "hey builders \n\nlooking to connect with people building in:\n\n saas\n ai tools\n web apps\n mobile apps\n experiments\n dev tools\n solo builds\n\ndrop yours below and let's connect",
+      "score": {
+        "engagement_score": 1683.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 1640,
+          "reposts_x2": 4,
+          "likes_x0_5": 39.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 82,
+        "reposts": 2,
+        "likes": 79,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2086814835006668872",
+      "url": "https://x.com/wilczyn/status/2086814835006668872",
+      "date": "2026-08-10T14:00:02.000Z",
+      "content": "nobody cares about your tech stack\n\nthey care whether it solves their problem\n\nagree or disagree?",
+      "full_content": "nobody cares about your tech stack\n\nthey care whether it solves their problem\n\nagree or disagree?",
+      "score": {
+        "engagement_score": 1509.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 1460,
+          "reposts_x2": 10,
+          "likes_x0_5": 39.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 73,
+        "reposts": 5,
+        "likes": 78,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2087553212249248157",
+      "url": "https://x.com/wilczyn/status/2087553212249248157",
+      "date": "2026-08-12T14:54:05.000Z",
+      "content": "i woke up to 800 followers today \n\njune 18 i started with 65. no tricks, just showing up every day and talking to people.\n\nif you're a builder or a solo founder, say hi below and let's connect \n\n900 n",
+      "full_content": "i woke up to 800 followers today \n\njune 18 i started with 65. no tricks, just showing up every day and talking to people.\n\nif you're a builder or a solo founder, say hi below and let's connect \n\n900 next?",
+      "score": {
+        "engagement_score": 1463.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 1420,
+          "reposts_x2": 2,
+          "likes_x0_5": 41.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 71,
+        "reposts": 1,
+        "likes": 83,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2086195758114480350",
+      "url": "https://x.com/wilczyn/status/2086195758114480350",
+      "date": "2026-08-08T21:00:03.000Z",
+      "content": "hey builders \n\nlooking to connect with people working on:\n\n saas\n ai\n web apps\n mobile\n automation\n dev tools\n solo projects\n\ndrop yours below and let's connect",
+      "full_content": "hey builders \n\nlooking to connect with people working on:\n\n saas\n ai\n web apps\n mobile\n automation\n dev tools\n solo projects\n\ndrop yours below and let's connect",
+      "score": {
+        "engagement_score": 1454.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 1420,
+          "reposts_x2": 4,
+          "likes_x0_5": 30.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 71,
+        "reposts": 2,
+        "likes": 60,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2087615107845038145",
+      "url": "https://x.com/wilczyn/status/2087615107845038145",
+      "date": "2026-08-12T19:00:02.000Z",
+      "content": "builders, help me test something.\n\ndrop your product url below and i'll make you an animated carousel for it. free, no catch.\n\ngo",
+      "full_content": "builders, help me test something.\n\ndrop your product url below and i'll make you an animated carousel for it. free, no catch.\n\ngo",
+      "score": {
+        "engagement_score": 1383.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 1360,
+          "reposts_x2": 4,
+          "likes_x0_5": 19.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 68,
+        "reposts": 2,
+        "likes": 38,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2087539611249561826",
+      "url": "https://x.com/wilczyn/status/2087539611249561826",
+      "date": "2026-08-12T14:00:02.000Z",
+      "content": "what do you use for payments?\n\n- stripe\n- paddle\n- lemon squeezy\n- haven't charged anyone yet",
+      "full_content": "what do you use for payments?\n\n- stripe\n- paddle\n- lemon squeezy\n- haven't charged anyone yet",
+      "score": {
+        "engagement_score": 1265.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 1240,
+          "reposts_x2": 6,
+          "likes_x0_5": 19.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 62,
+        "reposts": 3,
+        "likes": 38,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2087282918607433985",
+      "url": "https://x.com/wilczyn/status/2087282918607433985",
+      "date": "2026-08-11T21:00:02.000Z",
+      "content": "hey builders \n\nlooking to connect with people building in:\n\n saas\n ai tools\n web apps\n mobile\n automation\n dev tools\n solo projects\n\ndrop yours below and let's connect",
+      "full_content": "hey builders \n\nlooking to connect with people building in:\n\n saas\n ai tools\n web apps\n mobile\n automation\n dev tools\n solo projects\n\ndrop yours below and let's connect",
+      "score": {
+        "engagement_score": 1190.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 1160,
+          "reposts_x2": 4,
+          "likes_x0_5": 26.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 58,
+        "reposts": 2,
+        "likes": 52,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2089729038768115752",
+      "url": "https://x.com/wilczyn/status/2089729038768115752",
+      "date": "2026-08-18T15:00:02.000Z",
+      "content": "hey builders \n\nlooking to connect with people building in:\n\n saas\n ai\n web apps\n mobile\n apis\n growth tools\n nights and weekends\n\ndrop yours below and let's connect",
+      "full_content": "hey builders \n\nlooking to connect with people building in:\n\n saas\n ai\n web apps\n mobile\n apis\n growth tools\n nights and weekends\n\ndrop yours below and let's connect",
+      "score": {
+        "engagement_score": 1187.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 1160,
+          "reposts_x2": 2,
+          "likes_x0_5": 25.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 58,
+        "reposts": 1,
+        "likes": 50,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2089713939315650742",
+      "url": "https://x.com/wilczyn/status/2089713939315650742",
+      "date": "2026-08-18T14:00:02.000Z",
+      "content": "launch it ugly, or wait until you're proud of it?",
+      "full_content": "launch it ugly, or wait until you're proud of it?",
+      "score": {
+        "engagement_score": 1117.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 1100,
+          "reposts_x2": 0,
+          "likes_x0_5": 17.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 55,
+        "reposts": 0,
+        "likes": 35,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2086920541437354299",
+      "url": "https://x.com/wilczyn/status/2086920541437354299",
+      "date": "2026-08-10T21:00:04.000Z",
+      "content": "monday. looking to connect with people building in:\n\n saas\n ai tools\n web apps\n mobile apps\n automation\n design tools\n indie hackers\n\nsay hi and let's connect",
+      "full_content": "monday. looking to connect with people building in:\n\n saas\n ai tools\n web apps\n mobile apps\n automation\n design tools\n indie hackers\n\nsay hi and let's connect",
+      "score": {
+        "engagement_score": 1017.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 1000,
+          "reposts_x2": 0,
+          "likes_x0_5": 17.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 50,
+        "reposts": 0,
+        "likes": 34,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2089427054970261548",
+      "url": "https://x.com/wilczyn/status/2089427054970261548",
+      "date": "2026-08-17T19:00:04.000Z",
+      "content": "what are you building?\n\ndrop the link and one line about what it does",
+      "full_content": "what are you building?\n\ndrop the link and one line about what it does",
+      "score": {
+        "engagement_score": 1012.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 1000,
+          "reposts_x2": 2,
+          "likes_x0_5": 10.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 50,
+        "reposts": 1,
+        "likes": 21,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2086890344495382655",
+      "url": "https://x.com/wilczyn/status/2086890344495382655",
+      "date": "2026-08-10T19:00:05.000Z",
+      "content": "ship fast and fix later, or get it right first?",
+      "full_content": "ship fast and fix later, or get it right first?",
+      "score": {
+        "engagement_score": 976.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 960,
+          "reposts_x2": 0,
+          "likes_x0_5": 16.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 48,
+        "reposts": 0,
+        "likes": 32,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2089351556306997447",
+      "url": "https://x.com/wilczyn/status/2089351556306997447",
+      "date": "2026-08-17T14:00:03.000Z",
+      "content": "i never believed in consistency. i kept posting anyway.\n\nnew follows per week:\n\nweek 1: 30\nweek 2: 143\nweek 3: 476\nweek 4: 395\n\n168,312 views in 28 days. week 1 felt like shouting into an empty room.\n",
+      "full_content": "i never believed in consistency. i kept posting anyway.\n\nnew follows per week:\n\nweek 1: 30\nweek 2: 143\nweek 3: 476\nweek 4: 395\n\n168,312 views in 28 days. week 1 felt like shouting into an empty room.\n\ni changed nothing, i just didn't stop.\n\nwhat did you quit too early?",
+      "score": {
+        "engagement_score": 943.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 900,
+          "reposts_x2": 4,
+          "likes_x0_5": 39.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 45,
+        "reposts": 2,
+        "likes": 78,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2085833369347035638",
+      "url": "https://x.com/wilczyn/status/2085833369347035638",
+      "date": "2026-08-07T21:00:02.000Z",
+      "content": "looking to connect with people building in:\n\n saas\n ai tools\n mobile apps\n web apps\n automation\n analytics\n dev tools\n\nsay hi and let's connect",
+      "full_content": "looking to connect with people building in:\n\n saas\n ai tools\n mobile apps\n web apps\n automation\n analytics\n dev tools\n\nsay hi and let's connect",
+      "score": {
+        "engagement_score": 919.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 900,
+          "reposts_x2": 0,
+          "likes_x0_5": 19.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 45,
+        "reposts": 0,
+        "likes": 39,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2089094859449626937",
+      "url": "https://x.com/wilczyn/status/2089094859449626937",
+      "date": "2026-08-16T21:00:02.000Z",
+      "content": "hey builders \n\nlooking to connect with people building in:\n\n saas\n ai tools\n web apps\n mobile apps\n automation\n marketing tools\n indie hackers\n\ndrop yours below and let's connect",
+      "full_content": "hey builders \n\nlooking to connect with people building in:\n\n saas\n ai tools\n web apps\n mobile apps\n automation\n marketing tools\n indie hackers\n\ndrop yours below and let's connect",
+      "score": {
+        "engagement_score": 883.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 860,
+          "reposts_x2": 2,
+          "likes_x0_5": 21.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 43,
+        "reposts": 1,
+        "likes": 43,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2086482643592339737",
+      "url": "https://x.com/wilczyn/status/2086482643592339737",
+      "date": "2026-08-09T16:00:01.000Z",
+      "content": "one ai subscription for the whole year:\n\n- claude\n- chatgpt\n- gemini\n- cursor\n\nwhich one survives?",
+      "full_content": "one ai subscription for the whole year:\n\n- claude\n- chatgpt\n- gemini\n- cursor\n\nwhich one survives?",
+      "score": {
+        "engagement_score": 869.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 860,
+          "reposts_x2": 0,
+          "likes_x0_5": 9.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 43,
+        "reposts": 0,
+        "likes": 19,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2089321352234770813",
+      "url": "https://x.com/wilczyn/status/2089321352234770813",
+      "date": "2026-08-17T12:00:02.000Z",
+      "content": "what are you building this week?",
+      "full_content": "what are you building this week?",
+      "score": {
+        "engagement_score": 854.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 840,
+          "reposts_x2": 0,
+          "likes_x0_5": 14.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 42,
+        "reposts": 0,
+        "likes": 29,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2089396848154853708",
+      "url": "https://x.com/wilczyn/status/2089396848154853708",
+      "date": "2026-08-17T17:00:02.000Z",
+      "content": "what made your first user actually sign up?",
+      "full_content": "what made your first user actually sign up?",
+      "score": {
+        "engagement_score": 852.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 840,
+          "reposts_x2": 0,
+          "likes_x0_5": 12.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 42,
+        "reposts": 0,
+        "likes": 24,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2089064667675062695",
+      "url": "https://x.com/wilczyn/status/2089064667675062695",
+      "date": "2026-08-16T19:00:04.000Z",
+      "content": "1000 followers \n\nmy goal was to hit 1k by the end of the year. i did it in 2 months.\n\nturns out i was dreaming too small. so let's go for 10k.\n\nif you're building in public, let's connect",
+      "full_content": "1000 followers \n\nmy goal was to hit 1k by the end of the year. i did it in 2 months.\n\nturns out i was dreaming too small. so let's go for 10k.\n\nif you're building in public, let's connect",
+      "score": {
+        "engagement_score": 851.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 820,
+          "reposts_x2": 0,
+          "likes_x0_5": 31.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 41,
+        "reposts": 0,
+        "likes": 62,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2089457249995370748",
+      "url": "https://x.com/wilczyn/status/2089457249995370748",
+      "date": "2026-08-17T21:00:03.000Z",
+      "content": "hey builders \n\nlooking to connect with people building in:\n\n saas\n ai tools\n web apps\n mobile apps\n automation\n dev tools\n side projects\n\ndrop yours below and let's connect",
+      "full_content": "hey builders \n\nlooking to connect with people building in:\n\n saas\n ai tools\n web apps\n mobile apps\n automation\n dev tools\n side projects\n\ndrop yours below and let's connect",
+      "score": {
+        "engagement_score": 841.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 820,
+          "reposts_x2": 0,
+          "likes_x0_5": 21.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 41,
+        "reposts": 0,
+        "likes": 42,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2089744137037717820",
+      "url": "https://x.com/wilczyn/status/2089744137037717820",
+      "date": "2026-08-18T16:00:02.000Z",
+      "content": "consistency, or intensity?",
+      "full_content": "consistency, or intensity?",
+      "score": {
+        "engagement_score": 778.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 760,
+          "reposts_x2": 4,
+          "likes_x0_5": 14.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 38,
+        "reposts": 2,
+        "likes": 28,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2086558143912280545",
+      "url": "https://x.com/wilczyn/status/2086558143912280545",
+      "date": "2026-08-09T21:00:02.000Z",
+      "content": "sunday. looking to connect with people building in:\n\n saas\n ai tools\n web apps\n mobile apps\n automation\n marketing tools\n indie hackers\n\nsay hi below",
+      "full_content": "sunday. looking to connect with people building in:\n\n saas\n ai tools\n web apps\n mobile apps\n automation\n marketing tools\n indie hackers\n\nsay hi below",
+      "score": {
+        "engagement_score": 777.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 760,
+          "reposts_x2": 0,
+          "likes_x0_5": 17.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 38,
+        "reposts": 0,
+        "likes": 35,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2087645305734926586",
+      "url": "https://x.com/wilczyn/status/2087645305734926586",
+      "date": "2026-08-12T21:00:02.000Z",
+      "content": "hey builders \n\nlooking to connect with people building in:\n\n saas\n ai\n web apps\n mobile apps\n automation\n dev tools\n indie hackers\n\ndrop yours below and let's connect",
+      "full_content": "hey builders \n\nlooking to connect with people building in:\n\n saas\n ai\n web apps\n mobile apps\n automation\n dev tools\n indie hackers\n\ndrop yours below and let's connect",
+      "score": {
+        "engagement_score": 735.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 720,
+          "reposts_x2": 0,
+          "likes_x0_5": 15.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 36,
+        "reposts": 0,
+        "likes": 30,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2089381754687640057",
+      "url": "https://x.com/wilczyn/status/2089381754687640057",
+      "date": "2026-08-17T16:00:03.000Z",
+      "content": "solve your own problem, or solve someone else's?",
+      "full_content": "solve your own problem, or solve someone else's?",
+      "score": {
+        "engagement_score": 733.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 720,
+          "reposts_x2": 0,
+          "likes_x0_5": 13.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 36,
+        "reposts": 0,
+        "likes": 27,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2089698839816966341",
+      "url": "https://x.com/wilczyn/status/2089698839816966341",
+      "date": "2026-08-18T13:00:02.000Z",
+      "content": "which ai model are you actually using day to day?\n\nclaude\nchatgpt\ngemini\nwhatever's inside cursor",
+      "full_content": "which ai model are you actually using day to day?\n\nclaude\nchatgpt\ngemini\nwhatever's inside cursor",
+      "score": {
+        "engagement_score": 672.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 660,
+          "reposts_x2": 2,
+          "likes_x0_5": 10.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 33,
+        "reposts": 1,
+        "likes": 21,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2086059860525719839",
+      "url": "https://x.com/wilczyn/status/2086059860525719839",
+      "date": "2026-08-08T12:00:02.000Z",
+      "content": "what do you do when a post flops?\n\n- delete it\n- leave it up\n- post again immediately\n- spiral quietly",
+      "full_content": "what do you do when a post flops?\n\n- delete it\n- leave it up\n- post again immediately\n- spiral quietly",
+      "score": {
+        "engagement_score": 612.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 600,
+          "reposts_x2": 0,
+          "likes_x0_5": 12.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 30,
+        "reposts": 0,
+        "likes": 24,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2087509411606474836",
+      "url": "https://x.com/wilczyn/status/2087509411606474836",
+      "date": "2026-08-12T12:00:02.000Z",
+      "content": "where do you find your first 10 users?\n\n- friends\n- reddit\n- cold dms\n- X replies\n- still looking",
+      "full_content": "where do you find your first 10 users?\n\n- friends\n- reddit\n- cold dms\n- X replies\n- still looking",
+      "score": {
+        "engagement_score": 593.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 580,
+          "reposts_x2": 2,
+          "likes_x0_5": 11.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 29,
+        "reposts": 1,
+        "likes": 23,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2086090057174192492",
+      "url": "https://x.com/wilczyn/status/2086090057174192492",
+      "date": "2026-08-08T14:00:01.000Z",
+      "content": "where do you buy your domains?\n\n- namecheap\n- cloudflare\n- porkbun\n- godaddy, and i'm not proud",
+      "full_content": "where do you buy your domains?\n\n- namecheap\n- cloudflare\n- porkbun\n- godaddy, and i'm not proud",
+      "score": {
+        "engagement_score": 569.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 560,
+          "reposts_x2": 0,
+          "likes_x0_5": 9.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 28,
+        "reposts": 0,
+        "likes": 18,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2087252725721383201",
+      "url": "https://x.com/wilczyn/status/2087252725721383201",
+      "date": "2026-08-11T19:00:03.000Z",
+      "content": "700 followers \n\nthank you to everyone who said hi, replied, or followed back \n\njune 18 i started with 65 followers. no tricks, just showing up every day and actually talking to people\n\nif you're build",
+      "full_content": "700 followers \n\nthank you to everyone who said hi, replied, or followed back \n\njune 18 i started with 65 followers. no tricks, just showing up every day and actually talking to people\n\nif you're building something, say hi below\n\ncan we get to 800 today?",
+      "score": {
+        "engagement_score": 538.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 520,
+          "reposts_x2": 2,
+          "likes_x0_5": 16.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 26,
+        "reposts": 1,
+        "likes": 32,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2089336451703906503",
+      "url": "https://x.com/wilczyn/status/2089336451703906503",
+      "date": "2026-08-17T13:00:02.000Z",
+      "content": "most people don't need more features.\n\nthey need one thing that works properly.\n\nagree?",
+      "full_content": "most people don't need more features.\n\nthey need one thing that works properly.\n\nagree?",
+      "score": {
+        "engagement_score": 397.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 380,
+          "reposts_x2": 4,
+          "likes_x0_5": 13.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 19,
+        "reposts": 2,
+        "likes": 27,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2089683742059004145",
+      "url": "https://x.com/wilczyn/status/2089683742059004145",
+      "date": "2026-08-18T12:00:03.000Z",
+      "content": "what did you ship yesterday?",
+      "full_content": "what did you ship yesterday?",
+      "score": {
+        "engagement_score": 390.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 380,
+          "reposts_x2": 0,
+          "likes_x0_5": 10.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 19,
+        "reposts": 0,
+        "likes": 20,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2086845035232817392",
+      "url": "https://x.com/wilczyn/status/2086845035232817392",
+      "date": "2026-08-10T16:00:02.000Z",
+      "content": "what do you actually use to talk to your users?\n\n- email\n- x dms\n- discord\n- slack\n- i don't, and i know that's bad",
+      "full_content": "what do you actually use to talk to your users?\n\n- email\n- x dms\n- discord\n- slack\n- i don't, and i know that's bad",
+      "score": {
+        "engagement_score": 388.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 380,
+          "reposts_x2": 0,
+          "likes_x0_5": 8.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 19,
+        "reposts": 0,
+        "likes": 17,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2072387994917691507",
+      "url": "https://x.com/wilczyn/status/2072387994917691507",
+      "date": "2026-07-01T18:32:55.000Z",
+      "content": "1 week ago i shipped \nhttp://\nsupaslides.app - AI-powered on-brand animated carousel generator for Instagram, TikTok, LinkedIn, X, and more.\n\ni'm still working on it, but really struggling with gettin",
+      "full_content": "1 week ago i shipped \nhttp://\nsupaslides.app - AI-powered on-brand animated carousel generator for Instagram, TikTok, LinkedIn, X, and more.\n\ni'm still working on it, but really struggling with getting actual feedback from users.\n\nwould really appreciate any feedback (it's free",
+      "score": {
+        "engagement_score": 388.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 360,
+          "reposts_x2": 2,
+          "likes_x0_5": 26.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 18,
+        "reposts": 1,
+        "likes": 52,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2087705705176252903",
+      "url": "https://x.com/wilczyn/status/2087705705176252903",
+      "date": "2026-08-13T01:00:02.000Z",
+      "content": "what's on your screen right now?",
+      "full_content": "what's on your screen right now?",
+      "score": {
+        "engagement_score": 387.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 380,
+          "reposts_x2": 0,
+          "likes_x0_5": 7.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 19,
+        "reposts": 0,
+        "likes": 14,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2087313119563464969",
+      "url": "https://x.com/wilczyn/status/2087313119563464969",
+      "date": "2026-08-11T23:00:02.000Z",
+      "content": "most products don't fail from bad code\n\nthey fail because nobody knew they existed\n\nagree or disagree?",
+      "full_content": "most products don't fail from bad code\n\nthey fail because nobody knew they existed\n\nagree or disagree?",
+      "score": {
+        "engagement_score": 372.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 360,
+          "reposts_x2": 0,
+          "likes_x0_5": 12.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 18,
+        "reposts": 0,
+        "likes": 25,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2089049558751773038",
+      "url": "https://x.com/wilczyn/status/2089049558751773038",
+      "date": "2026-08-16T18:00:02.000Z",
+      "content": "what's the one thing you want to finish before the month ends?\n\nsay it here so you actually do it",
+      "full_content": "what's the one thing you want to finish before the month ends?\n\nsay it here so you actually do it",
+      "score": {
+        "engagement_score": 350.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 340,
+          "reposts_x2": 0,
+          "likes_x0_5": 10.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 17,
+        "reposts": 0,
+        "likes": 21,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2087584908990456207",
+      "url": "https://x.com/wilczyn/status/2087584908990456207",
+      "date": "2026-08-12T17:00:02.000Z",
+      "content": "what does your morning actually look like?\n\n- code first\n- email first\n- X first\n- panic first",
+      "full_content": "what does your morning actually look like?\n\n- code first\n- email first\n- X first\n- panic first",
+      "score": {
+        "engagement_score": 330.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 320,
+          "reposts_x2": 2,
+          "likes_x0_5": 8.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 16,
+        "reposts": 1,
+        "likes": 16,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2085818276198670689",
+      "url": "https://x.com/wilczyn/status/2085818276198670689",
+      "date": "2026-08-07T20:00:04.000Z",
+      "content": "600 followers \n\nanother 100 since yesterday. i genuinely did not see this coming\n\nthank you to everyone who said hi, replied, or followed back \n\nif you're building something, drop it below and let's c",
+      "full_content": "600 followers \n\nanother 100 since yesterday. i genuinely did not see this coming\n\nthank you to everyone who said hi, replied, or followed back \n\nif you're building something, drop it below and let's connect",
+      "score": {
+        "engagement_score": 296.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 280,
+          "reposts_x2": 2,
+          "likes_x0_5": 14.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 14,
+        "reposts": 1,
+        "likes": 29,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2086784640526712906",
+      "url": "https://x.com/wilczyn/status/2086784640526712906",
+      "date": "2026-08-10T12:00:03.000Z",
+      "content": "it's monday. what are you shipping this week?\n\nsay it here so you actually do it",
+      "full_content": "it's monday. what are you shipping this week?\n\nsay it here so you actually do it",
+      "score": {
+        "engagement_score": 291.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 280,
+          "reposts_x2": 2,
+          "likes_x0_5": 9.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 14,
+        "reposts": 1,
+        "likes": 19,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2089759236796317742",
+      "url": "https://x.com/wilczyn/status/2089759236796317742",
+      "date": "2026-08-18T17:00:02.000Z",
+      "content": "what are you stuck on right now?\n\nmaybe someone here has already solved it",
+      "full_content": "what are you stuck on right now?\n\nmaybe someone here has already solved it",
+      "score": {
+        "engagement_score": 289.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 280,
+          "reposts_x2": 0,
+          "likes_x0_5": 9.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 14,
+        "reposts": 0,
+        "likes": 18,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2086527944663445519",
+      "url": "https://x.com/wilczyn/status/2086527944663445519",
+      "date": "2026-08-09T19:00:02.000Z",
+      "content": "what's the hardest part of your week?\n\n- finding users\n- staying consistent\n- deciding what to build\n- not comparing yourself to everyone here",
+      "full_content": "what's the hardest part of your week?\n\n- finding users\n- staying consistent\n- deciding what to build\n- not comparing yourself to everyone here",
+      "score": {
+        "engagement_score": 267.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 260,
+          "reposts_x2": 0,
+          "likes_x0_5": 7.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 13,
+        "reposts": 0,
+        "likes": 14,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2086165559171756135",
+      "url": "https://x.com/wilczyn/status/2086165559171756135",
+      "date": "2026-08-08T19:00:03.000Z",
+      "content": "how many things have you launched that nobody used?\n\n- zero\n- one\n- two or three\n- I've stopped counting",
+      "full_content": "how many things have you launched that nobody used?\n\n- zero\n- one\n- two or three\n- I've stopped counting",
+      "score": {
+        "engagement_score": 252.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 240,
+          "reposts_x2": 0,
+          "likes_x0_5": 12.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 12,
+        "reposts": 0,
+        "likes": 24,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2086120258620752256",
+      "url": "https://x.com/wilczyn/status/2086120258620752256",
+      "date": "2026-08-08T16:00:02.000Z",
+      "content": "what's in your stack right now?\n\n- cursor\n- claude code\n- codex\n- all three, god help me",
+      "full_content": "what's in your stack right now?\n\n- cursor\n- claude code\n- codex\n- all three, god help me",
+      "score": {
+        "engagement_score": 225.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 220,
+          "reposts_x2": 0,
+          "likes_x0_5": 5.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 11,
+        "reposts": 0,
+        "likes": 10,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2087901998448291845",
+      "url": "https://x.com/wilczyn/status/2087901998448291845",
+      "date": "2026-08-13T14:00:02.000Z",
+      "content": "how do you know a feature is done?\n\n- tests pass\n- works on my machine\n- a user stopped complaining\n- nothing is ever done",
+      "full_content": "how do you know a feature is done?\n\n- tests pass\n- works on my machine\n- a user stopped complaining\n- nothing is ever done",
+      "score": {
+        "engagement_score": 205.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 200,
+          "reposts_x2": 0,
+          "likes_x0_5": 5.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 10,
+        "reposts": 0,
+        "likes": 11,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2086422249049935946",
+      "url": "https://x.com/wilczyn/status/2086422249049935946",
+      "date": "2026-08-09T12:00:02.000Z",
+      "content": "where do your users actually come from?\n\n- X\n- reddit\n- google\n- word of mouth\n- honestly no idea",
+      "full_content": "where do your users actually come from?\n\n- X\n- reddit\n- google\n- word of mouth\n- honestly no idea",
+      "score": {
+        "engagement_score": 186.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 180,
+          "reposts_x2": 0,
+          "likes_x0_5": 6.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 9,
+        "reposts": 0,
+        "likes": 13,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2087871800495448368",
+      "url": "https://x.com/wilczyn/status/2087871800495448368",
+      "date": "2026-08-13T12:00:02.000Z",
+      "content": "what's your analytics stack?\n\n- posthog\n- plausible\n- google analytics\n- vibes",
+      "full_content": "what's your analytics stack?\n\n- posthog\n- plausible\n- google analytics\n- vibes",
+      "score": {
+        "engagement_score": 167.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 160,
+          "reposts_x2": 0,
+          "likes_x0_5": 7.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 8,
+        "reposts": 0,
+        "likes": 14,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2085757880171385121",
+      "url": "https://x.com/wilczyn/status/2085757880171385121",
+      "date": "2026-08-07T16:00:04.000Z",
+      "content": "what's harder to find?\n\n- your first user\n- your first paying user\n- your hundredth",
+      "full_content": "what's harder to find?\n\n- your first user\n- your first paying user\n- your hundredth",
+      "score": {
+        "engagement_score": 143.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 140,
+          "reposts_x2": 0,
+          "likes_x0_5": 3.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 7,
+        "reposts": 0,
+        "likes": 6,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2040118823467004140",
+      "url": "https://x.com/wilczyn/status/2040118823467004140",
+      "date": "2026-04-03T17:26:45.000Z",
+      "content": "i quit my 9-5 six-figure engineering job. \n\ni'm betting everything on myself. living out of savings. \n\nbuilding an app for sharing expenses with friends. \n\nwish me luck",
+      "full_content": "i quit my 9-5 six-figure engineering job. \n\ni'm betting everything on myself. living out of savings. \n\nbuilding an app for sharing expenses with friends. \n\nwish me luck",
+      "score": {
+        "engagement_score": 130.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 120,
+          "reposts_x2": 4,
+          "likes_x0_5": 6.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 6,
+        "reposts": 2,
+        "likes": 12,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2079733172376420678",
+      "url": "https://x.com/wilczyn/status/2079733172376420678",
+      "date": "2026-07-22T01:00:02.000Z",
+      "content": "how much of your own codebase have you actually read?\n\n- all of it\n- most of it\n- the parts that broke\n- I trust the vibes",
+      "full_content": "how much of your own codebase have you actually read?\n\n- all of it\n- most of it\n- the parts that broke\n- I trust the vibes",
+      "score": {
+        "engagement_score": 124.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 120,
+          "reposts_x2": 2,
+          "likes_x0_5": 2.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 6,
+        "reposts": 1,
+        "likes": 4,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2085803173902422052",
+      "url": "https://x.com/wilczyn/status/2085803173902422052",
+      "date": "2026-08-07T19:00:03.000Z",
+      "content": "it's friday. plug your product below\n\npitch it like I'm a customer, not an investor. one sentence. go",
+      "full_content": "it's friday. plug your product below\n\npitch it like I'm a customer, not an investor. one sentence. go",
+      "score": {
+        "engagement_score": 123.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 120,
+          "reposts_x2": 2,
+          "likes_x0_5": 1.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 6,
+        "reposts": 1,
+        "likes": 3,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2083221159475077377",
+      "url": "https://x.com/wilczyn/status/2083221159475077377",
+      "date": "2026-07-31T16:00:03.000Z",
+      "content": "300 followers \n\n100 of them in the last 11 days\n\nthank you to everyone who replied, followed back, or just quietly read along\n\nnext stop 500 — who's coming?",
+      "full_content": "300 followers \n\n100 of them in the last 11 days\n\nthank you to everyone who replied, followed back, or just quietly read along\n\nnext stop 500 — who's coming?",
+      "score": {
+        "engagement_score": 83.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 80,
+          "reposts_x2": 0,
+          "likes_x0_5": 3.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 4,
+        "reposts": 0,
+        "likes": 6,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2087237626008924530",
+      "url": "https://x.com/wilczyn/status/2087237626008924530",
+      "date": "2026-08-11T18:00:03.000Z",
+      "content": "fellow builders, i need your advice.\n\nsupaslides, last 30 days, all organic:\n\n779 visitors\n39 signed up (5%)\n0 paid (0%)\n\nfree tier is 3 carousels a month, watermarked. not generous. still nobody pays",
+      "full_content": "fellow builders, i need your advice.\n\nsupaslides, last 30 days, all organic:\n\n779 visitors\n39 signed up (5%)\n0 paid (0%)\n\nfree tier is 3 carousels a month, watermarked. not generous. still nobody pays.\n\nkill it for a 7 day trial, card up front? or keep it and fix the product?",
+      "score": {
+        "engagement_score": 82.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 80,
+          "reposts_x2": 0,
+          "likes_x0_5": 2.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 4,
+        "reposts": 0,
+        "likes": 4,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2082934264576811173",
+      "url": "https://x.com/wilczyn/status/2082934264576811173",
+      "date": "2026-07-30T21:00:02.000Z",
+      "content": "what are you working on? drop the url",
+      "full_content": "what are you working on? drop the url",
+      "score": {
+        "engagement_score": 82.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 80,
+          "reposts_x2": 0,
+          "likes_x0_5": 2.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 4,
+        "reposts": 0,
+        "likes": 4,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2073057780655693958",
+      "url": "https://x.com/wilczyn/status/2073057780655693958",
+      "date": "2026-07-03T14:54:25.000Z",
+      "content": "hey, i'm working on \nhttp://\nsupaslides.app - it's a tool for generating animated carousels for social media (on your brand style!). \n\ni managed to get 400+ visitors over the last 2 weeks, but only 8 ",
+      "full_content": "hey, i'm working on \nhttp://\nsupaslides.app - it's a tool for generating animated carousels for social media (on your brand style!). \n\ni managed to get 400+ visitors over the last 2 weeks, but only 8 people signed up, nobody paid. \n\ncan you help me figure out why?",
+      "score": {
+        "engagement_score": 63.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 60,
+          "reposts_x2": 0,
+          "likes_x0_5": 3.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 3,
+        "reposts": 0,
+        "likes": 7,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2085727671481147601",
+      "url": "https://x.com/wilczyn/status/2085727671481147601",
+      "date": "2026-08-07T14:00:02.000Z",
+      "content": "what's your actual launch checklist?\n\n- post on X\n- product hunt\n- tell 5 friends\n- just push it and hope",
+      "full_content": "what's your actual launch checklist?\n\n- post on X\n- product hunt\n- tell 5 friends\n- just push it and hope",
+      "score": {
+        "engagement_score": 62.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 60,
+          "reposts_x2": 0,
+          "likes_x0_5": 2.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 3,
+        "reposts": 0,
+        "likes": 5,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2079216268754800704",
+      "url": "https://x.com/wilczyn/status/2079216268754800704",
+      "date": "2026-07-20T14:46:03.000Z",
+      "content": "200 followers \n\nhonestly didn't expect to hit this so fast. thank you to everyone building in public alongside me \n\nnext stop: 500. who's coming with me?",
+      "full_content": "200 followers \n\nhonestly didn't expect to hit this so fast. thank you to everyone building in public alongside me \n\nnext stop: 500. who's coming with me?",
+      "score": {
+        "engagement_score": 62.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 60,
+          "reposts_x2": 0,
+          "likes_x0_5": 2.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 3,
+        "reposts": 0,
+        "likes": 5,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2041563833794187353",
+      "url": "https://x.com/wilczyn/status/2041563833794187353",
+      "date": "2026-04-07T17:08:43.000Z",
+      "content": "My app is almost ready to launch, but now I’m overwhelmed with options what to focus on. Do I focus on:\n\n- documenting my journey and building a personal (founder) brand \n- posting UGC content organic",
+      "full_content": "My app is almost ready to launch, but now I’m overwhelmed with options what to focus on. Do I focus on:\n\n- documenting my journey and building a personal (founder) brand \n- posting UGC content organically \n- SEO - which will take time to have results so better to start soon \n-",
+      "score": {
+        "engagement_score": 62.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 60,
+          "reposts_x2": 0,
+          "likes_x0_5": 2.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 3,
+        "reposts": 0,
+        "likes": 4,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2077809250793935076",
+      "url": "https://x.com/wilczyn/status/2077809250793935076",
+      "date": "2026-07-16T17:35:03.000Z",
+      "content": "189/200 followers! can we get to 200 today?\n\ni'm looking for people building in public to connect",
+      "full_content": "189/200 followers! can we get to 200 today?\n\ni'm looking for people building in public to connect",
+      "score": {
+        "engagement_score": 61.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 60,
+          "reposts_x2": 0,
+          "likes_x0_5": 1.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 3,
+        "reposts": 0,
+        "likes": 3,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2076397753521901648",
+      "url": "https://x.com/wilczyn/status/2076397753521901648",
+      "date": "2026-07-12T20:06:16.000Z",
+      "content": "166/1000 followers  \n\ni want to #connect with people in:  \n design \n saaS \n AI tools  \n ecom  \n app development\n indie hackers\n\n tell me more about you, let's grow together",
+      "full_content": "166/1000 followers  \n\ni want to #connect with people in:  \n design \n saaS \n AI tools  \n ecom  \n app development\n indie hackers\n\n tell me more about you, let's grow together",
+      "score": {
+        "engagement_score": 61.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 60,
+          "reposts_x2": 0,
+          "likes_x0_5": 1.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 3,
+        "reposts": 0,
+        "likes": 2,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2074224808141750657",
+      "url": "https://x.com/wilczyn/status/2074224808141750657",
+      "date": "2026-07-06T20:11:46.000Z",
+      "content": "i ranked #2 in this week startups tournament on \n@RankInPublic\n  thanks so much for all your votes!",
+      "full_content": "i ranked #2 in this week startups tournament on \n@RankInPublic\n  thanks so much for all your votes!",
+      "score": {
+        "engagement_score": 45.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 40,
+          "reposts_x2": 2,
+          "likes_x0_5": 3.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 2,
+        "reposts": 1,
+        "likes": 7,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2073517887604609042",
+      "url": "https://x.com/wilczyn/status/2073517887604609042",
+      "date": "2026-07-04T21:22:43.000Z",
+      "content": "still trying to figure out scalable distribution channel for supaslides. today i'm starting reaching out to people on Instagram directly. trying to find people you might find my tool useful and ask fo",
+      "full_content": "still trying to figure out scalable distribution channel for supaslides. today i'm starting reaching out to people on Instagram directly. trying to find people you might find my tool useful and ask for feedback. it's gonna be a lot of manual work, so hopefully it will pay off.",
+      "score": {
+        "engagement_score": 42.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 40,
+          "reposts_x2": 0,
+          "likes_x0_5": 2.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 2,
+        "reposts": 0,
+        "likes": 5,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2082901182616305673",
+      "url": "https://x.com/wilczyn/status/2082901182616305673",
+      "date": "2026-07-30T18:48:35.000Z",
+      "content": "280/300 \n\n20 away and I did not expect to be here this fast\n\ndrop your @ below, i'll follow back every builder in the replies\n\ncan we close the last 20 today?",
+      "full_content": "280/300 \n\n20 away and I did not expect to be here this fast\n\ndrop your @ below, i'll follow back every builder in the replies\n\ncan we close the last 20 today?",
+      "score": {
+        "engagement_score": 42.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 40,
+          "reposts_x2": 0,
+          "likes_x0_5": 2.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 2,
+        "reposts": 0,
+        "likes": 4,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2073441614136045597",
+      "url": "https://x.com/wilczyn/status/2073441614136045597",
+      "date": "2026-07-04T16:19:38.000Z",
+      "content": "3 more followers to reach 100! \n\nanyone who builds saas, apps, ai tool wants to connect?",
+      "full_content": "3 more followers to reach 100! \n\nanyone who builds saas, apps, ai tool wants to connect?",
+      "score": {
+        "engagement_score": 42.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 40,
+          "reposts_x2": 0,
+          "likes_x0_5": 2.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 2,
+        "reposts": 0,
+        "likes": 4,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2084021431680016756",
+      "url": "https://x.com/wilczyn/status/2084021431680016756",
+      "date": "2026-08-02T21:00:03.000Z",
+      "content": "what do you actually do on sundays?\n\n- build\n- rest\n- plan\n- panic quietly",
+      "full_content": "what do you actually do on sundays?\n\n- build\n- rest\n- plan\n- panic quietly",
+      "score": {
+        "engagement_score": 41.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 40,
+          "reposts_x2": 0,
+          "likes_x0_5": 1.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 2,
+        "reposts": 0,
+        "likes": 3,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2079642575032430796",
+      "url": "https://x.com/wilczyn/status/2079642575032430796",
+      "date": "2026-07-21T19:00:02.000Z",
+      "content": "you get $200/month for tools:\n\n- codex\n- cursor\n- claude code\n\nwhere does it go?",
+      "full_content": "you get $200/month for tools:\n\n- codex\n- cursor\n- claude code\n\nwhere does it go?",
+      "score": {
+        "engagement_score": 41.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 40,
+          "reposts_x2": 0,
+          "likes_x0_5": 1.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 2,
+        "reposts": 0,
+        "likes": 3,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2077400298813874568",
+      "url": "https://x.com/wilczyn/status/2077400298813874568",
+      "date": "2026-07-15T14:30:02.000Z",
+      "content": "real question: do you review AI's code or does AI review yours?",
+      "full_content": "real question: do you review AI's code or does AI review yours?",
+      "score": {
+        "engagement_score": 41.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 40,
+          "reposts_x2": 0,
+          "likes_x0_5": 1.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 2,
+        "reposts": 0,
+        "likes": 3,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2045487517948899586",
+      "url": "https://x.com/wilczyn/status/2045487517948899586",
+      "date": "2026-04-18T13:00:02.000Z",
+      "content": "the full stack behind my solo-built mobile app in 2026:\n\n expo ~55 — rn framework\n react native 0.83 + react 19\n expo router — file-based routing\n supabase — auth + db + storage\n tanstack query + pers",
+      "full_content": "the full stack behind my solo-built mobile app in 2026:\n\n expo ~55 — rn framework\n react native 0.83 + react 19\n expo router — file-based routing\n supabase — auth + db + storage\n tanstack query + persist — data layer\n reanimated 4 + worklets — animations\n shopify",
+      "score": {
+        "engagement_score": 41.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 40,
+          "reposts_x2": 0,
+          "likes_x0_5": 1.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 2,
+        "reposts": 0,
+        "likes": 3,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2083659035341926639",
+      "url": "https://x.com/wilczyn/status/2083659035341926639",
+      "date": "2026-08-01T21:00:01.000Z",
+      "content": "be honest: how many side projects are running right now?\n\n- one\n- two\n- three\n- a graveyard",
+      "full_content": "be honest: how many side projects are running right now?\n\n- one\n- two\n- three\n- a graveyard",
+      "score": {
+        "engagement_score": 41.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 40,
+          "reposts_x2": 0,
+          "likes_x0_5": 1.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 2,
+        "reposts": 0,
+        "likes": 2,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2083583539832844477",
+      "url": "https://x.com/wilczyn/status/2083583539832844477",
+      "date": "2026-08-01T16:00:01.000Z",
+      "content": "how do you decide what to build next?\n\n- user requests\n- your gut\n- whatever's broken\n- whatever's fun",
+      "full_content": "how do you decide what to build next?\n\n- user requests\n- your gut\n- whatever's broken\n- whatever's fun",
+      "score": {
+        "engagement_score": 41.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 40,
+          "reposts_x2": 0,
+          "likes_x0_5": 1.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 2,
+        "reposts": 0,
+        "likes": 2,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2077078576826925143",
+      "url": "https://x.com/wilczyn/status/2077078576826925143",
+      "date": "2026-07-14T17:11:37.000Z",
+      "content": "i'm super frustrated - i'm trying to be super active on X, i don't use any bots, any AI, doing everything  manually, i'm replying to around 40 posts per day and post 1-3 times. \n\nsomehow my impression",
+      "full_content": "i'm super frustrated - i'm trying to be super active on X, i don't use any bots, any AI, doing everything  manually, i'm replying to around 40 posts per day and post 1-3 times. \n\nsomehow my impression went suddenly down.. it doesn't say that my account is suspended but when i try",
+      "score": {
+        "engagement_score": 22.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 20,
+          "reposts_x2": 0,
+          "likes_x0_5": 2.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 1,
+        "reposts": 0,
+        "likes": 5,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2083991229528768837",
+      "url": "https://x.com/wilczyn/status/2083991229528768837",
+      "date": "2026-08-02T19:00:02.000Z",
+      "content": "if you had to delete every feature but three, which survive?",
+      "full_content": "if you had to delete every feature but three, which survive?",
+      "score": {
+        "engagement_score": 22.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 20,
+          "reposts_x2": 0,
+          "likes_x0_5": 2.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 1,
+        "reposts": 0,
+        "likes": 4,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2087222521695211995",
+      "url": "https://x.com/wilczyn/status/2087222521695211995",
+      "date": "2026-08-11T17:00:02.000Z",
+      "content": "what's the thing you keep putting off?\n\n- the pricing page\n- talking to users\n- the docs\n- launching at all",
+      "full_content": "what's the thing you keep putting off?\n\n- the pricing page\n- talking to users\n- the docs\n- launching at all",
+      "score": {
+        "engagement_score": 21.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 20,
+          "reposts_x2": 0,
+          "likes_x0_5": 1.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 1,
+        "reposts": 0,
+        "likes": 3,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2041633018121490450",
+      "url": "https://x.com/wilczyn/status/2041633018121490450",
+      "date": "2026-04-07T21:43:37.000Z",
+      "content": "Does Instagram work the same way as TikTok where it shows my content to people in the same geographic?\n\nI’m based in Poland but post in English and my posts are mostly going to people in Poland. \n\nAny",
+      "full_content": "Does Instagram work the same way as TikTok where it shows my content to people in the same geographic?\n\nI’m based in Poland but post in English and my posts are mostly going to people in Poland. \n\nAny advice?",
+      "score": {
+        "engagement_score": 21.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 20,
+          "reposts_x2": 0,
+          "likes_x0_5": 1.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 1,
+        "reposts": 0,
+        "likes": 3,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2084278120824119324",
+      "url": "https://x.com/wilczyn/status/2084278120824119324",
+      "date": "2026-08-03T14:00:02.000Z",
+      "content": "what's the first thing you check on monday morning?\n\n- analytics\n- stripe\n- email\n- X, obviously",
+      "full_content": "what's the first thing you check on monday morning?\n\n- analytics\n- stripe\n- email\n- X, obviously",
+      "score": {
+        "engagement_score": 21.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 20,
+          "reposts_x2": 0,
+          "likes_x0_5": 1.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 1,
+        "reposts": 0,
+        "likes": 2,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2083885533734805960",
+      "url": "https://x.com/wilczyn/status/2083885533734805960",
+      "date": "2026-08-02T12:00:02.000Z",
+      "content": "sunday reset. what's the one thing you're fixing this week?",
+      "full_content": "sunday reset. what's the one thing you're fixing this week?",
+      "score": {
+        "engagement_score": 21.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 20,
+          "reposts_x2": 0,
+          "likes_x0_5": 1.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 1,
+        "reposts": 0,
+        "likes": 2,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2083628837443711187",
+      "url": "https://x.com/wilczyn/status/2083628837443711187",
+      "date": "2026-08-01T19:00:01.000Z",
+      "content": "what's your unfair advantage? one line",
+      "full_content": "what's your unfair advantage? one line",
+      "score": {
+        "engagement_score": 21.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 20,
+          "reposts_x2": 0,
+          "likes_x0_5": 1.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 1,
+        "reposts": 0,
+        "likes": 2,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2083326846502944909",
+      "url": "https://x.com/wilczyn/status/2083326846502944909",
+      "date": "2026-07-31T23:00:01.000Z",
+      "content": "how many followers did you have when you got your first paying customer?\n\ngenuinely curious whether the number matters at all",
+      "full_content": "how many followers did you have when you got your first paying customer?\n\ngenuinely curious whether the number matters at all",
+      "score": {
+        "engagement_score": 21.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 20,
+          "reposts_x2": 0,
+          "likes_x0_5": 1.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 1,
+        "reposts": 0,
+        "likes": 2,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2083296650697556477",
+      "url": "https://x.com/wilczyn/status/2083296650697556477",
+      "date": "2026-07-31T21:00:01.000Z",
+      "content": "what actually grew your account?\n\n- posting more\n- replying more\n- one post that popped\n- still waiting, honestly",
+      "full_content": "what actually grew your account?\n\n- posting more\n- replying more\n- one post that popped\n- still waiting, honestly",
+      "score": {
+        "engagement_score": 21.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 20,
+          "reposts_x2": 0,
+          "likes_x0_5": 1.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 1,
+        "reposts": 0,
+        "likes": 2,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2083266459187265628",
+      "url": "https://x.com/wilczyn/status/2083266459187265628",
+      "date": "2026-07-31T19:00:03.000Z",
+      "content": "june 18: started posting every day. 65 followers\n\n65 → 100: 18 days\n100 → 200: 14 days\n200 → 300: 11 days\n\nevery hundred faster than the last. I didn't change the content, I just stopped stopping\n\ndoe",
+      "full_content": "june 18: started posting every day. 65 followers\n\n65 → 100: 18 days\n100 → 200: 14 days\n200 → 300: 11 days\n\nevery hundred faster than the last. I didn't change the content, I just stopped stopping\n\ndoes it get even quicker going forward?",
+      "score": {
+        "engagement_score": 21.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 20,
+          "reposts_x2": 0,
+          "likes_x0_5": 1.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 1,
+        "reposts": 0,
+        "likes": 2,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2078917799557099857",
+      "url": "https://x.com/wilczyn/status/2078917799557099857",
+      "date": "2026-07-19T19:00:02.000Z",
+      "content": "be honest, could you ship for a week without AI?\n\nno Claude, no Cursor, no autocomplete. just you and the docs",
+      "full_content": "be honest, could you ship for a week without AI?\n\nno Claude, no Cursor, no autocomplete. just you and the docs",
+      "score": {
+        "engagement_score": 21.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 20,
+          "reposts_x2": 0,
+          "likes_x0_5": 1.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 1,
+        "reposts": 0,
+        "likes": 2,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2077558844364914764",
+      "url": "https://x.com/wilczyn/status/2077558844364914764",
+      "date": "2026-07-16T01:00:02.000Z",
+      "content": "about to renew my AI subscriptions and honestly can't tell which ones earned it\n\nwhich tool would you cancel last?",
+      "full_content": "about to renew my AI subscriptions and honestly can't tell which ones earned it\n\nwhich tool would you cancel last?",
+      "score": {
+        "engagement_score": 21.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 20,
+          "reposts_x2": 0,
+          "likes_x0_5": 1.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 1,
+        "reposts": 0,
+        "likes": 2,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2083945932253446219",
+      "url": "https://x.com/wilczyn/status/2083945932253446219",
+      "date": "2026-08-02T16:00:02.000Z",
+      "content": "what killed your last project?\n\n- lost interest\n- no users\n- money\n- it's not dead, it's resting",
+      "full_content": "what killed your last project?\n\n- lost interest\n- no users\n- money\n- it's not dead, it's resting",
+      "score": {
+        "engagement_score": 20.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 20,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 1,
+        "reposts": 0,
+        "likes": 1,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2081348818805637128",
+      "url": "https://x.com/wilczyn/status/2081348818805637128",
+      "date": "2026-07-26T12:00:02.000Z",
+      "content": "what would break you first\n\n- 1,000 users and no revenue\n- revenue from 3 customers who could all walk tomorrow\n\npick one",
+      "full_content": "what would break you first\n\n- 1,000 users and no revenue\n- revenue from 3 customers who could all walk tomorrow\n\npick one",
+      "score": {
+        "engagement_score": 20.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 20,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 1,
+        "reposts": 0,
+        "likes": 1,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2080397550239035493",
+      "url": "https://x.com/wilczyn/status/2080397550239035493",
+      "date": "2026-07-23T21:00:02.000Z",
+      "content": "every platform has a personality:\n\nX wants your journey\nLinkedIn wants your title\nReddit wants your receipts\n\nwhere did your first real users actually come from?",
+      "full_content": "every platform has a personality:\n\nX wants your journey\nLinkedIn wants your title\nReddit wants your receipts\n\nwhere did your first real users actually come from?",
+      "score": {
+        "engagement_score": 20.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 20,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 1,
+        "reposts": 0,
+        "likes": 1,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2078449715713073218",
+      "url": "https://x.com/wilczyn/status/2078449715713073218",
+      "date": "2026-07-18T12:00:02.000Z",
+      "content": "what actually converts on a landing page?\n\n- demo video\n- screenshots\n- live playground\n- social proof",
+      "full_content": "what actually converts on a landing page?\n\n- demo video\n- screenshots\n- live playground\n- social proof",
+      "score": {
+        "engagement_score": 20.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 20,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 1,
+        "reposts": 0,
+        "likes": 1,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2078193025042255933",
+      "url": "https://x.com/wilczyn/status/2078193025042255933",
+      "date": "2026-07-17T19:00:02.000Z",
+      "content": "it's friday. plug your product below\n\npitch it like I'm a customer, not an investor. one sentence. go",
+      "full_content": "it's friday. plug your product below\n\npitch it like I'm a customer, not an investor. one sentence. go",
+      "score": {
+        "engagement_score": 20.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 20,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 1,
+        "reposts": 0,
+        "likes": 1,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2074610056348234047",
+      "url": "https://x.com/wilczyn/status/2074610056348234047",
+      "date": "2026-07-07T21:42:36.000Z",
+      "content": "Builders, let's connect!  What are you building right now?  \n\nAI \nautomation \nweb apps \ndev tools \nmobile apps\n\ni want my feed with more cool builders",
+      "full_content": "Builders, let's connect!  What are you building right now?  \n\nAI \nautomation \nweb apps \ndev tools \nmobile apps\n\ni want my feed with more cool builders",
+      "score": {
+        "engagement_score": 20.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 20,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 1,
+        "reposts": 0,
+        "likes": 1,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2073828767550538193",
+      "url": "https://x.com/wilczyn/status/2073828767550538193",
+      "date": "2026-07-05T17:58:02.000Z",
+      "content": "unpopular opinion: I like Opus more than Fable.\n\nI feel like Opus is just faster, maybe as a dev I give it more direct prompts what I should do, and I don’t utilize high level thinking of Fable. \n\nwha",
+      "full_content": "unpopular opinion: I like Opus more than Fable.\n\nI feel like Opus is just faster, maybe as a dev I give it more direct prompts what I should do, and I don’t utilize high level thinking of Fable. \n\nwhat’s your experience?",
+      "score": {
+        "engagement_score": 20.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 20,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 1,
+        "reposts": 0,
+        "likes": 1,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2045849906556829933",
+      "url": "https://x.com/wilczyn/status/2045849906556829933",
+      "date": "2026-04-19T13:00:02.000Z",
+      "content": "i'll never use style libraries ever again.\n\ndeleted \n@nativewindcss\n  from my mobile app. \n\nthe problem? it fought  it at every turn. animations broke styles all the time. web version had weird issues",
+      "full_content": "i'll never use style libraries ever again.\n\ndeleted \n@nativewindcss\n  from my mobile app. \n\nthe problem? it fought  it at every turn. animations broke styles all the time. web version had weird issues. there were edge cases i couldn't reproduce or fix. i couldn't upgrade to expo",
+      "score": {
+        "engagement_score": 20.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 20,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 1,
+        "reposts": 0,
+        "likes": 1,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2078812100793709020",
+      "url": "https://x.com/wilczyn/status/2078812100793709020",
+      "date": "2026-07-19T12:00:01.000Z",
+      "content": "the scariest user feedback isn't a complaint. it's silence\n\ncomplaints mean they still care\n\nwhat's the last complaint you actually shipped a fix for?",
+      "full_content": "the scariest user feedback isn't a complaint. it's silence\n\ncomplaints mean they still care\n\nwhat's the last complaint you actually shipped a fix for?",
+      "score": {
+        "engagement_score": 20.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 20,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 1,
+        "reposts": 0,
+        "likes": 0,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2078555415407657052",
+      "url": "https://x.com/wilczyn/status/2078555415407657052",
+      "date": "2026-07-18T19:00:03.000Z",
+      "content": "what breaks first in an AI-built app?\n\n- auth\n- payments\n- edge cases\n- nothing, it's fine (it's not fine)",
+      "full_content": "what breaks first in an AI-built app?\n\n- auth\n- payments\n- edge cases\n- nothing, it's fine (it's not fine)",
+      "score": {
+        "engagement_score": 20.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 20,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 1,
+        "reposts": 0,
+        "likes": 0,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2045561927858889044",
+      "url": "https://x.com/wilczyn/status/2045561927858889044",
+      "date": "2026-04-18T17:55:42.000Z",
+      "content": "Does any one has real life use cases for using Paperclip?",
+      "full_content": "Does any one has real life use cases for using Paperclip?",
+      "score": {
+        "engagement_score": 20.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 20,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 1,
+        "reposts": 0,
+        "likes": 0,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2077468250737193435",
+      "url": "https://x.com/wilczyn/status/2077468250737193435",
+      "date": "2026-07-15T19:00:03.000Z",
+      "content": "most products don't die from bugs\n\nthey die unseen",
+      "full_content": "most products don't die from bugs\n\nthey die unseen",
+      "score": {
+        "engagement_score": 2.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 2.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 4,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2074107463154937981",
+      "url": "https://x.com/wilczyn/status/2074107463154937981",
+      "date": "2026-07-06T12:25:28.000Z",
+      "content": "last hours of the final round for \nhttp://\nSupaslides.app on \n@RankInPublic\n, if you like the app please vote",
+      "full_content": "last hours of the final round for \nhttp://\nSupaslides.app on \n@RankInPublic\n, if you like the app please vote",
+      "score": {
+        "engagement_score": 2.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 2.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 4,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2073854537937367320",
+      "url": "https://x.com/wilczyn/status/2073854537937367320",
+      "date": "2026-07-05T19:40:26.000Z",
+      "content": "i finally crossed 100 followers on X! let's go for 200!",
+      "full_content": "i finally crossed 100 followers on X! let's go for 200!",
+      "score": {
+        "engagement_score": 2.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 2.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 4,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2084017788897624071",
+      "url": "https://x.com/wilczyn/status/2084017788897624071",
+      "date": "2026-08-02T20:45:34.000Z",
+      "content": "has anyone tried vibe coding an actual production ready game? i see a lot of saas being created, but not a single game.",
+      "full_content": "has anyone tried vibe coding an actual production ready game? i see a lot of saas being created, but not a single game.",
+      "score": {
+        "engagement_score": 1.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 1.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 3,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2041634371942191341",
+      "url": "https://x.com/wilczyn/status/2041634371942191341",
+      "date": "2026-04-07T21:49:00.000Z",
+      "content": "I found a great alternative to SensorTower and it’s completely free . You can easily find your apps competitors and check how much revenue and downloads they have.",
+      "full_content": "I found a great alternative to SensorTower and it’s completely free . You can easily find your apps competitors and check how much revenue and downloads they have.",
+      "score": {
+        "engagement_score": 1.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 1.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 3,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2079536886159114454",
+      "url": "https://x.com/wilczyn/status/2079536886159114454",
+      "date": "2026-07-21T12:00:04.000Z",
+      "content": "founders will spend 6 months on the backend\n\nand 6 minutes on the screenshots\n\nthen wonder why nobody clicks",
+      "full_content": "founders will spend 6 months on the backend\n\nand 6 minutes on the screenshots\n\nthen wonder why nobody clicks",
+      "score": {
+        "engagement_score": 1.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 1.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 2,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2079280188811014178",
+      "url": "https://x.com/wilczyn/status/2079280188811014178",
+      "date": "2026-07-20T19:00:02.000Z",
+      "content": "it's monday. what are you shipping this week?\n\nhold yourself accountable in the replies",
+      "full_content": "it's monday. what are you shipping this week?\n\nhold yourself accountable in the replies",
+      "score": {
+        "engagement_score": 1.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 1.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 2,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2046212293999137185",
+      "url": "https://x.com/wilczyn/status/2046212293999137185",
+      "date": "2026-04-20T13:00:02.000Z",
+      "content": "haptics in mobile apps are underrated. 1 hour of work, but it feels 10x more premium.\n\nin expo it's 3 lines:\nimport * as Haptics from 'expo-haptics'\nHaptics.impactAsync(\n    Haptics.ImpactFeedbackStyl",
+      "full_content": "haptics in mobile apps are underrated. 1 hour of work, but it feels 10x more premium.\n\nin expo it's 3 lines:\nimport * as Haptics from 'expo-haptics'\nHaptics.impactAsync(\n    Haptics.ImpactFeedbackStyle.Light\n)\n\nevery interaction in \n@supasplit\n uses them:\n- light on buttons\n-",
+      "score": {
+        "engagement_score": 1.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 1.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 2,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2044403415401341085",
+      "url": "https://x.com/wilczyn/status/2044403415401341085",
+      "date": "2026-04-15T13:12:12.000Z",
+      "content": "the servers running my mobile app: $0/month\n\nthe ai writing the code for it: $100/month\n\nfull stack in 2026:\n— claude: $100\n— midjourney: $10\n— apple dev: $8\n— gemini api: $2\n— servers (10k users): $0",
+      "full_content": "the servers running my mobile app: $0/month\n\nthe ai writing the code for it: $100/month\n\nfull stack in 2026:\n— claude: $100\n— midjourney: $10\n— apple dev: $8\n— gemini api: $2\n— servers (10k users): $0\n\n$120/month total.\n\nai is the new infra. what are you paying?",
+      "score": {
+        "engagement_score": 1.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 1.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 2,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2090121630282379627",
+      "url": "https://x.com/wilczyn/status/2090121630282379627",
+      "date": "2026-08-19T17:00:03.000Z",
+      "content": "what's something you believed about building that turned out completely wrong?",
+      "full_content": "what's something you believed about building that turned out completely wrong?",
+      "score": {
+        "engagement_score": 0.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 1,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2084308320190333296",
+      "url": "https://x.com/wilczyn/status/2084308320190333296",
+      "date": "2026-08-03T16:00:02.000Z",
+      "content": "are you building for:\n\n- freedom\n- passion\n- money\n- honestly not sure anymore",
+      "full_content": "are you building for:\n\n- freedom\n- passion\n- money\n- honestly not sure anymore",
+      "score": {
+        "engagement_score": 0.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 1,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2080004961446813945",
+      "url": "https://x.com/wilczyn/status/2080004961446813945",
+      "date": "2026-07-22T19:00:02.000Z",
+      "content": "what's harder:\n\n- first 10 users\n- next 100\n- charging money\n- not quitting",
+      "full_content": "what's harder:\n\n- first 10 users\n- next 100\n- charging money\n- not quitting",
+      "score": {
+        "engagement_score": 0.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 1,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2079370785076965720",
+      "url": "https://x.com/wilczyn/status/2079370785076965720",
+      "date": "2026-07-21T01:00:02.000Z",
+      "content": "have you ever had a post actually go viral?\n\nwhat happened to your product after?",
+      "full_content": "have you ever had a post actually go viral?\n\nwhat happened to your product after?",
+      "score": {
+        "engagement_score": 0.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 1,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2078283620611932486",
+      "url": "https://x.com/wilczyn/status/2078283620611932486",
+      "date": "2026-07-18T01:00:02.000Z",
+      "content": "what machine are you building on?\n\nand would you buy it again?",
+      "full_content": "what machine are you building on?\n\nand would you buy it again?",
+      "score": {
+        "engagement_score": 0.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 1,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2073150563106136118",
+      "url": "https://x.com/wilczyn/status/2073150563106136118",
+      "date": "2026-07-03T21:03:06.000Z",
+      "content": "inspired by \n@wickedguro\n , i'm adding mcp to my supaslides app. honestly i was thinking about this a few days ago, because when i use my tool i usually do that via Claude Code, so this makes things f",
+      "full_content": "inspired by \n@wickedguro\n , i'm adding mcp to my supaslides app. honestly i was thinking about this a few days ago, because when i use my tool i usually do that via Claude Code, so this makes things faster.",
+      "score": {
+        "engagement_score": 0.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 1,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2072047495119601829",
+      "url": "https://x.com/wilczyn/status/2072047495119601829",
+      "date": "2026-06-30T19:59:54.000Z",
+      "content": "this week I was mainly focused on talking with first users & implementing features based on their feedback, here's a summary (made in the tool i'm building itself)",
+      "full_content": "this week I was mainly focused on talking with first users & implementing features based on their feedback, here's a summary (made in the tool i'm building itself)",
+      "score": {
+        "engagement_score": 0.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 1,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2046574680622936433",
+      "url": "https://x.com/wilczyn/status/2046574680622936433",
+      "date": "2026-04-21T13:00:02.000Z",
+      "content": "i always used revenuecat in my mobile apps before. now trying superwall for the first time.\n\nhonestly, i just want to try it, because it's newer.. \n\nwhat's your experience? which one is better? or it ",
+      "full_content": "i always used revenuecat in my mobile apps before. now trying superwall for the first time.\n\nhonestly, i just want to try it, because it's newer.. \n\nwhat's your experience? which one is better? or it doesn't matter?",
+      "score": {
+        "engagement_score": 0.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 1,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2046197760697720981",
+      "url": "https://x.com/wilczyn/status/2046197760697720981",
+      "date": "2026-04-20T12:02:17.000Z",
+      "content": "busy day at the office today",
+      "full_content": "busy day at the office today",
+      "score": {
+        "engagement_score": 0.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 1,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2044364551785783564",
+      "url": "https://x.com/wilczyn/status/2044364551785783564",
+      "date": "2026-04-15T10:37:46.000Z",
+      "content": "i was warming up some TikTok accounts for posting some UGC content for my app. \n\nafter a few days I noticed that I can't follow anyone.. i click follow button, but then after refresh the button is sti",
+      "full_content": "i was warming up some TikTok accounts for posting some UGC content for my app. \n\nafter a few days I noticed that I can't follow anyone.. i click follow button, but then after refresh the button is still visible. \n\nany ideas? does it mean i got banned? (i didn't post anything yet",
+      "score": {
+        "engagement_score": 0.5,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.5,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 1,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2084247921206206927",
+      "url": "https://x.com/wilczyn/status/2084247921206206927",
+      "date": "2026-08-03T12:00:02.000Z",
+      "content": "how much of your own codebase have you actually read?\n\n- all of it\n- most of it\n- the parts that broke\n- I trust the vibes",
+      "full_content": "how much of your own codebase have you actually read?\n\n- all of it\n- most of it\n- the parts that broke\n- I trust the vibes",
+      "score": {
+        "engagement_score": 0.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 0,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2083915732153139606",
+      "url": "https://x.com/wilczyn/status/2083915732153139606",
+      "date": "2026-08-02T14:00:02.000Z",
+      "content": "which do you trust more?\n\n- your analytics\n- what users say\n- your gut\n- none of the above",
+      "full_content": "which do you trust more?\n\n- your analytics\n- what users say\n- your gut\n- none of the above",
+      "score": {
+        "engagement_score": 0.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 0,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2083553339342573818",
+      "url": "https://x.com/wilczyn/status/2083553339342573818",
+      "date": "2026-08-01T14:00:01.000Z",
+      "content": "what's the best money you've spent on your product this year?",
+      "full_content": "what's the best money you've spent on your product this year?",
+      "score": {
+        "engagement_score": 0.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 0,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2083523140320120919",
+      "url": "https://x.com/wilczyn/status/2083523140320120919",
+      "date": "2026-08-01T12:00:01.000Z",
+      "content": "saturday. are you working on it today?\n\n- full send\n- a little\n- completely off\n- thinking about it, which is worse",
+      "full_content": "saturday. are you working on it today?\n\n- full send\n- a little\n- completely off\n- thinking about it, which is worse",
+      "score": {
+        "engagement_score": 0.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 0,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2081182723855556931",
+      "url": "https://x.com/wilczyn/status/2081182723855556931",
+      "date": "2026-07-26T01:00:02.000Z",
+      "content": "what's the one command you type every single day without even thinking?\n\nno judgment",
+      "full_content": "what's the one command you type every single day without even thinking?\n\nno judgment",
+      "score": {
+        "engagement_score": 0.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 0,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2081137422553809104",
+      "url": "https://x.com/wilczyn/status/2081137422553809104",
+      "date": "2026-07-25T22:00:01.000Z",
+      "content": "saturday night and I've got nothing better to do\n\ndrop your startup url below \n\nI'm opening every single one and leaving a real comment. not a like, an actual comment",
+      "full_content": "saturday night and I've got nothing better to do\n\ndrop your startup url below \n\nI'm opening every single one and leaving a real comment. not a like, an actual comment",
+      "score": {
+        "engagement_score": 0.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 0,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2080729738968965288",
+      "url": "https://x.com/wilczyn/status/2080729738968965288",
+      "date": "2026-07-24T19:00:02.000Z",
+      "content": "it's friday. time to promote your startup\n\ndrop your project URL below \n\nI'll check out every single one",
+      "full_content": "it's friday. time to promote your startup\n\ndrop your project URL below \n\nI'll check out every single one",
+      "score": {
+        "engagement_score": 0.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 0,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2080624072531079248",
+      "url": "https://x.com/wilczyn/status/2080624072531079248",
+      "date": "2026-07-24T12:00:09.000Z",
+      "content": "if AI coding tools 10x'd their prices tomorrow…\n\nwould you pay up, or go back to writing every line yourself?",
+      "full_content": "if AI coding tools 10x'd their prices tomorrow…\n\nwould you pay up, or go back to writing every line yourself?",
+      "score": {
+        "engagement_score": 0.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 0,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2080457947985940872",
+      "url": "https://x.com/wilczyn/status/2080457947985940872",
+      "date": "2026-07-24T01:00:02.000Z",
+      "content": "be honest: what do you actually do while AI writes your code?\n\n- watch it like a movie\n- work on marketing\n- spin up a second agent\n- scroll X",
+      "full_content": "be honest: what do you actually do while AI writes your code?\n\n- watch it like a movie\n- work on marketing\n- spin up a second agent\n- scroll X",
+      "score": {
+        "engagement_score": 0.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 0,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2079899274628710741",
+      "url": "https://x.com/wilczyn/status/2079899274628710741",
+      "date": "2026-07-22T12:00:04.000Z",
+      "content": "5 levels of content ops for founders:\n\n1. write every post by hand\n2. batch on sundays\n3. templates\n4. AI drafts, you edit\n5. a system that learns what works for your account\n\nwhere are you?",
+      "full_content": "5 levels of content ops for founders:\n\n1. write every post by hand\n2. batch on sundays\n3. templates\n4. AI drafts, you edit\n5. a system that learns what works for your account\n\nwhere are you?",
+      "score": {
+        "engagement_score": 0.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 0,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2078646010587275276",
+      "url": "https://x.com/wilczyn/status/2078646010587275276",
+      "date": "2026-07-19T01:00:02.000Z",
+      "content": "how long did it take you to get your first paying customer?\n\nyour reply will make someone's day",
+      "full_content": "how long did it take you to get your first paying customer?\n\nyour reply will make someone's day",
+      "score": {
+        "engagement_score": 0.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 0,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2078132622279004412",
+      "url": "https://x.com/wilczyn/status/2078132622279004412",
+      "date": "2026-07-17T15:00:01.000Z",
+      "content": "devs, when was the last time you wrote code without AI?",
+      "full_content": "devs, when was the last time you wrote code without AI?",
+      "score": {
+        "engagement_score": 0.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 0,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2078087322986274890",
+      "url": "https://x.com/wilczyn/status/2078087322986274890",
+      "date": "2026-07-17T12:00:01.000Z",
+      "content": "the cost of building went to zero\n\nthe cost of attention went up",
+      "full_content": "the cost of building went to zero\n\nthe cost of attention went up",
+      "score": {
+        "engagement_score": 0.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 0,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2077830630151200778",
+      "url": "https://x.com/wilczyn/status/2077830630151200778",
+      "date": "2026-07-16T19:00:01.000Z",
+      "content": "hot seat: name one thing you do better than any AI\n\ndefend it in the replies",
+      "full_content": "hot seat: name one thing you do better than any AI\n\ndefend it in the replies",
+      "score": {
+        "engagement_score": 0.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 0,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2077724959556645105",
+      "url": "https://x.com/wilczyn/status/2077724959556645105",
+      "date": "2026-07-16T12:00:07.000Z",
+      "content": "your product gets judged in 3 seconds\n\nwhat do people see first in yours?\n\n- a demo\n- a screenshot\n- a wall of text",
+      "full_content": "your product gets judged in 3 seconds\n\nwhat do people see first in yours?\n\n- a demo\n- a screenshot\n- a wall of text",
+      "score": {
+        "engagement_score": 0.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 0,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2072385365894152602",
+      "url": "https://x.com/wilczyn/status/2072385365894152602",
+      "date": "2026-07-01T18:22:28.000Z",
+      "content": "today, i'm building a new cool feature for Supaslides - scheduling carousels from within the app! \n\nhowever, it's not as easy as i thought. \n\n1. technically rendering carousels as videos is not that e",
+      "full_content": "today, i'm building a new cool feature for Supaslides - scheduling carousels from within the app! \n\nhowever, it's not as easy as i thought. \n\n1. technically rendering carousels as videos is not that easy (quite compute extensive) \n2. scheduling has to be bulletproof, but i work",
+      "score": {
+        "engagement_score": 0.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 0,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2049941958060015814",
+      "url": "https://x.com/wilczyn/status/2049941958060015814",
+      "date": "2026-04-30T20:00:23.000Z",
+      "content": "built a local web app to talk to claude while making content\n\n→ leave feedback on specific sections\n→ track each post's status\n→ stop losing context in chat\n\nso now we use claude to build an interface",
+      "full_content": "built a local web app to talk to claude while making content\n\n→ leave feedback on specific sections\n→ track each post's status\n→ stop losing context in chat\n\nso now we use claude to build an interface to be able to effectively communicate with claude",
+      "score": {
+        "engagement_score": 0.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 0,
+        "bookmarks": 0,
+        "views": 0
+      }
+    },
+    {
+      "tweet_id": "2049862521947902211",
+      "url": "https://x.com/wilczyn/status/2049862521947902211",
+      "date": "2026-04-30T14:44:44.000Z",
+      "content": "today my Claude agent while testing the app calculated how much time it took him to test one scenario and calculated that testing the rest will take too much time so he stopped… \n\ncome on.. people use",
+      "full_content": "today my Claude agent while testing the app calculated how much time it took him to test one scenario and calculated that testing the rest will take too much time so he stopped… \n\ncome on.. people used to test stuff all day long… \n\nhow do you deal with your agents when they",
+      "score": {
+        "engagement_score": 0.0,
+        "view_weighted_score": 0.0,
+        "bookmark_score": 0,
+        "engagement_rate": 0.0,
+        "breakdown": {
+          "replies_x20": 0,
+          "reposts_x2": 0,
+          "likes_x0_5": 0.0,
+          "bookmarks_x80": 0
+        }
+      },
+      "raw_metrics": {
+        "replies": 0,
+        "reposts": 0,
+        "likes": 0,
+        "bookmarks": 0,
+        "views": 0
+      }
+    }
+  ]
+}
