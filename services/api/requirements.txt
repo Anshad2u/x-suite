@@ -1,7 +1,31 @@
+# services/api runtime dependencies.
+# Verified against the actual import graph - every entry below is imported
+# somewhere in this directory.
+
+# --- web service ---
 flask>=3.0
 flask-cors>=4.0
+
+# --- configuration ---
 python-dotenv>=1.0
+
+# --- database (Postgres only; the agent's former SQLite store is retired) ---
 psycopg2-binary>=2.9
+
+# --- X (scraper only - there is deliberately no paid-API client) ---
 Scweet>=5.0
+curl_cffi>=0.15
 requests>=2.31
+
+# --- Reddit ---
 praw>=8.0
+
+# --- browser automation (posting through browser cookies) ---
+# playwright_stealth is provided by the "tf-playwright-stealth" distribution,
+# NOT by "playwright-stealth" (a different project). Install the Chromium
+# browser once with:  python -m playwright install chromium
+playwright>=1.52
+tf-playwright-stealth>=1.2
+
+# --- LLM drafting (OpenAI-compatible client, pointed at Groq) ---
+openai>=1.30

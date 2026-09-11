@@ -1,55 +1,103 @@
-# Project Context: Follower-Dashboard & News Aggregator
+# Project Context — x-suite
 
-## 1. Project Overview
-A full-stack application designed to scrape, categorize, and analyze Twitter (X) "Following" lists. The primary goal is to segment followers into professional/official groups and generate tweet suggestions for a specific audience (Saudi Expats/Indians).
+Product and domain background. For setup and architecture see the repo-root
+`README.md`; for the migration history see `docs/MERGE_PLAN.md`.
 
-## 2. Technical Stack
-- **Backend:** FastAPI (Python 3.13)
-- **Frontend:** React (TypeScript) + Vite + Tailwind CSS v4
-- **Scraper:** `Scweet` library (Customized for v5+ internal GraphQL API calls)
-- **Data Storage:** Flat JSON files in `backend/data/` (for portability and speed)
+> This file previously described a FastAPI + React/Vite + flat-JSON design that
+> no longer exists. It has been rewritten to match the running system. The old
+> text is recoverable from git history if you want it.
 
-## 3. Backend Endpoints (FastAPI)
+## 1. What this is
 
-| Method | Endpoint | Description |
-| :--- | :--- | :--- |
-| `GET` | `/following` | Returns the list of all 729 scraped followers from `following.json`. |
-| `GET` | `/groups` | Returns the current group mappings from `groups.json`. |
-| `POST` | `/groups` | Creates a new custom group. |
-| `POST` | `/groups/{name}/add` | Adds specific usernames to a named group. |
-| `POST` | `/groups/{name}/remove` | Removes usernames from a group. |
-| `GET` | `/tweets` | Returns the database of scraped tweets from `tweets.json`. |
-| `POST` | `/refresh-following`| Triggers `scraper.py` to fetch the latest Following list from X. |
-| `POST` | `/fetch-tweets` | Scrapes 1-3 recent tweets for a list of users (or all). |
-| `POST` | `/categorize` | Runs the categorization engine (Bios + Tweets + Keywords). |
-| `GET` | `/suggestions` | **Targeted Logic:** Scrapes "Saudi News" group, scores tweets via LLM-logic for expat relevance, and returns ranked repost ideas. |
+An X (Twitter) account-maintenance suite. It watches a set of AI/tech/SaaS
+sources, decides what is worth posting, drafts it, queues it, posts it through
+the scraper, and then measures the engagement of what it posted to learn which
+sources are worth trusting.
 
-## 4. Data Architecture (`backend/data/`)
-- **`following.json`**: Primary profile data (username, name, bio, follower/tweet counts).
-- **`tweets.json`**: A dictionary mapping `username` -> `list of strings` (latest tweets).
-- **`groups.json`**: Mapping of `Category Name` -> `list of usernames`. 
-    - *Note:* Current groups are high-accuracy LLM-categorized: Official Platforms, Saudi Govt, News, Islamic, Tech AI, etc.
+It started as a *follower dashboard* — scrape your X following list, sort people
+into professional groups, and suggest tweets to repost for a **Saudi-expats /
+Indian-community** audience. That audience focus is why the group keywords in
+`backfill.py` are bilingual (Arabic + English). The curation target has since
+moved to **AI / developer-tools / SaaS** (`config.TARGET_TOPICS`), but the
+original groups and their Arabic keyword rules are still live.
 
-## 5. Frontend Features
-- **Dashboard View:**
-    - Sidebar navigation with segment counts.
-    - Global search and filtering by group.
-    - **Advanced Filters:** Popularity (>10k followers) and Activity (>1k tweets).
-    - Grid layout cards with bio and latest "updates" snippet.
-- **Tweet Ideas View:**
-    - Dedicated view for Saudi News analysis.
-    - Categorizes news into "Labor Law", "Indian Community", "Travel", etc.
-    - Provides LLM reasoning ("Why repost?") for each suggestion.
+## 2. Running stack
 
-## 6. Known Technical Nuances (For Handover)
-- **Scraping:** Requires `X_AUTH_TOKEN` in `.env`. The scraper uses `s.get_profile_tweets(username, limit=count)` for v5 compatibility.
-- **Rate Limits:** Fetching all 729 followers' tweets should be done in batches (implemented in the CLI sessions).
-- **Tailwind v4:** Uses the `@tailwindcss/vite` plugin. Configuration is handled within `vite.config.ts`, not `tailwind.config.js`.
-- **JSX Safety:** Special characters like `>` and `<` in filters are escaped as `&gt;` and `&le;` to prevent OXC parse errors.
+| Layer | Technology |
+| :--- | :--- |
+| API | Flask on `:5000` (`services/api/app.py`) |
+| UI | Next.js 16 App Router (`apps/web`) |
+| Database | Postgres / Neon — 18 tables, one shared schema |
+| X access | **Scraper only** — Scweet + browser cookies. No paid API client exists. |
+| LLM | Groq via the `openai` client (`GROQ_BASE_URL`) |
+| Alerts / approvals | Telegram bot |
 
-## 7. Current Progress Status
-- ✅ **Phase 1:** Full Following list (729 users) fetched.
-- ✅ **Phase 2:** Recent tweets for all users scraped.
-- ✅ **Phase 3:** LLM-based segregation into 9 major professional/official categories complete.
-- ✅ **Phase 4:** News suggestion engine for Saudi Expats implemented.
-- 🚀 **Next Steps:** Continuous scraping automation or adding an "Auto-Post" feature if requested.
+## 3. The pipeline
+
+```
+observe  → understand → decide → queue → post → learn
+```
+
+- **observe** (`feed_observer.py`) — pull Reddit feeds/subreddits and optionally X
+  accounts into `observed_posts`.
+- **understand** (`understand.py`, `tweet_analyzer.py`) — LLM analysis into
+  `post_insights`, updating `accounts` and `topics`.
+- **decide** (`autopost.py`, `engagement.py`) — pick candidates, record the
+  rationale in `decisions_log`.
+- **queue** (`data_models.py` + `social_agent.scheduler`) — `post_queue` holds
+  pending work; drafts come from markdown files in `drafts/`.
+- **post** (`poster.py`, `poster_browser.py`) — publish; `posted_log` records
+  provenance and the resulting tweet id, written in the same transaction as the
+  queue update.
+- **learn** (`learn.py`) — fetch engagement for posted tweets, write
+  `posted_engagement`, and credit sources in `source_scores`.
+
+`posted_log` is also the single source of truth for the daily budget — both the
+scheduler and `autopost` read the same count so they cannot each spend the full
+allowance.
+
+## 4. Groups
+
+Seven groups, seeded by `backfill.py` from bilingual bio keywords and stored in
+`groups`:
+
+`Saudi Govt` · `News & Media` · `Islamic & Dawah` · `Tech & AI` ·
+`Business & Finance` · `Sports` · `Entertainment`
+
+`AUTO_POST_GROUP` (default `Tech & AI`) selects which group the autonomous
+fallback curates from.
+
+## 5. Content targeting
+
+- **`config.TARGET_TOPICS`** — AI, machine learning, LLM, AI agents, coding
+  agents, developer tools, software engineering, tech, SaaS, online business,
+  startups, indie hackers, automation.
+- **`config.REDDIT_OBSERVE_FEEDS`** — the `ai_tools` and `saudi` multireddits.
+- **`config.REDDIT_OBSERVE_SUBREDDITS`** — AI_Agents, LocalLLaMA, SaaS,
+  indiehackers, startups, ArtificialIntelligence, MachineLearning, devtools,
+  CodingAgents.
+- **`config.X_OBSERVE_ACCOUNTS`** — seed accounts to learn from; the agent grows
+  this list itself.
+
+## 6. Scraper notes (still true)
+
+- Auth is `X_AUTH_TOKEN` + `CT0` from browser cookies, both in the root `.env`.
+- Profile reads use `s.get_profile_tweets(username, limit=N)` for Scweet v5.
+- Fetching many accounts must be batched — see `backfill.py`.
+- Posting goes through the same cookie path, not the official API.
+
+## 7. Known state
+
+Live row counts at the time of writing, useful as a sanity baseline:
+
+| Table | Rows |
+| :--- | ---: |
+| `accounts` | 33 |
+| `groups` | 7 |
+| `observed_posts` | 251 |
+| `post_insights` | 34 |
+| `topics` | 29 |
+| `posted_log` | 30 |
+
+`DRY_RUN=true` in `.env` means nothing is actually posted. The daily cap is
+`AUTO_POST_MAX_PER_DAY`.

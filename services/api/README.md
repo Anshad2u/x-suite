@@ -1,185 +1,111 @@
-# Follower Dashboard
+# services/api
 
-A dashboard to categorize your Twitter/X followers, group them, and scrape data from each group.
+The Flask API and automation engine behind x-suite. Runs on **:5000**.
 
-## Setup
+Setup, env vars and the repo layout live in the [root README](../../README.md).
+Product and domain background is in [context.md](context.md). The UI is the
+Next.js app in `apps/web` — this service no longer serves any HTML.
 
-1. **Install dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
+## Modules
 
-2. **Get your X auth token:**
-   - Log into x.com
-   - Press F12 to open DevTools
-   - Go to Application > Cookies > x.com
-   - Copy the `auth_token` value
+| File | Role |
+| :--- | :--- |
+| `app.py` | Flask routes |
+| `config.py` | the **single** env loader; everything else imports from here |
+| `db.py` | Postgres connection + query helpers |
+| `data_models.py` | schema (`init_dbs`) and all table access, incl. the post queue |
+| `scraper.py` | Scweet wrapper |
+| `poster.py` / `poster_browser.py` | publishing via the cookie path |
+| `autopost.py` / `autopost_runner.py` | autonomous selection loop |
+| `agent_cli.py` | wires the pure `social_agent` library to Postgres; also the CLI |
+| `learn.py` | engagement feedback → `source_scores` |
+| `feed_observer.py` / `understand.py` / `tweet_analyzer.py` | observe + analyse |
+| `mention_watcher.py` | X mention scanning |
+| `reddit_*.py` | Reddit mentions, RSS feeds, health, posting |
+| `telegram_approval.py` / `notifier.py` | Telegram alerts and approvals |
+| `memory.py` | topics / accounts / decision history |
+| `backfill.py` | one-time: scrape your following list, auto-categorise into groups |
 
-3. **Set the auth token:**
-   ```bash
-   set X_AUTH_TOKEN=your_auth_token_here
-   ```
-   
-   Or edit `config.py` directly (not recommended for security).
+## Endpoints
 
-4. **Optional - Add proxy** (recommended for high volume):
-   ```bash
-   set X_PROXY=http://user:pass@host:port
-   ```
+Read: `/api/stats`, `/api/followers`, `/api/followers/<username>`,
+`/api/groups`, `/api/groups/<name>/followers`, `/api/groups/<name>/scrape-config`,
+`/api/approvals/pending`, `/api/memory/summary`, `/api/memory/topics`,
+`/api/memory/recent_actions`, `/api/watchlist`, `/api/posted-log`,
+`/api/engagements`, `/api/source-scores`, `/api/mentions`,
+`/api/reddit/mentions`, `/api/reddit/feeds`, `/api/health`,
+`/api/reddit/health`, `/api/config/status`, `/api/analyze-tweets/<username>`.
 
-## Running
+Write: `/api/groups` (POST/DELETE), `/api/groups/<name>/followers`,
+`/api/scrape/following`, `/api/scrape/followers`, `/api/scrape/group`,
+`/api/approvals/<id>/approve|reject`, `/api/auto-post`, `/api/auto-post/dry-run`,
+`/api/observe/run`.
 
-```bash
-python app.py
-```
+Machine callers must send `X-Auto-Post-Secret` matching `AUTO_POST_SECRET`.
+Human callers use basic auth against `APP_PASSWORD` (disabled when empty).
 
-Then open http://localhost:5000 in your browser.
-
-## How to Use
-
-### 1. Fetch Your Following/Followers
-Go to the **Scrape** tab and click:
-- "Fetch Following" - gets people you follow
-- "Fetch Followers" - gets your followers
-
-### 2. Create Groups
-Go to the **Groups** tab and click "+ New Group". Give it a name (e.g., "Tech", "Crypto") and color.
-
-### 3. Assign Followers to Groups
-Go to **All Followers** and use the dropdown to assign each follower to a group.
-
-### 4. Configure Scrape per Group
-Click on a group and set:
-- Keywords to search for (comma-separated)
-- Date range (since)
-- Number of tweets per user
-
-Then click "Start Scraping" to scrape tweets from that group's followers.
-
-## Tweet Analyzer
-
-Analyze any X/Twitter user's tweets and score them by engagement.
-
-### Usage
+## Running the automation
 
 ```bash
-python tweet_analyzer.py <username> [max_tweets]
+python mention_watcher.py             # one X mention scan + alert
+python mention_watcher.py daemon 120  # every 2 minutes
+python reddit_watcher.py              # one Reddit inbox scan + alert
+python reddit_feed_watcher.py         # one RSS scan
+python reddit_feed_watcher.py daemon  # every 5 minutes
+python reddit_health.py               # account health check
+python reddit_poster.py "Title" "Body" [subreddit]
+python learn.py                       # one engagement-feedback run
+python runner.py                      # one full observation cycle
+python daily_digest.py                # build + send the digest
+python autopost_runner.py             # one autonomous pass
+python autopost_runner.py --dry-run   # preview, no live post
+python backfill.py [username] [--limit N]
 ```
 
-**Example:**
-```bash
-python tweet_analyzer.py wilczyn 500
-```
-
-### Formula
-
-```
-Score = (Replies * 20) + (Reposts * 2) + (Likes * 0.5) + (Bookmarks * 80)
-```
-
-Also calculates:
-- **View-Weighted Score**: engagement per 1,000 views
-- **Engagement Rate**: score as % of views
-
-### API Endpoint
-
-```
-GET /api/analyze-tweets/<username>
-```
-
-Returns JSON with scored tweets sorted by engagement.
-
-### Limitations
-
-- X's free tier HTML only shows the latest ~5 tweets per profile
-- For full tweet history, add both `X_AUTH_TOKEN` and `CT0` to your `.env`
-- To get `CT0`: Log into x.com > F12 > Application > Cookies > x.com > `ct0`
-
-## Files
-
-- `app.py` - Flask backend API
-- `data_models.py` - PostgreSQL database functions
-- `scraper.py` - Scweet wrapper for scraping
-- `config.py` - Configuration
-- `tweet_analyzer.py` - Tweet analysis and scoring
-- `index.html` - Dashboard frontend (Vue.js)
-
-## Social Maintenance
-
-Passive account upkeep: scheduled auto-post recap + mention alerts via Telegram, for X and Reddit (official APIs only - no engagement bots).
-
-### Features
-
-- **X mention watcher** - scans for tweets mentioning `@TWITTER_USERNAME`, stores them, alerts via Telegram
-- **Reddit mention watcher** - checks the Reddit inbox for mentions (PRAW official OAuth), stores them, alerts via Telegram
-- **Reddit RSS watcher** - no API key needed - polls subreddit `.rss` feeds, stores candidates; per-post alerts only when keywords/digest configured
-- **Reddit health check** - detects shadowban/suspension via `is_suspended`, alerts on problems
-- **Reddit poster** - submits a post to a configured subreddit with retry+backoff, Telegram recap
-- **Engagement learning** - `learn.py` fetches engagement on posted tweets, credits the source that produced each post
-- **Autonomous loop** - every 2h: learn engagement, pick the highest-scoring unused candidate (X group or Reddit feed), post it, cap on posts/day; Telegram only on errors
-- **Humanized posting** - random jitter delay before each tweet, retry+backoff on transient X errors
-- **`/api/mentions`** / **`/api/reddit/mentions`** - recent mentions (JSON, `?limit=`)
-- **`/api/health`** / **`/api/reddit/health`** - config/feature status (JSON)
-
-### New `.env` keys
-
-| Key | Default | Purpose |
-| :--- | :--- | :--- |
-| `TELEGRAM_BOT_TOKEN` | (empty) | Telegram alerts disabled when empty |
-| `TELEGRAM_CHAT_ID` | (empty) | Alert destination chat |
-| `MENTION_WATCH_LIMIT` | `50` | Max X mentions scanned per run |
-| `POST_JITTER_MIN` / `POST_JITTER_MAX` | `2` / `8` | Random delay (s) before posting |
-| `POST_MAX_RETRIES` | `3` | Retries on 429/5xx before raising |
-| `REDDIT_CLIENT_ID` / `REDDIT_CLIENT_SECRET` | (empty) | Reddit app credentials (script type) - module disabled when empty |
-| `REDDIT_USERNAME` / `REDDIT_PASSWORD` | (empty) | Reddit account login |
-| `REDDIT_USER_AGENT` | (empty) | Reddit API user-agent |
-| `REDDIT_MENTION_LIMIT` | `50` | Max Reddit inbox mentions scanned per run |
-| `REDDIT_POST_SUBREDDIT` | (empty) | Default subreddit for `reddit_poster.py` |
-| `REDDIT_FEED_SUBREDDITS` | (empty) | Comma-separated feeds monitored via RSS: subreddits (`python`) or multireddits (`user/trickshame/m/saudi`) |
-| `REDDIT_FEED_LIMIT` | `20` | Max feed entries scanned per subreddit per run |
-| `REDDIT_FEED_KEYWORDS` | (empty) | Comma-separated keywords; only matching post titles alert (empty = alert all) |
-| `REDDIT_FEED_DIGEST` | `0` | `1` = one summary per run (top 5), instead of per-post alerts |
-
-### Run
+`agent_cli.py` drives the Postgres-backed post queue:
 
 ```bash
-python mention_watcher.py            # one X scan + alert
-python mention_watcher.py daemon 120 # every 2 minutes
-python reddit_watcher.py             # one Reddit inbox scan + alert
-python reddit_watcher.py daemon 120  # every 2 minutes
-python reddit_feed_watcher.py        # one RSS scan + alert
-python reddit_feed_watcher.py daemon # every 5 minutes
-python reddit_health.py              # account health check
-python reddit_poster.py "Title" "Body" [subreddit]  # post to Reddit
-python learn.py                      # one engagement-feedback run
-python autopost_runner.py            # one autonomous pick+post (scheduled every 2h)
-python autopost_runner.py --dry-run  # preview what would be posted (no live post)
+python agent_cli.py status
+python agent_cli.py schedule once [--dry-run]
+python agent_cli.py schedule daemon [--interval 300]
+python agent_cli.py drafts list
+python agent_cli.py drafts add --platform x --text "hello"
 ```
 
-## Autonomous mode (full autopilot)
+For scheduled use, prefer the wrappers in `../scripts/` — they set the repo
+root, the interpreter and `PYTHONPATH` for you.
 
-The system runs your X account as a silent curator. Telegram contact happens only for errors and real inbound mentions.
+## Autonomous mode
+
+The account runs as a silent curator. Telegram is contacted only for errors and
+real inbound mentions.
 
 ```
 multireddits + X group tweets
    -> candidates stored (reddit_feed_log / tweets)
-   -> every 2h: learn_once() fetches engagement on posted tweets, credits their source
+   -> every pass: learn_once() fetches engagement on posted tweets, credits their source
    -> autopost picks the highest-scoring unused candidate (daily cap)
    -> posts to X, records source_key in posted_log
    -> next run: sources with better engagement earn more picks
 ```
 
-- Per-post Reddit alerts default OFF. Set `REDDIT_FEED_KEYWORDS` (comma-separated title keywords) and/or `REDDIT_FEED_DIGEST=1` to re-enable filtered or digest alerts.
-- Sources learn from real engagement: `source_scores` (`source_key`, `posts`, `sum_engagement`); new sources start at 2.0.
-- Dashboard APIs: `/api/source-scores`, `/api/engagements`, `/api/posted-log`, `/api/reddit/feeds`.
+- A source with no history gets a prior of **2.0**. After that, its score is
+  `sum_engagement / posts`.
+- `posted_log` is the single source of truth for the daily budget
+  (`AUTO_POST_MAX_PER_DAY`), shared by the queue drain and the autopost
+  fallback so they cannot each spend the full allowance.
+- Per-post Reddit alerts default OFF. Set `REDDIT_FEED_KEYWORDS` and/or
+  `REDDIT_FEED_DIGEST=1` to re-enable filtered or digest alerts.
+- `DRY_RUN=true` (the default) records everything but posts nothing.
 
-### Windows Task Scheduler (survives reboot)
+## Scheduled tasks
 
-| Task | Schedule | Command (Start in = project root) |
+Registered in Windows Task Scheduler against the wrappers in `../scripts/`:
+
+| Task | Schedule | Wrapper |
 | :--- | :--- | :--- |
-| `fd-rss` | At logon | `C:\Python313\python.exe reddit_feed_watcher.py daemon` |
-| `fd-mentions` | At logon | `C:\Python313\python.exe mention_watcher.py daemon 120` |
-| `fd-api` | At logon | `C:\Python313\python.exe app.py` |
-| `fd-autopost` | Every 2h | `C:\Python313\python.exe autopost_runner.py` |
+| `FollowerDashboard-AutoPost` | every 4 h | `run_autopost.bat` |
+| `FollowerDashboard-Observe` | daily 09:00 | `run_observe.bat` |
+| `FollowerDashboard-Digest` | daily 18:00 | `run_digest.bat` |
 
-Stop a daemon any time with `Stop-Process -Id (Get-Content <name>.pid)`.
+Stop a daemon with `Stop-Process -Id (Get-Content <name>.pid)`.

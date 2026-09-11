@@ -46,6 +46,13 @@ next-env.d.ts
 *.log
 generated-images/
 
+# --- generated analysis output ---
+# tweet_analyzer.py writes one of these per run; nothing reads them back.
+tweet_analysis_*.json
+
+# --- agent scratch state ---
+.workbuddy-ai/
+
 # --- os / editor ---
 .DS_Store
 Thumbs.db
