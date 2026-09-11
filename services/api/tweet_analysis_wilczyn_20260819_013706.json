@@ -1,0 +1,170 @@
+{
+  "username": "wilczyn",
+  "total_tweets": 4,
+  "generated_at": "20260819_013706",
+  "formula": "Score = (Replies * 20) + (Reposts * 2) + (Likes * 0.5) + (Bookmarks * 80)",
+  "top_20_tweets": [
+    {
+      "tweet_id": "2089744137037717820",
+      "url": "https://x.com/wilczyn/status/2089744137037717820",
+      "date": "",
+      "content": "",
+      "full_content": "",
+      "score": {
+        "engagement_score": 468.0,
+        "view_weighted_score": 888.05,
+        "bookmark_score": 0,
+        "engagement_rate": 88.8
+      },
+      "raw_metrics": {
+        "replies": 23,
+        "reposts": 0,
+        "likes": 16,
+        "bookmarks": 0,
+        "views": 527
+      }
+    },
+    {
+      "tweet_id": "2089789436393304493",
+      "url": "https://x.com/wilczyn/status/2089789436393304493",
+      "date": "",
+      "content": "",
+      "full_content": "",
+      "score": {
+        "engagement_score": 224.5,
+        "view_weighted_score": 531.99,
+        "bookmark_score": 0,
+        "engagement_rate": 53.2
+      },
+      "raw_metrics": {
+        "replies": 11,
+        "reposts": 0,
+        "likes": 9,
+        "bookmarks": 0,
+        "views": 422
+      }
+    },
+    {
+      "tweet_id": "2089759236796317742",
+      "url": "https://x.com/wilczyn/status/2089759236796317742",
+      "date": "",
+      "content": "",
+      "full_content": "",
+      "score": {
+        "engagement_score": 144.5,
+        "view_weighted_score": 415.23,
+        "bookmark_score": 0,
+        "engagement_rate": 41.52
+      },
+      "raw_metrics": {
+        "replies": 7,
+        "reposts": 0,
+        "likes": 9,
+        "bookmarks": 0,
+        "views": 348
+      }
+    },
+    {
+      "tweet_id": "2089774344650002700",
+      "url": "https://x.com/wilczyn/status/2089774344650002700",
+      "date": "",
+      "content": "",
+      "full_content": "",
+      "score": {
+        "engagement_score": 62.0,
+        "view_weighted_score": 321.24,
+        "bookmark_score": 0,
+        "engagement_rate": 32.12
+      },
+      "raw_metrics": {
+        "replies": 3,
+        "reposts": 0,
+        "likes": 4,
+        "bookmarks": 0,
+        "views": 193
+      }
+    }
+  ],
+  "all_tweets": [
+    {
+      "tweet_id": "2089744137037717820",
+      "url": "https://x.com/wilczyn/status/2089744137037717820",
+      "date": "",
+      "content": "",
+      "full_content": "",
+      "score": {
+        "engagement_score": 468.0,
+        "view_weighted_score": 888.05,
+        "bookmark_score": 0,
+        "engagement_rate": 88.8
+      },
+      "raw_metrics": {
+        "replies": 23,
+        "reposts": 0,
+        "likes": 16,
+        "bookmarks": 0,
+        "views": 527
+      }
+    },
+    {
+      "tweet_id": "2089789436393304493",
+      "url": "https://x.com/wilczyn/status/2089789436393304493",
+      "date": "",
+      "content": "",
+      "full_content": "",
+      "score": {
+        "engagement_score": 224.5,
+        "view_weighted_score": 531.99,
+        "bookmark_score": 0,
+        "engagement_rate": 53.2
+      },
+      "raw_metrics": {
+        "replies": 11,
+        "reposts": 0,
+        "likes": 9,
+        "bookmarks": 0,
+        "views": 422
+      }
+    },
+    {
+      "tweet_id": "2089759236796317742",
+      "url": "https://x.com/wilczyn/status/2089759236796317742",
+      "date": "",
+      "content": "",
+      "full_content": "",
+      "score": {
+        "engagement_score": 144.5,
+        "view_weighted_score": 415.23,
+        "bookmark_score": 0,
+        "engagement_rate": 41.52
+      },
+      "raw_metrics": {
+        "replies": 7,
+        "reposts": 0,
+        "likes": 9,
+        "bookmarks": 0,
+        "views": 348
+      }
+    },
+    {
+      "tweet_id": "2089774344650002700",
+      "url": "https://x.com/wilczyn/status/2089774344650002700",
+      "date": "",
+      "content": "",
+      "full_content": "",
+      "score": {
+        "engagement_score": 62.0,
+        "view_weighted_score": 321.24,
+        "bookmark_score": 0,
+        "engagement_rate": 32.12
+      },
+      "raw_metrics": {
+        "replies": 3,
+        "reposts": 0,
+        "likes": 4,
+        "bookmarks": 0,
+        "views": 193
+      }
+    }
+  ]
+}
