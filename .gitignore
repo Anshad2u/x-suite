@@ -1,0 +1,54 @@
+# --- secrets ---
+.env
+.env.local
+.env*.local
+.clerk/
+.env.sentry-build-plugin
+
+# --- python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- local databases & scraper state ---
+*.db
+*.db-shm
+*.db-wal
+data/*.db
+data/*.db-shm
+data/*.db-wal
+scweet_state.db
+social_agent.db
+
+# --- node ---
+node_modules/
+.next/
+out/
+build/
+dist/
+coverage/
+.pnp
+.pnp.js
+*.tsbuildinfo
+next-env.d.ts
+
+# --- vercel ---
+.vercel/
+
+# --- runtime / logs ---
+*.pid
+*.log
+generated-images/
+
+# --- os / editor ---
+.DS_Store
+Thumbs.db
+.idea/
+.cursorrules
+/memory-bank
