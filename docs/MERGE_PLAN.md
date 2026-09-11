@@ -11,6 +11,23 @@ Merging `follower-dashboard`, `x-growth-hub`, and `social-agent` into a single m
 | Layout | **Monorepo** | `apps/web`, `services/api`, `packages/agent`. |
 | Database | **Postgres only** | social-agent's SQLite is retired; its 3 tables are mapped onto the existing Postgres schema. |
 
+> **The paid X API is permanently out of scope.** No official-API client
+> exists in this repo and none should be added. The former `XBackend` seam
+> (which existed only to keep the API option open) is therefore dropped.
+
+## Status
+
+| Phase | State |
+| :--- | :--- |
+| 0 — Scaffold monorepo | **done** — history grafted from both repos, uncommitted work preserved |
+| 1 — Merge Python (api + agent) | **done** — agent reduced to a pure DI library, 21 tests pass |
+| 2 — Unify data layer on Postgres | **done** — `post_queue` + `counters` live, verified against real DB |
+| 3 — Collapse the agent loop | **done** — one queue, one daily budget |
+| 4 — Port follower/group UI | **not started** |
+| 5 — Retire old UI and prune | **not started** |
+| 6 — Consolidate config and ops | **not started** |
+
+
 ### Two knock-on effects worth calling out
 
 1. **The 480/500 monthly cap disappears.** That cap exists because the official X API free tier allows 500 posts/month. Scraping has no such quota — so `X_MONTHLY_HARD_STOP` is dropped and the existing daily cap (`AUTO_POST_MAX_PER_DAY`, default 8) plus posting jitter become the only throttle. Keep the `counters` table anyway; it is useful for daily accounting.
@@ -166,6 +183,26 @@ Single `.env`. Rewrite the start scripts and Task Scheduler entries.
 
 ---
 
-## Open item
+## Resolved / open items
 
-The `XBackend` seam is worth building in Phase 2 even though you chose scraper-only — it costs one small interface and preserves the option to reintroduce the official API later without a refactor.
+**Dropped:** the `XBackend` seam. It only existed to keep the official API
+option open; since the paid API is permanently out of scope, the seam would
+be dead abstraction.
+
+**Open (Phase 4):** the Next.js app is still a subset. Scrape, Groups, All
+Followers, and group scrape-config exist only in the Vue `index.html` and
+must be ported before Phase 5 deletes it.
+
+## What changed vs. the original plan
+
+Two correctness bugs surfaced while verifying Phase 3 and were fixed:
+
+1. **Draft promotion was not idempotent.** Every scheduler pass re-queued
+   every due draft, so a 2-hourly loop would have posted each draft
+   repeatedly. Fixed with a unique `source_ref` (the draft file path) and
+   `ON CONFLICT DO NOTHING`.
+2. **The daily budget had two sources of truth.** The scheduler counted
+   today's posts from `post_queue` while `autopost` counted from
+   `posted_log`, so each loop could spend the full daily allowance. Both now
+   read `posted_log`.
+
