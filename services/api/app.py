@@ -1,6 +1,6 @@
 from functools import wraps
 
-from flask import Flask, jsonify, request, send_file, Response
+from flask import Flask, jsonify, request, Response
 from flask_cors import CORS
 
 import config
@@ -250,7 +250,13 @@ def api_approvals_reject(did):
 
 @app.route('/')
 def index():
-    return send_file(os.path.join(BASE_DIR, 'index.html'))
+    # The UI now lives in apps/web (Next.js). This service is API-only.
+    return jsonify({
+        'service': 'x-suite API',
+        'ui': 'Run the Next.js app in apps/web — see README.md',
+        'endpoints': '/api/stats, /api/followers, /api/groups, /api/scrape/*, '
+                     '/api/approvals/*, /api/memory/*, /api/watchlist, /api/posted-log',
+    })
 
 
 @app.route('/api/followers', methods=['GET'])

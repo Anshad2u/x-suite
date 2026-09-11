@@ -24,7 +24,7 @@ Merging `follower-dashboard`, `x-growth-hub`, and `social-agent` into a single m
 | 2 — Unify data layer on Postgres | **done** — `post_queue` + `counters` live, verified against real DB |
 | 3 — Collapse the agent loop | **done** — one queue, one daily budget |
 | 4 — Port follower/group UI | **done** — 4 pages added, all 18 endpoints wired |
-| 5 — Retire old UI and prune | **not started** |
+| 5 — Retire old UI and prune | **done** — Vue UI and 26 template routes/files removed |
 | 6 — Consolidate config and ops | **not started** |
 
 ### Phase 4 — what was ported
@@ -50,6 +50,44 @@ Supporting changes:
 
 **Not yet done in this phase:** nothing is deleted. `index.html`, the Vite
 `dashboard/`, and the template routes are still present — that is Phase 5.
+
+### Phase 5 — what was removed
+
+**Old UI (the point of the phase):**
+- `services/api/index.html` — the Vue dashboard
+- `services/api/dashboard/` — the Vite frontend
+- `app.py`'s `/` route no longer serves a file; it returns a JSON pointer to
+  the Next.js app, and the now-unused `send_file` import is gone.
+
+**Next.js template surface:**
+- `src/app/dashboard/**` — 23 template routes (overview, kanban, chat,
+  billing, forms, products, users, workspaces, profile, elements, …)
+- `src/app/api/**` — 4 mock API routes (`products`, `users`)
+- `src/features/**` — all 12 feature modules
+
+**Orphaned modules that followed:**
+- components: `header`, `app-sidebar`, `info-sidebar`, `page-container`,
+  `user-nav`, `cta-github`, `breadcrumbs`, `kbar/`, `forms/`, `modal/`,
+  `nav-*`, `org-switcher`, `search-input`, `user-avatar-profile`,
+  `file-uploader`, `form-card-skeleton`, `ui/table/` (dir), `ui/kanban.tsx`
+- lib: `form`, `data-table`, `parsers`, `searchparams`, `compose-refs`,
+  `format`, `api-client`, `form-context`
+- hooks: `use-data-table`, `use-breadcrumbs`, `use-nav`, `use-stepper`,
+  `use-media-query`, `use-controllable-state`, `use-debounce`,
+  `use-debounced-callback`; types: `data-table`
+
+**Kept deliberately:** `components/icons.tsx` (still imported by 7 UI
+primitives), `components/ui/*` except the two above, `components/themes/*`,
+`components/layout/providers.tsx` + `query-provider.tsx` (root layout),
+`lib/api.ts`, `lib/analytics.ts`.
+
+**Two traps worth remembering:**
+1. Deleting a route leaves a **stale `.next/types/validator.ts`** that fails
+   `tsc` with errors about files that no longer exist. Clear `.next/`.
+2. With `"incremental": true`, a stale **`tsconfig.tsbuildinfo`** makes
+   `next build` fail with "Root file specified for compilation" for a deleted
+   file, even though `tsc --noEmit` passes. Clear it too.
+
 
 
 
