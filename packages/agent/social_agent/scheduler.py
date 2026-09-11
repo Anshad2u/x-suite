@@ -1,23 +1,70 @@
-"""Scheduler — posts due drafts and due DB posts, respects monthly budget."""
+"""Scheduler — turns due drafts into posts, respecting a daily cap.
+
+Pure logic: this module owns no database, no HTTP client, and no
+credentials. Everything it touches is injected through the ``app`` dict,
+so the same scheduler runs against Postgres in production and against
+fakes in tests.
+
+``app`` keys
+------------
+queue : PostQueue
+    Pending-work store. See :class:`PostQueue`.
+posters : dict[str, Poster]
+    Platform name -> poster. Only platforms present here can be posted.
+notifier : Notifier, optional
+    Alert sink, used for failures only.
+max_per_day : int, optional
+    Daily post cap. Defaults to 8.
+dry_run : bool, optional
+    When true, log what would happen and change nothing. Defaults to True —
+    an unconfigured scheduler must never post by accident.
+"""
 
 from __future__ import annotations
 
 import logging
-import time
 from datetime import datetime, timezone
-from typing import Any
+from typing import Any, Protocol
 
-from social_agent import config
-from social_agent.clients.reddit_client import RedditClient
-from social_agent.clients.x_client import XClient, RateLimitError
-from social_agent.db import Database
 from social_agent.drafts import load_due_drafts
 
 logger = logging.getLogger(__name__)
 
-# X free-tier monthly budget
-X_MONTHLY_LIMIT = 500
-X_MONTHLY_HARD_STOP = 480
+DEFAULT_MAX_PER_DAY = 8
+
+
+class PostQueue(Protocol):
+    """Storage contract the scheduler depends on."""
+
+    def add_post(self, platform: str, content: str,
+                 scheduled_at: str | None = None) -> int:
+        """Insert a pending post, returning its id."""
+
+    def due_posts(self, now_iso: str) -> list[dict[str, Any]]:
+        """Return pending posts whose schedule has arrived."""
+
+    def mark_posted(self, post_id: int, permalink: str) -> None:
+        """Record a successful post."""
+
+    def mark_failed(self, post_id: int, error: str) -> None:
+        """Record a failed post."""
+
+    def posts_today(self) -> int:
+        """Return how many posts have succeeded today."""
+
+
+class Poster(Protocol):
+    """Posting contract. One implementation per platform."""
+
+    def post(self, content: str) -> str:
+        """Publish *content*, returning a permalink."""
+
+
+class Notifier(Protocol):
+    """Alert contract."""
+
+    def send_message(self, text: str) -> Any:
+        """Send an alert."""
 
 
 def _now_iso() -> str:
@@ -27,77 +74,81 @@ def _now_iso() -> str:
 def run_once(app: dict[str, Any]) -> dict[str, int]:
     """Execute one scheduler pass.
 
-    *app* must contain keys: ``db`` (Database), ``x_client`` (XClient),
-    ``reddit_client`` (RedditClient).
-
-    Returns summary dict: {posted, failed, skipped_budget}.
+    Returns ``{posted, failed, skipped_budget, dry_run}``.
     """
-    db: Database = app["db"]
-    x_client: XClient = app["x_client"]
-    reddit_client: RedditClient = app["reddit_client"]
+    queue: PostQueue = app["queue"]
+    posters: dict[str, Poster] = app.get("posters", {})
+    notifier: Notifier | None = app.get("notifier")
+    max_per_day: int = app.get("max_per_day", DEFAULT_MAX_PER_DAY)
+    dry_run: bool = app.get("dry_run", True)
 
     now = _now_iso()
     posted = 0
     failed = 0
     skipped_budget = 0
 
-    # 1. Load due drafts into DB
+    # 1. Promote due draft files into the queue.
     for draft in load_due_drafts(now):
-        db.add_post(draft["platform"], draft["content"], draft["scheduled_at"])
-        logger.info("Loaded draft into DB: %s / %s", draft["platform"], draft["content"][:40])
+        queue.add_post(draft["platform"], draft["content"], draft["scheduled_at"])
+        logger.info("Queued draft [%s]: %s", draft["platform"], draft["content"][:60])
 
-    # 2. Process due posts from DB
-    for post in db.due_posts(now):
-        platform = post["platform"]
-        content = post["content"]
-        post_id = post["id"]
+    # 2. Drain due queue rows.
+    for item in queue.due_posts(now):
+        platform = item["platform"]
+        post_id = item["id"]
+        content = item["content"]
 
-        # Budget check for X
-        if platform == "x":
-            monthly = db.monthly_post_count("x")
-            if monthly >= X_MONTHLY_HARD_STOP:
-                logger.warning(
-                    "X monthly budget reached (%d/%d). Skipping post %d.",
-                    monthly, X_MONTHLY_LIMIT, post_id,
-                )
-                skipped_budget += 1
-                continue
+        poster = posters.get(platform)
+        if poster is None:
+            # A missing poster is a config error, not a post failure. Report it
+            # either way, but only mutate the queue on a real run.
+            if not dry_run:
+                queue.mark_failed(post_id, f"No poster configured for platform: {platform}")
+            failed += 1
+            logger.warning("No poster for platform %s (post %s)", platform, post_id)
+            continue
+
+        if queue.posts_today() >= max_per_day:
+            skipped_budget += 1
+            logger.info("Daily cap reached (%d). Deferring post %s.", max_per_day, post_id)
+            continue
+
+        if dry_run:
+            logger.info("[DRY RUN] Would post to %s: %s", platform, content[:80])
+            continue
 
         try:
-            if platform == "x":
-                result = x_client.post_tweet(content)
-                permalink = result["permalink"]
-            elif platform == "reddit":
-                permalink = reddit_client.post_submission("test", content[:100], content)
-            else:
-                logger.warning("Unknown platform %s for post %d", platform, post_id)
-                db.mark_failed(post_id, f"Unknown platform: {platform}")
-                failed += 1
-                continue
-
-            db.mark_posted(post_id, permalink)
-            # Increment monthly counter
-            counter_key = f"posts:{platform}:{datetime.now(timezone.utc):%Y-%m}"
-            db.increment(counter_key)
+            permalink = poster.post(content)
+            queue.mark_posted(post_id, permalink)
             posted += 1
-            logger.info("Posted %s #%d -> %s", platform, post_id, permalink)
-
-        except RateLimitError as exc:
-            logger.error("Rate limit on post %d: %s", post_id, exc)
-            db.mark_failed(post_id, str(exc))
-            failed += 1
+            logger.info("Posted %s #%s -> %s", platform, post_id, permalink)
         except Exception as exc:
-            logger.error("Failed to post %d: %s", post_id, exc)
-            db.mark_failed(post_id, str(exc))
+            queue.mark_failed(post_id, str(exc))
             failed += 1
+            logger.error("Failed to post %s #%s: %s", platform, post_id, exc)
+            if notifier is not None:
+                try:
+                    notifier.send_message(f"Post failed [{platform}] #{post_id}: {exc}")
+                except Exception:
+                    logger.exception("Notifier itself failed")
 
-    summary = {"posted": posted, "failed": failed, "skipped_budget": skipped_budget}
+    summary = {
+        "posted": posted,
+        "failed": failed,
+        "skipped_budget": skipped_budget,
+        "dry_run": dry_run,
+    }
     logger.info("Scheduler pass complete: %s", summary)
     return summary
 
 
 def daemon(app: dict[str, Any], interval_sec: int = 300) -> None:
-    """Run scheduler in a loop. DB is source of truth — safe to kill at any time."""
+    """Run the scheduler in a loop.
+
+    The queue is the source of truth, so this is safe to kill at any time.
+    """
+    import time
+
     logger.info("Scheduler daemon started (interval=%ds)", interval_sec)
     while True:
         try:
