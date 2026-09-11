@@ -23,9 +23,34 @@ Merging `follower-dashboard`, `x-growth-hub`, and `social-agent` into a single m
 | 1 — Merge Python (api + agent) | **done** — agent reduced to a pure DI library, 21 tests pass |
 | 2 — Unify data layer on Postgres | **done** — `post_queue` + `counters` live, verified against real DB |
 | 3 — Collapse the agent loop | **done** — one queue, one daily budget |
-| 4 — Port follower/group UI | **not started** |
+| 4 — Port follower/group UI | **done** — 4 pages added, all 18 endpoints wired |
 | 5 — Retire old UI and prune | **not started** |
 | 6 — Consolidate config and ops | **not started** |
+
+### Phase 4 — what was ported
+
+The Vue `index.html` had 8 sections; they map onto 4 Next.js pages plus the
+existing analysis pages.
+
+| Vue section | New page | Backend endpoints |
+| :--- | :--- | :--- |
+| Scrape Data | `/scrape` | `/api/stats`, `/api/scrape/following`, `/api/scrape/followers` |
+| Groups + scrape config | `/groups` | `/api/groups` (GET/POST/DELETE), `/api/groups/{n}/scrape-config` (GET/PUT), `/api/scrape/group` |
+| All Followers | `/followers` | `/api/followers`, `/api/groups/{n}/followers` (POST/DELETE) |
+| Approvals, Watchlist, Insights, Memory | `/activity` | `/api/approvals/*`, `/api/observe/run`, `/api/watchlist`, `/api/memory/*`, `/api/posted-log`, `/api/source-scores` |
+
+Supporting changes:
+- `lib/api.ts` gained typed client functions (`apiGet` / `apiSend`) for all
+  18 endpoints, with optional basic-auth support via
+  `NEXT_PUBLIC_API_USER` / `NEXT_PUBLIC_API_PASSWORD`.
+- The nav gained the 4 new entries. The next-forge `Dashboard` entry was
+  dropped — it pointed at a template demo route that Phase 5 deletes.
+- `/activity` loads its 6 panels with `Promise.allSettled`, so one failing
+  endpoint (e.g. Reddit unconfigured) doesn't blank the page.
+
+**Not yet done in this phase:** nothing is deleted. `index.html`, the Vite
+`dashboard/`, and the template routes are still present — that is Phase 5.
+
 
 
 ### Two knock-on effects worth calling out

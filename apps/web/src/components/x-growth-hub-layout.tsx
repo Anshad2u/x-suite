@@ -1,7 +1,6 @@
 'use client';
 import {
   IconHome,
-  IconChartBar,
   IconUsers,
   IconTarget,
   IconSearch,
@@ -9,13 +8,18 @@ import {
   IconClock,
   IconSparkles,
   IconCopy,
-  IconUserPlus
+  IconUserPlus,
+  IconCloudDownload,
+  IconFolder,
+  IconAddressBook,
+  IconActivity
 } from '@tabler/icons-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 
 const navItems = [
+  // Growth analysis
   { title: 'Home', href: '/', icon: IconHome },
   { title: 'Analyze', href: '/analyze', icon: IconSearch },
   { title: 'Compare', href: '/compare', icon: IconUsers },
@@ -24,8 +28,12 @@ const navItems = [
   { title: 'Best Time', href: '/tools/best-time', icon: IconClock },
   { title: 'Patterns', href: '/tools/patterns', icon: IconSparkles },
   { title: 'Cloner', href: '/tools/clone', icon: IconCopy },
-  { title: 'Scraper', href: '/tools/scraper', icon: IconUserPlus },
-  { title: 'Dashboard', href: '/dashboard/overview', icon: IconChartBar }
+  // Account management (ported from the retired Vue dashboard)
+  { title: 'Scrape', href: '/scrape', icon: IconCloudDownload },
+  { title: 'Groups', href: '/groups', icon: IconFolder },
+  { title: 'Followers', href: '/followers', icon: IconAddressBook },
+  { title: 'Activity', href: '/activity', icon: IconActivity },
+  { title: 'Scraper', href: '/tools/scraper', icon: IconUserPlus }
 ];
 
 export default function XGrowthHubLayout({ children }: { children: React.ReactNode }) {
@@ -34,20 +42,23 @@ export default function XGrowthHubLayout({ children }: { children: React.ReactNo
   return (
     <div className='min-h-screen bg-background'>
       <header className='border-b bg-background/95 backdrop-blur'>
-        <div className='container mx-auto flex h-14 items-center justify-between'>
+        <div className='container mx-auto flex min-h-14 flex-wrap items-center justify-between gap-y-1 py-1'>
           <Link href='/' className='font-bold text-xl'>
             X Growth Hub
           </Link>
-          <nav className='flex items-center space-x-2'>
+          <nav className='flex flex-wrap items-center gap-1'>
             {navItems.map((item) => {
               const Icon = item.icon;
+              const active =
+                pathname === item.href ||
+                (item.href !== '/' && pathname.startsWith(item.href));
               return (
                 <Link
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    'flex items-center gap-2 rounded-md px-3 py-1.5 text-sm font-medium transition-colors',
-                    pathname === item.href
+                    'flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-sm font-medium transition-colors',
+                    active
                       ? 'bg-muted text-foreground'
                       : 'text-muted-foreground hover:text-foreground hover:bg-muted'
                   )}

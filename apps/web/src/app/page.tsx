@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { IconArrowRight, IconCalendar, IconClock, IconChartBar, IconUsers, IconSearch, IconTarget, IconTrendingUp } from '@tabler/icons-react';
+import { IconArrowRight, IconCalendar, IconClock, IconChartBar, IconUsers, IconSearch, IconTarget, IconTrendingUp, IconDownload, IconFolder, IconAddressBook, IconActivity } from '@tabler/icons-react';
 
 export default function Home() {
   return (
@@ -86,6 +86,30 @@ export default function Home() {
             <Button size="lg" variant="outline" className="w-full h-24 flex-col gap-2">
               <IconTrendingUp className="w-6 h-6" />
               Pattern Recognition
+            </Button>
+          </Link>
+          <Link href="/scrape">
+            <Button size="lg" variant="outline" className="w-full h-24 flex-col gap-2">
+              <IconDownload className="w-6 h-6" />
+              Scrape Data
+            </Button>
+          </Link>
+          <Link href="/groups">
+            <Button size="lg" variant="outline" className="w-full h-24 flex-col gap-2">
+              <IconFolder className="w-6 h-6" />
+              Groups
+            </Button>
+          </Link>
+          <Link href="/followers">
+            <Button size="lg" variant="outline" className="w-full h-24 flex-col gap-2">
+              <IconAddressBook className="w-6 h-6" />
+              All Followers
+            </Button>
+          </Link>
+          <Link href="/activity">
+            <Button size="lg" variant="outline" className="w-full h-24 flex-col gap-2">
+              <IconActivity className="w-6 h-6" />
+              Activity
             </Button>
           </Link>
         </div>

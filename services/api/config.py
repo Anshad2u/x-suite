@@ -2,8 +2,15 @@ import os
 from dotenv import load_dotenv
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# Monorepo root — two levels up from services/api.
+ROOT_DIR = os.path.dirname(os.path.dirname(BASE_DIR))
+
+# Load order matters: python-dotenv does not override already-set variables,
+# so the first file to define a key wins. Service-local files take precedence,
+# and the monorepo-root .env fills in anything they leave unset.
 load_dotenv(os.path.join(BASE_DIR, '.env'))
 load_dotenv(os.path.join(BASE_DIR, '.env.local'))
+load_dotenv(os.path.join(ROOT_DIR, '.env'))
 
 IS_VERCEL = os.environ.get("VERCEL") == "1"
 

@@ -177,3 +177,215 @@ export async function analyzeProfile(
     return getMockAnalyzeProfile(username, maxTweets);
   }
 }
+
+// ---------------------------------------------------------------------------
+// Account management API (followers, groups, scraping, autopilot)
+// These map 1:1 onto the Flask routes in services/api/app.py.
+// ---------------------------------------------------------------------------
+
+/**
+ * Optional basic auth. The Flask service enables it when APP_PASSWORD is set;
+ * leave both unset locally and the header is omitted.
+ *
+ * Computed lazily: this module is also evaluated during SSR, and building the
+ * header at module scope would run `btoa` outside the browser.
+ */
+function authHeaders(): Record<string, string> {
+  const user = process.env.NEXT_PUBLIC_API_USER;
+  const pass = process.env.NEXT_PUBLIC_API_PASSWORD;
+  if (!user || !pass) return {};
+  return { Authorization: 'Basic ' + btoa(`${user}:${pass}`) };
+}
+
+/** Fetch JSON from the backend, raising a useful error on failure. */
+export async function apiGet<T>(path: string): Promise<T> {
+  const resp = await fetch(`${API_BASE}${path}`, {
+    headers: { ...BYPASS_HEADERS, ...authHeaders() },
+    cache: 'no-store'
+  });
+  if (!resp.ok) {
+    throw new Error(`API ${resp.status}: ${(await resp.text()).slice(0, 200)}`);
+  }
+  return resp.json() as Promise<T>;
+}
+
+export async function apiSend<T>(
+  path: string,
+  method: 'POST' | 'PUT' | 'DELETE',
+  body?: unknown
+): Promise<T> {
+  const resp = await fetch(`${API_BASE}${path}`, {
+    method,
+    headers: { ...BYPASS_HEADERS, ...authHeaders() },
+    body: body === undefined ? undefined : JSON.stringify(body)
+  });
+  if (!resp.ok) {
+    throw new Error(`API ${resp.status}: ${(await resp.text()).slice(0, 200)}`);
+  }
+  return resp.json() as Promise<T>;
+}
+
+// -- types --
+
+export interface Stats {
+  total_followers: number;
+  total_groups: number;
+  group_counts: Record<string, number>;
+}
+
+export interface Follower {
+  id: number;
+  username: string;
+  display_name: string | null;
+  bio: string | null;
+  followers_count: number;
+  following_count: number;
+  tweets_count: number;
+  verified: boolean;
+  groups: string;
+}
+
+export interface Group {
+  name: string;
+  description: string;
+  color: string;
+  created_at: string;
+  count: number;
+}
+
+export interface ScrapeConfig {
+  keywords?: string;
+  since?: string;
+  max_tweets?: number;
+}
+
+export interface ScrapeResult {
+  status?: string;
+  added?: number;
+  total?: number;
+  error?: string;
+  [key: string]: unknown;
+}
+
+export interface PendingApproval {
+  id: number;
+  post_id: number;
+  draft: string;
+  reason: string;
+  topic: string;
+  source_link: string;
+  status: string;
+  created_at: string;
+}
+
+export interface MemorySummary {
+  [key: string]: unknown;
+}
+
+export interface MemoryTopic {
+  topic: string;
+  count: number;
+  last_seen: string | null;
+}
+
+export interface WatchlistEntry {
+  id: number;
+  handle: string;
+  reason: string | null;
+  topics: string[] | null;
+  first_seen: string | null;
+  last_seen: string | null;
+}
+
+export interface PostedLogEntry {
+  id: number;
+  content: string;
+  posted_at: string;
+  source_key: string | null;
+  posted_tweet_id: string | null;
+  permalink?: string | null;
+}
+
+export interface SourceScore {
+  source_key: string;
+  posts: number;
+  sum_engagement: number;
+  updated_at: string;
+}
+
+// -- calls --
+
+export const getStats = () => apiGet<Stats>('/api/stats');
+
+export const getFollowers = (group?: string) =>
+  apiGet<Follower[]>(`/api/followers${group ? `?group=${encodeURIComponent(group)}` : ''}`);
+
+export const getGroups = () => apiGet<Group[]>('/api/groups');
+
+export const createGroup = (name: string, description = '', color = '#6366f1') =>
+  apiSend<{ success: boolean }>('/api/groups', 'POST', { name, description, color });
+
+export const deleteGroup = (name: string) =>
+  apiSend<{ success: boolean }>(`/api/groups/${encodeURIComponent(name)}`, 'DELETE');
+
+export const assignFollower = (group: string, username: string) =>
+  apiSend<{ success: boolean }>(
+    `/api/groups/${encodeURIComponent(group)}/followers`,
+    'POST',
+    { username }
+  );
+
+export const removeFollower = (group: string, username: string) =>
+  apiSend<{ success: boolean }>(
+    `/api/groups/${encodeURIComponent(group)}/followers`,
+    'DELETE',
+    { username }
+  );
+
+export const getScrapeConfig = (group: string) =>
+  apiGet<ScrapeConfig>(`/api/groups/${encodeURIComponent(group)}/scrape-config`);
+
+export const updateScrapeConfig = (group: string, config: ScrapeConfig) =>
+  apiSend<{ success: boolean }>(
+    `/api/groups/${encodeURIComponent(group)}/scrape-config`,
+    'PUT',
+    config
+  );
+
+export const scrapeFollowing = (username = 'me', limit = 1000) =>
+  apiSend<ScrapeResult>('/api/scrape/following', 'POST', { username, limit });
+
+export const scrapeFollowers = (username = 'me', limit = 1000) =>
+  apiSend<ScrapeResult>('/api/scrape/followers', 'POST', { username, limit });
+
+export const scrapeGroup = (group: string, maxAccounts?: number) =>
+  apiSend<ScrapeResult>('/api/scrape/group', 'POST', { group, max_accounts: maxAccounts });
+
+export const getPendingApprovals = (limit = 20) =>
+  apiGet<PendingApproval[]>(`/api/approvals/pending?limit=${limit}`);
+
+export const approveDraft = (id: number) =>
+  apiSend<{ result: unknown }>(`/api/approvals/${id}/approve`, 'POST');
+
+export const rejectDraft = (id: number) =>
+  apiSend<{ result: unknown }>(`/api/approvals/${id}/reject`, 'POST');
+
+export const runObserve = (maxNew = 20, includeX = false) =>
+  apiSend<Record<string, unknown>>('/api/observe/run', 'POST', {
+    max_new: maxNew,
+    include_x: includeX
+  });
+
+export const getMemorySummary = () => apiGet<MemorySummary>('/api/memory/summary');
+
+export const getMemoryTopics = (limit = 20) =>
+  apiGet<MemoryTopic[]>(`/api/memory/topics?limit=${limit}`);
+
+export const getWatchlist = (limit = 50) =>
+  apiGet<WatchlistEntry[]>(`/api/watchlist?limit=${limit}`);
+
+export const getPostedLog = (limit = 50) =>
+  apiGet<PostedLogEntry[]>(`/api/posted-log?limit=${limit}`);
+
+export const getSourceScores = () => apiGet<SourceScore[]>('/api/source-scores');
+
