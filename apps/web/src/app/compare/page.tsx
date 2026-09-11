@@ -6,23 +6,12 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { IconLoader, IconUsers } from '@tabler/icons-react';
+import { IconLoader, IconUsers, IconSearch } from '@tabler/icons-react';
 import { analyzeProfile, AnalysisResult } from '@/lib/api';
-import {
-  ResponsiveContainer,
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
-  Legend,
-  LineChart,
-  Line,
-  CartesianGrid
-} from 'recharts';
+import { getAccountSummary } from '@/lib/analytics';
 
 export default function ComparePage() {
-  const [usernames, setUsernames] = useState<string[]>(['wilczyn', '']);
+  const [usernames, setUsernames] = useState<string[]>(['', '']);
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState<{[key: string]: AnalysisResult}>({});
 
@@ -70,6 +59,17 @@ export default function ComparePage() {
       : '0'
   }));
 
+  // Build summary cards
+  const summaryCards = Object.entries(results).map(([username, result], i) => ({
+    key: username,
+    username: `@${username}`,
+    totalTweets: result.total_tweets,
+    avgScore: Math.round(result.tweets.reduce((sum, t) => sum + t.score.engagement_score, 0) / result.tweets.length),
+    totalLikes: result.tweets.reduce((sum, t) => sum + t.raw_metrics.likes, 0),
+    totalReplies: result.tweets.reduce((sum, t) => sum + t.raw_metrics.replies, 0),
+    totalViews: result.tweets.reduce((sum, t) => sum + t.raw_metrics.views, 0),
+  }));
+
   return (
     <div className="container mx-auto py-8 max-w-7xl">
       <div className="mb-8">
@@ -114,20 +114,20 @@ export default function ComparePage() {
       </Card>
 
       {/* Comparison Results */}
-      {comparisonData.length > 0 && (
+      {Object.keys(results).length > 0 && (
         <>
           {/* Summary cards */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
             <Card>
               <CardHeader>
-                <CardTitle className="text-3xl">{comparisonData.length}</CardTitle>
+                <CardTitle className="text-3xl">{Object.keys(results).length}</CardTitle>
                 <p className="text-sm text-muted-foreground">Accounts Analyzed</p>
               </CardHeader>
             </Card>
             <Card>
               <CardHeader>
                 <CardTitle className="text-3xl font-bold text-primary">
-                  {comparisonData.reduce((sum, a) => sum + a.tweets, 0)}
+                  {Object.values(results).reduce((sum, r) => sum + r.total_tweets, 0)}
                 </CardTitle>
                 <p className="text-sm text-muted-foreground">Total Tweets</p>
               </CardHeader>
@@ -135,17 +135,17 @@ export default function ComparePage() {
             <Card>
               <CardHeader>
                 <CardTitle className="text-3xl font-bold text-green-500">
-                  {comparisonData.reduce((sum, a) => sum + a.totalViews, 0).toLocaleString()}
+                  {Object.values(results).reduce((sum, r) => sum + r.tweets.reduce((sum2, t) => sum2 + t.raw_metrics.likes, 0), 0).toLocaleString()}
                 </CardTitle>
-                <p className="text-sm text-muted-foreground">Total Views</p>
+                <p className="text-sm text-muted-foreground">Total Likes</p>
               </CardHeader>
             </Card>
             <Card>
               <CardHeader>
                 <CardTitle className="text-3xl font-bold text-blue-500">
-                  {comparisonData.reduce((sum, a) => sum + a.totalLikes, 0).toLocaleString()}
+                  {Object.values(results).reduce((sum, r) => sum + r.tweets.reduce((sum2, t) => sum2 + t.raw_metrics.views, 0), 0).toLocaleString()}
                 </CardTitle>
-                <p className="text-sm text-muted-foreground">Total Likes</p>
+                <p className="text-sm text-muted-foreground">Total Views</p>
               </CardHeader>
             </Card>
           </div>
@@ -157,16 +157,24 @@ export default function ComparePage() {
                 <CardTitle>Avg Score per Account</CardTitle>
               </CardHeader>
               <CardContent>
-                <ResponsiveContainer width="100%" height={300}>
-                  <BarChart data={comparisonData}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="username" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Bar dataKey="avgScore" fill="#3b82f6" name="Avg Score" />
-                  </BarChart>
-                </ResponsiveContainer>
+                <div className='space-y-3'>
+                  {comparisonData.map((d, i) => (
+                    <div key={i} className="flex items-center gap-3">
+                      <span className="w-24 font-medium">{d.username}</span>
+                      <div className="flex-1 h-6 bg-muted rounded overflow-hidden">
+                        <div
+                          className="h-full bg-primary rounded"
+                          style={{
+                            width: `${Math.min(100, (d.avgScore / Math.max(...comparisonData.map(x => x.avgScore))) * 100)}%`
+                          }}
+                        />
+                      </div>
+                      <span className="w-8 text-xs text-muted-foreground text-right">
+                        {d.avgScore}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </CardContent>
             </Card>
 
@@ -175,16 +183,24 @@ export default function ComparePage() {
                 <CardTitle>Engagement Rate Comparison</CardTitle>
               </CardHeader>
               <CardContent>
-                <ResponsiveContainer width="100%" height={300}>
-                  <LineChart data={comparisonData}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="username" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Line type="monotone" dataKey="engagementRate" stroke="#10b981" name="Rate %" />
-                  </LineChart>
-                </ResponsiveContainer>
+                <div className='space-y-3'>
+                  {comparisonData.map((d, i) => (
+                    <div key={i} className="flex items-center gap-3">
+                      <span className="w-24 font-medium">{d.username}</span>
+                      <div className="w-8 text-right text-xs text-muted-foreground">
+                        {d.engagementRate}%
+                      </div>
+                      <div className="flex-1 h-6 bg-muted rounded overflow-hidden">
+                        <div
+                          className="h-full bg-primary rounded"
+                          style={{
+                            width: `${Math.min(100, parseFloat(d.engagementRate) / Math.max(...comparisonData.map(x => parseFloat(x.engagementRate))) * 100)}%`
+                          }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </CardContent>
             </Card>
           </div>

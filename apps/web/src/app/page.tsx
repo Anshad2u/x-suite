@@ -15,6 +15,39 @@ export default function Home() {
             Reverse-engineer Twitter/X growth strategies. Analyze any profile, score tweets,
             find winning patterns, and clone successful tactics for your own account.
           </p>
+          <div className="bg-muted/30 rounded-xl p-6 max-w-2xl mx-auto mt-4">
+            <p className="text-sm text-muted-foreground">
+              👆 <strong>Get started</strong> by entering any X username above — no API keys needed!
+            </p>
+          </div>
+        </div>
+
+        {/* Beginner Step-by-Step Guide */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <div className="p-6 bg-card rounded-lg border">
+            <IconTarget className="w-8 h-8 mb-4 text-primary" />
+            <h3 className="text-bold text-lg mb-2">Step 1: Audit Your Account</h3>
+            <p className="text-muted-foreground">
+              Enter your X username to analyze your tweet performance, engagement scores,
+              and content patterns. Get personalized recommendations.
+            </p>
+          </div>
+          <div className="p-6 bg-card rounded-lg border">
+            <IconSearch className="w-8 h-8 mb-4 text-primary" />
+            <h3 className="text-bold text-lg mb-2">Step 2: Analyze Competitors</h3>
+            <p className="text-muted-foreground">
+              Compare any public X account against yours. See their best-performing tweets,
+              content types, and engagement strategies you can emulate.
+            </p>
+          </div>
+          <div className="p-6 bg-card rounded-lg border">
+            <IconTrendingUp className="w-8 h-8 mb-4 text-primary" />
+            <h3 className="text-bold text-lg mb-2">Step 3: Clone Winning Patterns</h3>
+            <p className="text-muted-foreground">
+              Discover which tweet formats (questions, threads, hot takes) drive the most
+              engagement. Generate a data-driven content calendar to post more of what works.
+            </p>
+          </div>
         </div>
 
         {/* Quick Actions */}

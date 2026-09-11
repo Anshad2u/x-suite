@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Skeleton } from '@/components/ui/skeleton';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { IconLoader, IconSearch, IconTrendingUp, IconChartBar } from '@tabler/icons-react';
 import { analyzeProfile, AnalysisResult } from '@/lib/api';
@@ -73,21 +74,20 @@ export default function AnalyzePage() {
         </Card>
       )}
 
-      {!result && !loading && (
-        <Card className="mb-8">
-          <CardHeader>
-            <CardTitle>How it works</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ul className="space-y-2 text-sm">
-              <li>1. Enter an X/Twitter username to analyze</li>
-              <li>2. Our system uses authenticated API access to fetch all tweets</li>
-              <li>3. Each tweet is scored: <code>Score = (Replies×20) + (Reposts×2) + (Likes×0.5) + (Bookmarks×80)</code></li>
-              <li>4. View the top-performing tweets and engagement patterns</li>
-            </ul>
-          </CardContent>
-        </Card>
-      )}
+      {/* How it works - always visible for beginners */}
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle>How it works</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ul className="space-y-2 text-sm">
+            <li>1. Enter an X/Twitter username to analyze</li>
+            <li>2. Our system fetches tweet data and scores each one</li>
+            <li>3. Each tweet is scored: <code>Score = (Replies×20) + (Reposts×2) + (Likes×0.5) + (Bookmarks×80)</code></li>
+            <li>4. View the top-performing tweets and engagement patterns</li>
+          </ul>
+        </CardContent>
+      </Card>
 
       {/* Results */}
       {result && (
@@ -117,9 +117,7 @@ export default function AnalyzePage() {
             <Card>
               <CardHeader>
                 <CardTitle className="text-3xl font-bold text-green-500">
-                  {result.tweets.length > 0
-                    ? Math.round(result.tweets[0].score.engagement_score)
-                    : 0}
+                  {result.tweets.length > 0 ? Math.round(result.tweets[0].score.engagement_score) : 0}
                 </CardTitle>
                 <p className="text-sm text-muted-foreground">Top tweet score</p>
               </CardHeader>
@@ -177,6 +175,22 @@ export default function AnalyzePage() {
             </CardContent>
           </Card>
         </>
+      )}
+
+      {!result && !loading && (
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle>How it works</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ul className="space-y-2 text-sm">
+              <li>1. Enter an X/Twitter username to analyze</li>
+              <li>2. Our system uses authenticated API access to fetch all tweets</li>
+              <li>3. Each tweet is scored: <code>Score = (Replies×20) + (Reposts×2) + (Likes×0.5) + (Bookmarks×80)</code></li>
+              <li>4. View the top-performing tweets and engagement patterns</li>
+            </ul>
+          </CardContent>
+        </Card>
       )}
     </div>
   );
