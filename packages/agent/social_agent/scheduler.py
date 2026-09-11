@@ -37,8 +37,9 @@ class PostQueue(Protocol):
     """Storage contract the scheduler depends on."""
 
     def add_post(self, platform: str, content: str,
-                 scheduled_at: str | None = None) -> int:
-        """Insert a pending post, returning its id."""
+                 scheduled_at: str | None = None,
+                 source_ref: str | None = None) -> int | None:
+        """Insert a pending post, returning its id (None if already queued)."""
 
     def due_posts(self, now_iso: str) -> list[dict[str, Any]]:
         """Return pending posts whose schedule has arrived."""
@@ -87,9 +88,15 @@ def run_once(app: dict[str, Any]) -> dict[str, int]:
     failed = 0
     skipped_budget = 0
 
-    # 1. Promote due draft files into the queue.
+    # 1. Promote due draft files into the queue. Skipped in dry-run so a
+    #    preview never writes. source_ref makes this idempotent across passes.
     for draft in load_due_drafts(now):
-        queue.add_post(draft["platform"], draft["content"], draft["scheduled_at"])
+        if dry_run:
+            logger.info("[DRY RUN] Would queue draft [%s]: %s",
+                        draft["platform"], draft["content"][:60])
+            continue
+        queue.add_post(draft["platform"], draft["content"],
+                       draft["scheduled_at"], source_ref=draft.get("path"))
         logger.info("Queued draft [%s]: %s", draft["platform"], draft["content"][:60])
 
     # 2. Drain due queue rows.

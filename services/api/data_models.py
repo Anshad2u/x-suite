@@ -120,8 +120,19 @@ def init_dbs():
         content TEXT NOT NULL,
         permalink TEXT,
         error TEXT,
+        source_ref TEXT,
         created_at TIMESTAMPTZ DEFAULT NOW()
     )''')
+    # Must run before the index below: on an existing table, CREATE TABLE
+    # IF NOT EXISTS is a no-op, so the column has to be added explicitly.
+    db.execute('ALTER TABLE post_queue ADD COLUMN IF NOT EXISTS source_ref TEXT')
+    # A draft file maps to exactly one queue row, so repeated scheduler passes
+    # cannot re-queue the same draft. This must be a full (not partial) unique
+    # index so `ON CONFLICT (source_ref)` can infer it. Postgres treats NULLs
+    # as distinct, so any number of rows may have a NULL source_ref.
+    db.execute('DROP INDEX IF EXISTS idx_post_queue_source_ref')
+    db.execute('''CREATE UNIQUE INDEX IF NOT EXISTS uq_post_queue_source_ref
+        ON post_queue (source_ref)''')
     db.execute('''CREATE INDEX IF NOT EXISTS idx_post_queue_due
         ON post_queue (status, scheduled_at)''')
 
@@ -421,10 +432,17 @@ def get_source_scores():
 # Implements the PostQueue contract expected by social_agent.scheduler.
 # See packages/agent/README.md for the injection contract.
 
-def queue_add_post(platform, content, scheduled_at=None):
-    row = db.query_one('''INSERT INTO post_queue (platform, content, scheduled_at)
-        VALUES (%s, %s, %s) RETURNING id''', (platform, content, scheduled_at))
-    return row['id']
+def queue_add_post(platform, content, scheduled_at=None, source_ref=None):
+    """Queue a post. Returns the new id, or None if already queued.
+
+    A non-null *source_ref* (e.g. a draft file path) is unique, so repeated
+    scheduler passes are idempotent.
+    """
+    row = db.query_one('''INSERT INTO post_queue (platform, content, scheduled_at, source_ref)
+        VALUES (%s, %s, %s, %s)
+        ON CONFLICT (source_ref) DO NOTHING
+        RETURNING id''', (platform, content, scheduled_at, source_ref))
+    return row['id'] if row else None
 
 
 def queue_due_posts(now_iso):
@@ -465,8 +483,15 @@ def queue_mark_failed(post_id, error):
 
 
 def queue_posts_today():
-    row = db.query_one('''SELECT COUNT(*) AS c FROM post_queue
-        WHERE status = 'posted' AND posted_at::date = NOW()::date''')
+    """Posts published today, from posted_log.
+
+    posted_log is the single source of truth for the daily cap: the queue
+    writes to it on every successful post, and autopost already budgets
+    against it. Counting post_queue here instead would let the two loops
+    each spend the full daily allowance.
+    """
+    row = db.query_one('''SELECT COUNT(*) AS c FROM posted_log
+        WHERE posted_at::date = NOW()::date''')
     return row['c'] if row else 0
 
 

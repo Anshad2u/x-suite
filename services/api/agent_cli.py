@@ -29,9 +29,9 @@ import config
 class PostgresQueue:
     """Implements the PostQueue contract from social_agent.scheduler."""
 
-    def add_post(self, platform, content, scheduled_at=None):
+    def add_post(self, platform, content, scheduled_at=None, source_ref=None):
         import data_models as dm
-        return dm.queue_add_post(platform, content, scheduled_at)
+        return dm.queue_add_post(platform, content, scheduled_at, source_ref)
 
     def due_posts(self, now_iso):
         import data_models as dm

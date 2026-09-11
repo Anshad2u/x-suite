@@ -23,7 +23,12 @@ class FakeQueue:
         self.posted_today = 0
 
     def add_post(self, platform: str, content: str,
-                 scheduled_at: str | None = None) -> int:
+                 scheduled_at: str | None = None,
+                 source_ref: str | None = None) -> int | None:
+        # Mirror the real queue's uniqueness on source_ref.
+        if source_ref is not None and any(r.get("source_ref") == source_ref
+                                          for r in self.rows):
+            return None
         pid = self._next_id
         self._next_id += 1
         self.rows.append({
@@ -31,6 +36,7 @@ class FakeQueue:
             "platform": platform,
             "content": content,
             "scheduled_at": scheduled_at,
+            "source_ref": source_ref,
             "status": "pending",
         })
         return pid
@@ -153,3 +159,23 @@ class TestRunOnce:
 
         summary = run_once(app)
         assert summary["posted"] == 2
+
+    def test_draft_promotion_is_idempotent(self, monkeypatch: pytest.MonkeyPatch) -> None:
+        draft = {"platform": "x", "content": "hello", "scheduled_at": None,
+                 "path": "/drafts/a.md"}
+        monkeypatch.setattr(scheduler, "load_due_drafts", lambda now: [draft])
+
+        app = make_app()
+        run_once(app)
+        run_once(app)
+        run_once(app)
+        assert len(app["queue"].rows) == 1
+
+    def test_dry_run_does_not_promote_drafts(self, monkeypatch: pytest.MonkeyPatch) -> None:
+        draft = {"platform": "x", "content": "hello", "scheduled_at": None,
+                 "path": "/drafts/a.md"}
+        monkeypatch.setattr(scheduler, "load_due_drafts", lambda now: [draft])
+
+        app = make_app(dry_run=True)
+        run_once(app)
+        assert app["queue"].rows == []
