@@ -1,0 +1,36 @@
+name: auto-post
+
+# Drains the post queue on the deployed API.
+#
+# Required repository secrets:
+#   AUTO_POST_URL     full URL of the deployed /api/auto-post endpoint
+#   AUTO_POST_SECRET  must match AUTO_POST_SECRET in the deployment's env
+#
+# Note: this triggers the *deployed* service. For a local machine, the
+# equivalent job is scripts/run_autopost.bat, registered in Windows Task
+# Scheduler as "FollowerDashboard-AutoPost".
+
+on:
+  schedule:
+    # Every 2 hours, offset by 7 minutes to stay off the top of the hour.
+    - cron: '7 */2 * * *'
+  workflow_dispatch:
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - name: trigger auto-post
+        env:
+          AUTO_POST_URL: ${{ secrets.AUTO_POST_URL }}
+          AUTO_POST_SECRET: ${{ secrets.AUTO_POST_SECRET }}
+        run: |
+          if [ -z "$AUTO_POST_URL" ]; then
+            echo "::error::AUTO_POST_URL secret is not set"
+            exit 1
+          fi
+          curl -sS -X POST "$AUTO_POST_URL" \
+            -H "X-Auto-Post-Secret: $AUTO_POST_SECRET" \
+            -H "Content-Type: application/json" \
+            -d '{}' \
+            --fail-with-body

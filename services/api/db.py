@@ -1,14 +1,12 @@
-import os
-
 import psycopg2
 import psycopg2.extras
-from dotenv import load_dotenv
 
-_BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-load_dotenv(os.path.join(_BASE_DIR, ".env"))
-load_dotenv(os.path.join(_BASE_DIR, ".env.local"))
+# Importing config performs the env loading (monorepo-root .env first) and
+# owns the single POSTGRES_URL definition. Do not load dotenv here as well:
+# two loaders in two files was how the merged tree lost its database URL.
+import config
 
-POSTGRES_URL = os.environ.get("POSTGRES_URL_NON_POOLING") or os.environ.get("POSTGRES_URL") or os.environ.get("DATABASE_URL_UNPOOLED") or os.environ.get("DATABASE_URL", "")
+POSTGRES_URL = config.POSTGRES_URL
 
 
 _conn_cache = None

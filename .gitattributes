@@ -1,0 +1,18 @@
+# Windows batch files must be checked out with CRLF - cmd.exe can mis-parse
+# LF-only .bat files (labels and goto in particular).
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Shell scripts stay LF.
+*.sh  text eol=lf
+
+# Binary assets - never diff or line-ending-normalise these.
+*.ico  binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.woff binary
+*.woff2 binary
+*.ttf  binary
+*.db   binary

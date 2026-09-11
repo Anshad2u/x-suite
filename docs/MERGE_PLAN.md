@@ -25,7 +25,7 @@ Merging `follower-dashboard`, `x-growth-hub`, and `social-agent` into a single m
 | 3 — Collapse the agent loop | **done** — one queue, one daily budget |
 | 4 — Port follower/group UI | **done** — 4 pages added, all 18 endpoints wired |
 | 5 — Retire old UI and prune | **done** — Vue UI and 26 template routes/files removed |
-| 6 — Consolidate config and ops | **not started** |
+| 6 — Consolidate config and ops | **done** — one root `.env`, `scripts/` wrappers, Task Scheduler repointed |
 
 ### Phase 4 — what was ported
 
@@ -94,7 +94,48 @@ primitives), `components/ui/*` except the two above, `components/themes/*`,
 ### Two knock-on effects worth calling out
 
 1. **The 480/500 monthly cap disappears.** That cap exists because the official X API free tier allows 500 posts/month. Scraping has no such quota — so `X_MONTHLY_HARD_STOP` is dropped and the existing daily cap (`AUTO_POST_MAX_PER_DAY`, default 8) plus posting jitter become the only throttle. Keep the `counters` table anyway; it is useful for daily accounting.
-2. **The Next.js app is currently a subset.** x-growth-hub only has `analyze`, `compare`, and `tools/*`. The follower/groups/scrape screens live only in the Vue `index.html`. Those must be ported *before* `index.html` is deleted, or functionality is lost.
+2. **The Next.js app is currently a subset.** x-growth-hub only has `analyze`, `compare`, and `tools/*`. The follower/groups/scrape screens live only in the Vue `index.html`. Those had to be ported *before* `index.html` was deleted — done in Phase 4.
+
+### Phase 6 — what changed
+
+**One env file.** `.env` at the repo root is now the only one. It was built by
+merging `services/api/.env` (9 keys), `services/api/.env.local` (29 keys) and
+`apps/web/.env.local` (2 `NEXT_PUBLIC_*` keys) — 36 keys, key parity verified
+before the originals were removed. Precedence was flipped in `config.py` so the
+root file loads **first** and therefore wins. `apps/web/next.config.ts` calls
+`@next/env`'s `loadEnvConfig` on the repo root so the UI reads the same file.
+
+**One loader, not two.** `db.py` used to run its own `load_dotenv` pointed at
+`services/api/.env*`. Once those files were retired, `POSTGRES_URL` went empty
+and every DB call raised `POSTGRES_URL not configured`. `db.py` now imports
+`config` and reads `config.POSTGRES_URL`, so env loading happens in exactly one
+place. This is the single most important fix of the phase — it was invisible
+until the legacy files were actually deleted.
+
+**Stable ops entry points.** `scripts/` holds `_env.bat` (resolves the repo
+root, picks the interpreter, puts `packages/agent` on `PYTHONPATH`) plus four
+wrappers. The Task Scheduler entries now point at the wrappers, so they never
+need editing again.
+
+**Fixed along the way:**
+
+- `daily_digest.py` had **no `__main__` block** — the scheduled task had never
+  actually sent anything. Added.
+- `autopost_runner.py` caught its own exception and printed to stderr without
+  `sys.exit(1)`, so Task Scheduler recorded a *successful* run on every
+  failure. Now exits non-zero.
+- The three Task Scheduler entries were all broken: `AutoPost` was disabled and
+  pointed at the old repo; `Digest` ran `C:\temp\daily_digest.py`, where the
+  flat `import db` cannot resolve; `Observe` ran `\runner.py`, which does not
+  exist (`0x800700E0`, bad pathname).
+- `.github/workflows/autopost.yml` was nested at `services/api/.github/`, where
+  GitHub never reads it. Moved to the repo root and made to fail loudly when
+  `AUTO_POST_URL` is unset.
+- `apps/web/.github/FUNDING.yml` (next-forge template cruft) advertised the
+  upstream author's PayPal. Removed.
+- `packages/agent/.env.example` still documented the paid X API
+  (`X_API_KEY`, `X_ACCESS_TOKEN`) and a SQLite `DB_PATH`. Removed — the package
+  reads no env at all.
 
 ---
 
@@ -231,6 +272,11 @@ Delete `index.html`, `dashboard/` (Vite), and the next-forge template routes.
 ### Phase 6 — Consolidate config and ops
 Single `.env`. Rewrite the start scripts and Task Scheduler entries.
 **Check:** fresh clone → `.env` → `start.bat` brings up web + api + agent loop.
+*Verified:* `run_digest.bat` returned real data from Postgres (exit 0) and
+`run_autopost.bat --dry-run` completed a full learn → queue → curate pass
+(exit 0, nothing posted). `run_observe.bat` was not executed — it performs a
+live observation cycle with LLM calls — but its wrapper is identical and its
+module imports were verified.
 
 ---
 
@@ -238,7 +284,7 @@ Single `.env`. Rewrite the start scripts and Task Scheduler entries.
 
 | Risk | Mitigation |
 | :--- | :--- |
-| **Scraper fragility.** Cookie-based scraping breaks when X rotates tokens or changes markup. This is now the *only* X path. | Keep the `XBackend` seam so an official-API implementation can be added later without touching callers. |
+| **Scraper fragility.** Cookie-based scraping breaks when X rotates tokens or changes markup. This is now the *only* X path. | Accept it — the paid API is permanently out of scope. Keep `scraper.py` as the single choke point so a future path can be swapped in without touching callers. |
 | **UI port is the largest chunk.** Follower/group CRUD is real work, not a copy-paste. | Do Phase 4 before Phase 5; never delete `index.html` first. |
 | **Two post tables could drift.** | Write `post_queue` → `posted_log` in a single transaction. |
 | **Vercel can't host the daemons.** | `apps/web` + `services/api` on Vercel; the agent loop runs on a worker host or local Task Scheduler. |
@@ -252,13 +298,13 @@ Single `.env`. Rewrite the start scripts and Task Scheduler entries.
 option open; since the paid API is permanently out of scope, the seam would
 be dead abstraction.
 
-**Open (Phase 4):** the Next.js app is still a subset. Scrape, Groups, All
-Followers, and group scrape-config exist only in the Vue `index.html` and
-must be ported before Phase 5 deletes it.
+**Resolved (Phase 4):** the Next.js app was a subset. Scrape, Groups, All
+Followers, and group scrape-config have been ported, so the Vue `index.html`
+could be deleted in Phase 5 without losing functionality.
 
 ## What changed vs. the original plan
 
-Two correctness bugs surfaced while verifying Phase 3 and were fixed:
+Four correctness bugs surfaced during verification and were fixed:
 
 1. **Draft promotion was not idempotent.** Every scheduler pass re-queued
    every due draft, so a 2-hourly loop would have posted each draft
@@ -268,4 +314,12 @@ Two correctness bugs surfaced while verifying Phase 3 and were fixed:
    today's posts from `post_queue` while `autopost` counted from
    `posted_log`, so each loop could spend the full daily allowance. Both now
    read `posted_log`.
+3. **Two env loaders.** `config.py` and `db.py` each ran `load_dotenv`, the
+   latter against paths that no longer existed after consolidation. Env
+   loading now happens only in `config.py`, and `db.py` imports
+   `config.POSTGRES_URL`.
+4. **The digest never ran.** `daily_digest.py` defined `send_daily_digest()`
+   but had no `__main__` block, so its scheduled task was a no-op that
+   reported success. Same class of problem as `autopost_runner.py` swallowing
+   its own exception without a non-zero exit — both fixed.
 

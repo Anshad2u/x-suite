@@ -79,4 +79,7 @@ if __name__ == "__main__":
     try:
         print(json.dumps(main(), indent=2, default=str))
     except Exception as e:
+        # Exit non-zero so Task Scheduler / CI actually sees the failure
+        # instead of recording a successful run.
         print(f"runner error: {e}", file=sys.stderr)
+        sys.exit(1)

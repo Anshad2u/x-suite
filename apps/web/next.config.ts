@@ -1,5 +1,13 @@
+import path from 'node:path';
 import type { NextConfig } from 'next';
 import { withSentryConfig } from '@sentry/nextjs';
+import { loadEnvConfig } from '@next/env';
+
+// Single-source env: the whole monorepo reads the root .env.
+// Next only looks inside apps/web by default, so pull the root file in as well.
+// loadEnvConfig does not override already-set variables, so anything Next
+// already picked up from apps/web/.env* still wins.
+loadEnvConfig(path.resolve(process.cwd(), '../..'));
 
 // Define the base Next.js configuration
 const baseConfig: NextConfig = {

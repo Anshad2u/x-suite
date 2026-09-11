@@ -41,3 +41,9 @@ def send_daily_digest():
     if TOKEN and CHAT_ID:
         requests.post(f"{BASE}/sendMessage", json={"chat_id": CHAT_ID, "text": text, "disable_web_page_preview": True}, timeout=15)
     return text
+
+
+if __name__ == "__main__":
+    # Scheduled entry point. Prints the digest and sends it to Telegram when
+    # TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID are set.
+    print(send_daily_digest())

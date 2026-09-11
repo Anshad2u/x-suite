@@ -6,11 +6,26 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(os.path.dirname(BASE_DIR))
 
 # Load order matters: python-dotenv does not override already-set variables,
-# so the first file to define a key wins. Service-local files take precedence,
-# and the monorepo-root .env fills in anything they leave unset.
+# so the first file to define a key wins.
+#
+# The monorepo-root .env is the single source of truth and therefore loads
+# first. The service-local files are legacy leftovers from before the merge;
+# they are only consulted to fill in keys the root file does not define, so
+# an un-migrated checkout still runs. Delete them once you are happy.
+load_dotenv(os.path.join(ROOT_DIR, '.env'))
 load_dotenv(os.path.join(BASE_DIR, '.env'))
 load_dotenv(os.path.join(BASE_DIR, '.env.local'))
-load_dotenv(os.path.join(ROOT_DIR, '.env'))
+
+# Postgres connection string. Prefer the direct (non-pooled) endpoint for
+# long-lived scripts; fall back to the pooled one for serverless callers.
+# This is the single definition — db.py imports it rather than re-reading
+# os.environ, so env loading only ever happens here.
+POSTGRES_URL = (
+    os.environ.get("POSTGRES_URL_NON_POOLING")
+    or os.environ.get("POSTGRES_URL")
+    or os.environ.get("DATABASE_URL_UNPOOLED")
+    or os.environ.get("DATABASE_URL", "")
+)
 
 IS_VERCEL = os.environ.get("VERCEL") == "1"
 
