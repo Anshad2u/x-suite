@@ -9,6 +9,7 @@ import type { Metadata, Viewport } from 'next';
 import { cookies } from 'next/headers';
 import NextTopLoader from 'nextjs-toploader';
 import { NuqsAdapter } from 'nuqs/adapters/next/app';
+import { getSession } from '@/lib/auth/session';
 import '../styles/globals.css';
 
 const META_THEME_COLORS = {
@@ -21,16 +22,17 @@ export const metadata: Metadata = {
     ? { metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL) }
     : {}),
   title: {
-    default: 'X Growth Hub - Reverse-engineer Twitter/X growth',
-    template: '%s | X Growth Hub'
+    default: 'X Suite — Admin Console',
+    template: '%s | X Suite'
   },
   description:
-    'Analyze any X/Twitter profile, score tweets, find growth patterns, and clone successful strategies for your own account.',
+    'Private admin console for the X Growth & Autopilot suite. Manage followers, groups, drafts, and review the learned memory.',
+  robots: { index: false, follow: false },
   openGraph: {
-    title: 'X Growth Hub - Reverse-engineer Twitter/X growth',
+    title: 'X Suite — Admin Console',
     description:
-      'Analyze any X/Twitter profile, score tweets, find growth patterns, and clone successful strategies for your own account.',
-    siteName: 'X Growth Hub',
+      'Private admin console for the X Growth & Autopilot suite.',
+    siteName: 'X Suite',
     type: 'website',
     images: [
       {
@@ -59,6 +61,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const activeThemeValue = cookieStore.get('active_theme')?.value;
   const isValidTheme = THEMES.some((t) => t.value === activeThemeValue);
   const themeToApply = isValidTheme ? activeThemeValue! : DEFAULT_THEME;
+  const session = await getSession();
 
   return (
     <html lang='en' suppressHydrationWarning data-theme={themeToApply}>
@@ -92,7 +95,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           >
             <Providers activeThemeValue={themeToApply}>
             <Toaster />
-            <XGrowthHubLayout>{children}</XGrowthHubLayout>
+            <XGrowthHubLayout userEmail={session?.email ?? null}>{children}</XGrowthHubLayout>
             </Providers>
           </ThemeProvider>
         </NuqsAdapter>

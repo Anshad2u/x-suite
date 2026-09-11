@@ -1,476 +1,281 @@
-'use client';
-
-import { useCallback, useEffect, useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Skeleton } from '@/components/ui/skeleton';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow
-} from '@/components/ui/table';
 import {
   IconCheck,
   IconX,
-  IconRefresh,
-  IconPlayerPlay,
-  IconLoader
+  IconStar,
+  IconHash,
+  IconSend,
+  IconChartBar
 } from '@tabler/icons-react';
 import {
-  approveDraft,
-  getMemorySummary,
-  getMemoryTopics,
-  getPendingApprovals,
-  getPostedLog,
-  getSourceScores,
+  getFullPendingDrafts,
   getWatchlist,
-  rejectDraft,
-  runObserve,
-  type MemoryTopic,
-  type PendingApproval,
-  type PostedLogEntry,
-  type SourceScore,
-  type WatchlistEntry
-} from '@/lib/api';
+  getTopTopics,
+  getMemorySummary,
+  getPostedLog,
+  getSourceScores
+} from '@/lib/server/queries';
+import { approveDraftAction, rejectDraftAction } from './actions';
 
-export default function ActivityPage() {
-  const [error, setError] = useState<string | null>(null);
-  const [notice, setNotice] = useState<string | null>(null);
-  const [busy, setBusy] = useState(false);
+function fmtDate(d: Date | string | null): string {
+  if (!d) return '—';
+  const date = typeof d === 'string' ? new Date(d) : d;
+  return date.toLocaleString(undefined, {
+    month: 'short',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
+  });
+}
 
-  const [approvals, setApprovals] = useState<PendingApproval[]>([]);
-  const [watchlist, setWatchlist] = useState<WatchlistEntry[]>([]);
-  const [topics, setTopics] = useState<MemoryTopic[]>([]);
-  const [summary, setSummary] = useState<Record<string, unknown> | null>(null);
-  const [posted, setPosted] = useState<PostedLogEntry[]>([]);
-  const [scores, setScores] = useState<SourceScore[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  const load = useCallback(async () => {
-    setLoading(true);
-    setError(null);
-    // Settle individually so one failing endpoint (e.g. Reddit not configured)
-    // doesn't blank the whole page.
-    const results = await Promise.allSettled([
-      getPendingApprovals(),
-      getWatchlist(),
-      getMemoryTopics(),
-      getMemorySummary(),
-      getPostedLog(),
-      getSourceScores()
-    ]);
-    const [a, w, t, s, p, sc] = results;
-    if (a.status === 'fulfilled') setApprovals(a.value);
-    if (w.status === 'fulfilled') setWatchlist(w.value);
-    if (t.status === 'fulfilled') setTopics(t.value);
-    if (s.status === 'fulfilled') setSummary(s.value);
-    if (p.status === 'fulfilled') setPosted(p.value);
-    if (sc.status === 'fulfilled') setScores(sc.value);
-
-    const failed = results.filter((r) => r.status === 'rejected').length;
-    if (failed === results.length) {
-      setError('Could not reach the API. Is the Flask service running on :5000?');
-    } else if (failed > 0) {
-      setError(`${failed} of ${results.length} panels failed to load.`);
-    }
-    setLoading(false);
-  }, []);
-
-  useEffect(() => {
-    load();
-  }, [load]);
-
-  const handleObserve = async () => {
-    setBusy(true);
-    setNotice(null);
-    setError(null);
-    try {
-      const res = await runObserve(20, false);
-      setNotice(`Observe run complete: ${JSON.stringify(res).slice(0, 200)}`);
-      await load();
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Observe run failed');
-    } finally {
-      setBusy(false);
-    }
-  };
-
-  const handleDecision = async (id: number, action: 'approve' | 'reject') => {
-    setBusy(true);
-    setError(null);
-    try {
-      if (action === 'approve') await approveDraft(id);
-      else await rejectDraft(id);
-      setNotice(`Draft #${id} ${action}d`);
-      await load();
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Action failed');
-    } finally {
-      setBusy(false);
-    }
-  };
-
-  const Loading = () => (
-    <div className="space-y-2">
-      {Array.from({ length: 5 }).map((_, i) => (
-        <Skeleton key={i} className="h-10 w-full" />
-      ))}
-    </div>
-  );
-
-  const Empty = ({ children }: { children: React.ReactNode }) => (
-    <p className="text-sm text-muted-foreground py-8 text-center">{children}</p>
-  );
+export default async function ActivityPage() {
+  const [approvals, watchlist, topics, summary, posted, scores] = await Promise.all([
+    getFullPendingDrafts(),
+    getWatchlist(50),
+    getTopTopics(50),
+    getMemorySummary(),
+    getPostedLog(30),
+    getSourceScores()
+  ]);
 
   return (
-    <div className="container mx-auto py-8 max-w-7xl">
-      <div className="mb-8 flex items-start justify-between gap-4">
-        <div>
-          <h1 className="text-3xl font-bold mb-2">Activity</h1>
-          <p className="text-muted-foreground">
-            Autopilot state: pending approvals, discovered accounts, learned topics,
-            and what has actually been posted.
-          </p>
-        </div>
-        <div className="flex gap-2">
-          <Button variant="outline" onClick={load} disabled={loading}>
-            <IconRefresh className="w-4 h-4 mr-2" />
-            Refresh
-          </Button>
-          <Button onClick={handleObserve} disabled={busy}>
-            {busy ? (
-              <IconLoader className="w-4 h-4 mr-2 animate-spin" />
-            ) : (
-              <IconPlayerPlay className="w-4 h-4 mr-2" />
-            )}
-            Run Observe Now
-          </Button>
-        </div>
+    <div className="space-y-8">
+      <div>
+        <h1 className="text-3xl font-bold">Activity</h1>
+        <p className="mt-1 text-muted-foreground">
+          Autopilot state: pending drafts, watched accounts, learned topics, and what has
+          actually been posted.
+        </p>
       </div>
 
-      {error && (
-        <Alert variant="destructive" className="mb-6">
-          <AlertDescription>{error}</AlertDescription>
-        </Alert>
-      )}
-      {notice && (
-        <Alert className="mb-6">
-          <AlertDescription>{notice}</AlertDescription>
-        </Alert>
-      )}
+      {/* Pending drafts */}
+      <section className="rounded-xl border bg-card">
+        <div className="flex items-center justify-between border-b px-5 py-4">
+          <h2 className="flex items-center gap-2 font-semibold">
+            <IconCheck className="h-5 w-5" /> Pending drafts
+            {approvals.length > 0 && (
+              <span className="rounded bg-primary px-2 py-0.5 text-xs text-primary-foreground">
+                {approvals.length}
+              </span>
+            )}
+          </h2>
+        </div>
+        <div className="p-5">
+          {approvals.length === 0 ? (
+            <p className="py-6 text-center text-sm text-muted-foreground">
+              Nothing awaiting approval. The autopilot posts directly when approval mode is off.
+            </p>
+          ) : (
+            <ul className="space-y-4">
+              {approvals.map((a) => (
+                <li key={a.id} className="rounded-lg border p-4">
+                  <div className="mb-2 flex items-center gap-2 text-xs text-muted-foreground">
+                    <span>#{a.id}</span>
+                    {a.topic && <span className="rounded bg-muted px-1.5 py-0.5">#{a.topic}</span>}
+                  </div>
+                  <p className="text-sm">{a.draft}</p>
+                  {a.reason && (
+                    <p className="mt-1 text-xs text-muted-foreground">Why: {a.reason}</p>
+                  )}
+                  {a.source_link && (
+                    <a
+                      href={a.source_link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-1 inline-block text-xs text-blue-500 hover:underline"
+                    >
+                      source →
+                    </a>
+                  )}
+                  <div className="mt-3 flex gap-2">
+                    <form action={approveDraftAction}>
+                      <input type="hidden" name="id" value={a.id} />
+                      <button
+                        type="submit"
+                        className="flex h-8 items-center gap-1 rounded-md bg-primary px-3 text-sm font-medium text-primary-foreground transition hover:bg-primary/90"
+                      >
+                        <IconCheck className="h-4 w-4" /> Approve
+                      </button>
+                    </form>
+                    <form action={rejectDraftAction}>
+                      <input type="hidden" name="id" value={a.id} />
+                      <button
+                        type="submit"
+                        className="flex h-8 items-center gap-1 rounded-md border px-3 text-sm font-medium transition hover:bg-muted"
+                      >
+                        <IconX className="h-4 w-4" /> Reject
+                      </button>
+                    </form>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </section>
 
-      <Tabs defaultValue="approvals">
-        <TabsList>
-          <TabsTrigger value="approvals">
-            Approvals {approvals.length > 0 && `(${approvals.length})`}
-          </TabsTrigger>
-          <TabsTrigger value="watchlist">Watchlist</TabsTrigger>
-          <TabsTrigger value="insights">Insights</TabsTrigger>
-          <TabsTrigger value="posted">Posted</TabsTrigger>
-        </TabsList>
-
-        {/* Approvals */}
-        <TabsContent value="approvals">
-          <Card>
-            <CardHeader>
-              <CardTitle>Pending drafts</CardTitle>
-            </CardHeader>
-            <CardContent>
-              {loading ? (
-                <Loading />
-              ) : approvals.length === 0 ? (
-                <Empty>
-                  Nothing awaiting approval. The autopilot posts directly when
-                  approval mode is off.
-                </Empty>
-              ) : (
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>#</TableHead>
-                      <TableHead>Draft</TableHead>
-                      <TableHead>Topic</TableHead>
-                      <TableHead>Reason</TableHead>
-                      <TableHead className="text-right">Decision</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {approvals.map((a) => (
-                      <TableRow key={a.id}>
-                        <TableCell className="font-mono text-sm">{a.id}</TableCell>
-                        <TableCell className="max-w-md">
-                          <p className="text-sm line-clamp-3">{a.draft}</p>
-                          {a.source_link && (
-                            <a
-                              href={a.source_link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-xs text-blue-500 hover:underline"
-                            >
-                              source →
-                            </a>
-                          )}
-                        </TableCell>
-                        <TableCell>
-                          {a.topic ? <Badge variant="secondary">{a.topic}</Badge> : '—'}
-                        </TableCell>
-                        <TableCell className="text-sm text-muted-foreground max-w-xs">
-                          {a.reason || '—'}
-                        </TableCell>
-                        <TableCell className="text-right">
-                          <div className="flex justify-end gap-2">
-                            <Button
-                              size="sm"
-                              disabled={busy}
-                              onClick={() => handleDecision(a.id, 'approve')}
-                            >
-                              <IconCheck className="w-4 h-4 mr-1" />
-                              Approve
-                            </Button>
-                            <Button
-                              size="sm"
-                              variant="outline"
-                              disabled={busy}
-                              onClick={() => handleDecision(a.id, 'reject')}
-                            >
-                              <IconX className="w-4 h-4 mr-1" />
-                              Reject
-                            </Button>
-                          </div>
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              )}
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        {/* Watchlist */}
-        <TabsContent value="watchlist">
-          <Card>
-            <CardHeader>
-              <CardTitle>Watched accounts</CardTitle>
-            </CardHeader>
-            <CardContent>
-              {loading ? (
-                <Loading />
-              ) : watchlist.length === 0 ? (
-                <Empty>No accounts on the watchlist yet.</Empty>
-              ) : (
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Handle</TableHead>
-                      <TableHead>Reason</TableHead>
-                      <TableHead>Topics</TableHead>
-                      <TableHead>Last seen</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {watchlist.map((w) => (
-                      <TableRow key={w.id ?? w.handle}>
-                        <TableCell>
-                          <a
-                            href={`https://x.com/${w.handle}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-blue-500 hover:underline font-medium"
-                          >
-                            @{w.handle}
-                          </a>
-                        </TableCell>
-                        <TableCell className="text-sm text-muted-foreground max-w-sm">
-                          {w.reason || '—'}
-                        </TableCell>
-                        <TableCell>
-                          <div className="flex flex-wrap gap-1">
-                            {(w.topics ?? []).length === 0 ? (
-                              <span className="text-xs text-muted-foreground">—</span>
-                            ) : (
-                              (w.topics ?? []).map((t) => (
-                                <Badge key={t} variant="secondary">
-                                  {t}
-                                </Badge>
-                              ))
-                            )}
-                          </div>
-                        </TableCell>
-                        <TableCell className="text-xs text-muted-foreground">
-                          {w.last_seen ? new Date(w.last_seen).toLocaleString() : '—'}
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              )}
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        {/* Insights */}
-        <TabsContent value="insights">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Top topics</CardTitle>
-              </CardHeader>
-              <CardContent>
-                {loading ? (
-                  <Loading />
-                ) : topics.length === 0 ? (
-                  <Empty>No topics learned yet.</Empty>
-                ) : (
-                  <Table>
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead>Topic</TableHead>
-                        <TableHead className="text-right">Mentions</TableHead>
-                        <TableHead>Last seen</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {topics.map((t) => (
-                        <TableRow key={t.topic}>
-                          <TableCell className="font-medium">{t.topic}</TableCell>
-                          <TableCell className="text-right">{t.count}</TableCell>
-                          <TableCell className="text-xs text-muted-foreground">
-                            {t.last_seen ? new Date(t.last_seen).toLocaleDateString() : '—'}
-                          </TableCell>
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
-                )}
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Memory summary</CardTitle>
-              </CardHeader>
-              <CardContent>
-                {loading ? (
-                  <Loading />
-                ) : !summary || Object.keys(summary).length === 0 ? (
-                  <Empty>No memory recorded yet.</Empty>
-                ) : (
-                  <dl className="space-y-2">
-                    {Object.entries(summary).map(([k, v]) => (
-                      <div key={k} className="flex justify-between gap-4 text-sm">
-                        <dt className="text-muted-foreground">{k.replace(/_/g, ' ')}</dt>
-                        <dd className="font-mono">
-                          {typeof v === 'object' ? JSON.stringify(v) : String(v)}
-                        </dd>
-                      </div>
-                    ))}
-                  </dl>
-                )}
-              </CardContent>
-            </Card>
+      {/* Watchlist + Insights */}
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <section className="rounded-xl border bg-card">
+          <div className="flex items-center gap-2 border-b px-5 py-4">
+            <IconStar className="h-5 w-5" />
+            <h2 className="font-semibold">Watched accounts</h2>
           </div>
-        </TabsContent>
-
-        {/* Posted */}
-        <TabsContent value="posted">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <Card className="lg:col-span-2">
-              <CardHeader>
-                <CardTitle>Recently posted</CardTitle>
-              </CardHeader>
-              <CardContent>
-                {loading ? (
-                  <Loading />
-                ) : posted.length === 0 ? (
-                  <Empty>Nothing posted yet.</Empty>
-                ) : (
-                  <Table>
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead>Content</TableHead>
-                        <TableHead>Source</TableHead>
-                        <TableHead>Posted</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {posted.map((p) => (
-                        <TableRow key={p.id}>
-                          <TableCell className="max-w-md">
-                            <p className="text-sm line-clamp-2">{p.content}</p>
-                            {p.posted_tweet_id && (
-                              <a
-                                href={`https://x.com/i/status/${p.posted_tweet_id}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-xs text-blue-500 hover:underline"
-                              >
-                                view on X →
-                              </a>
-                            )}
-                          </TableCell>
-                          <TableCell>
-                            {p.source_key ? (
-                              <Badge variant="outline">{p.source_key}</Badge>
-                            ) : (
-                              '—'
-                            )}
-                          </TableCell>
-                          <TableCell className="text-xs text-muted-foreground">
-                            {p.posted_at ? new Date(p.posted_at).toLocaleString() : '—'}
-                          </TableCell>
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
-                )}
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Source scores</CardTitle>
-              </CardHeader>
-              <CardContent>
-                {loading ? (
-                  <Loading />
-                ) : scores.length === 0 ? (
-                  <Empty>No engagement data yet.</Empty>
-                ) : (
-                  <Table>
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead>Source</TableHead>
-                        <TableHead className="text-right">Posts</TableHead>
-                        <TableHead className="text-right">Engagement</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {scores.map((s) => (
-                        <TableRow key={s.source_key}>
-                          <TableCell className="text-sm font-medium truncate max-w-32">
-                            {s.source_key}
-                          </TableCell>
-                          <TableCell className="text-right text-sm">{s.posts}</TableCell>
-                          <TableCell className="text-right text-sm font-mono">
-                            {s.sum_engagement.toLocaleString()}
-                          </TableCell>
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
-                )}
-              </CardContent>
-            </Card>
+          <div className="p-5">
+            {watchlist.length === 0 ? (
+              <p className="py-6 text-center text-sm text-muted-foreground">No accounts on the watchlist yet.</p>
+            ) : (
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b text-left text-muted-foreground">
+                    <th className="py-2 font-medium">Handle</th>
+                    <th className="py-2 font-medium">Topics</th>
+                    <th className="py-2 text-right font-medium">Relevance</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {watchlist.map((w) => (
+                    <tr key={w.username} className="border-b last:border-0">
+                      <td className="py-2">
+                        <a
+                          href={`https://x.com/${w.username}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-medium text-blue-500 hover:underline"
+                        >
+                          @{w.username}
+                        </a>
+                      </td>
+                      <td className="py-2 text-xs text-muted-foreground">
+                        {Array.isArray(w.topics)
+                          ? (w.topics as unknown[]).slice(0, 4).join(', ')
+                          : '—'}
+                      </td>
+                      <td className="py-2 text-right font-mono text-xs">
+                        {Number(w.relevance_score).toFixed(2)}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
           </div>
-        </TabsContent>
-      </Tabs>
+        </section>
+
+        <section className="rounded-xl border bg-card">
+          <div className="flex items-center gap-2 border-b px-5 py-4">
+            <IconHash className="h-5 w-5" />
+            <h2 className="font-semibold">Top topics</h2>
+          </div>
+          <div className="p-5">
+            {topics.length === 0 ? (
+              <p className="py-6 text-center text-sm text-muted-foreground">No topics learned yet.</p>
+            ) : (
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b text-left text-muted-foreground">
+                    <th className="py-2 font-medium">Topic</th>
+                    <th className="py-2 text-right font-medium">Relevant</th>
+                    <th className="py-2 text-right font-medium">Seen</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {topics.map((t) => (
+                    <tr key={t.name} className="border-b last:border-0">
+                      <td className="py-2 font-medium">{t.name}</td>
+                      <td className="py-2 text-right">{t.relevant_count}</td>
+                      <td className="py-2 text-right text-muted-foreground">{t.observed_count}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
+          </div>
+        </section>
+      </div>
+
+      {/* Memory summary */}
+      <section className="rounded-xl border bg-card">
+        <div className="flex items-center gap-2 border-b px-5 py-4">
+          <IconChartBar className="h-5 w-5" />
+          <h2 className="font-semibold">Memory summary</h2>
+        </div>
+        <div className="grid grid-cols-2 gap-4 p-5 sm:grid-cols-3 lg:grid-cols-6">
+          {Object.entries(summary).map(([k, v]) => (
+            <div key={k}>
+              <p className="text-xs capitalize text-muted-foreground">{k.replace(/_/g, ' ')}</p>
+              <p className="text-xl font-bold">{Number(v).toLocaleString()}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Posted + source scores */}
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+        <section className="rounded-xl border bg-card lg:col-span-2">
+          <div className="flex items-center gap-2 border-b px-5 py-4">
+            <IconSend className="h-5 w-5" />
+            <h2 className="font-semibold">Recently posted</h2>
+          </div>
+          <div className="p-5">
+            {posted.length === 0 ? (
+              <p className="py-6 text-center text-sm text-muted-foreground">Nothing posted yet.</p>
+            ) : (
+              <ul className="space-y-3">
+                {posted.map((p) => (
+                  <li key={p.id} className="border-b pb-3 last:border-0 last:pb-0">
+                    <p className="line-clamp-2 text-sm">{p.content}</p>
+                    <div className="mt-1 flex items-center gap-2 text-xs text-muted-foreground">
+                      <span>{p.source_key || p.group_name || '—'}</span>
+                      <span>·</span>
+                      <span>{fmtDate(p.posted_at)}</span>
+                      {p.posted_tweet_id && (
+                        <a
+                          href={`https://x.com/i/status/${p.posted_tweet_id}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-500 hover:underline"
+                        >
+                          view →
+                        </a>
+                      )}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </section>
+
+        <section className="rounded-xl border bg-card">
+          <div className="border-b px-5 py-4">
+            <h2 className="font-semibold">Source scores</h2>
+          </div>
+          <div className="p-5">
+            {scores.length === 0 ? (
+              <p className="py-6 text-center text-sm text-muted-foreground">No engagement data yet.</p>
+            ) : (
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b text-left text-muted-foreground">
+                    <th className="py-2 font-medium">Source</th>
+                    <th className="py-2 text-right font-medium">Posts</th>
+                    <th className="py-2 text-right font-medium">Eng.</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {scores.map((s) => (
+                    <tr key={s.source_key} className="border-b last:border-0">
+                      <td className="py-2 text-xs font-medium">{s.source_key}</td>
+                      <td className="py-2 text-right text-xs">{s.posts}</td>
+                      <td className="py-2 text-right font-mono text-xs">{s.sum_engagement.toLocaleString()}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
+          </div>
+        </section>
+      </div>
     </div>
   );
 }

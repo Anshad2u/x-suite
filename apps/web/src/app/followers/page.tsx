@@ -1,269 +1,175 @@
-'use client';
+import { IconPlus, IconMinus, IconUsers } from '@tabler/icons-react';
+import { listFollowers, listGroupNames } from '@/lib/server/queries';
+import { assignFollowerAction, removeFollowerAction } from './actions';
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Skeleton } from '@/components/ui/skeleton';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow
-} from '@/components/ui/table';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue
-} from '@/components/ui/select';
-import { IconPlus, IconMinus, IconRefresh, IconUsers } from '@tabler/icons-react';
-import {
-  assignFollower,
-  getFollowers,
-  getGroups,
-  removeFollower,
-  type Follower,
-  type Group
-} from '@/lib/api';
+type SP = { group?: string; q?: string };
 
-export default function FollowersPage() {
-  const [followers, setFollowers] = useState<Follower[]>([]);
-  const [groups, setGroups] = useState<Group[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [groupFilter, setGroupFilter] = useState<string>('all');
-  const [search, setSearch] = useState('');
-  const [busy, setBusy] = useState<string | null>(null);
-  // Per-row target group for the add/remove buttons.
-  const [rowTarget, setRowTarget] = useState<Record<string, string>>({});
-
-  const load = useCallback(async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const [f, g] = await Promise.all([
-        getFollowers(groupFilter === 'all' ? undefined : groupFilter),
-        getGroups()
-      ]);
-      setFollowers(f);
-      setGroups(g);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to load followers');
-    } finally {
-      setLoading(false);
-    }
-  }, [groupFilter]);
-
-  useEffect(() => {
-    load();
-  }, [load]);
-
-  const visible = useMemo(() => {
-    const q = search.trim().toLowerCase();
-    if (!q) return followers;
-    return followers.filter(
-      (f) =>
-        f.username.toLowerCase().includes(q) ||
-        (f.display_name ?? '').toLowerCase().includes(q)
-    );
-  }, [followers, search]);
-
-  const mutate = async (username: string, group: string, action: 'add' | 'remove') => {
-    setBusy(`${username}:${group}:${action}`);
-    setError(null);
-    try {
-      if (action === 'add') await assignFollower(group, username);
-      else await removeFollower(group, username);
-      await load();
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Update failed');
-    } finally {
-      setBusy(null);
-    }
-  };
+export default async function FollowersPage({
+  searchParams
+}: {
+  searchParams: Promise<SP>;
+}) {
+  const sp = await searchParams;
+  const group = sp.group ?? 'all';
+  const q = sp.q ?? '';
+  const [followers, groups] = await Promise.all([
+    listFollowers({ group, search: q }),
+    listGroupNames()
+  ]);
 
   return (
-    <div className="container mx-auto py-8 max-w-7xl">
-      <div className="mb-8 flex items-start justify-between gap-4">
-        <div>
-          <h1 className="text-3xl font-bold mb-2">All Followers</h1>
-          <p className="text-muted-foreground">
-            Assign followers to groups. Group membership drives which accounts get
-            scraped and which sources the autopilot curates from.
-          </p>
-        </div>
-        <Button variant="outline" onClick={load} disabled={loading}>
-          <IconRefresh className="w-4 h-4 mr-2" />
-          Refresh
-        </Button>
+    <div className="space-y-8">
+      <div>
+        <h1 className="text-3xl font-bold">All Followers</h1>
+        <p className="mt-1 text-muted-foreground">
+          Assign followers to groups. Group membership drives which accounts get scraped
+          and which sources the autopilot curates from.
+        </p>
       </div>
 
-      {error && (
-        <Alert variant="destructive" className="mb-6">
-          <AlertDescription>{error}</AlertDescription>
-        </Alert>
-      )}
-
-      <Card className="mb-6">
-        <CardContent className="pt-6 flex flex-wrap items-center gap-3">
-          <Select value={groupFilter} onValueChange={(v) => setGroupFilter(v ?? 'all')}>
-            <SelectTrigger className="w-56">
-              <SelectValue placeholder="Filter by group" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">All followers</SelectItem>
-              {groups.map((g) => (
-                <SelectItem key={g.name} value={g.name}>
-                  {g.name} ({g.count})
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-          <Input
-            placeholder="Search username or name..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="max-w-xs"
+      <form method="get" className="flex flex-wrap items-end gap-3 rounded-xl border bg-card p-4">
+        <div>
+          <label className="mb-1 block text-sm text-muted-foreground">Group</label>
+          <select
+            name="group"
+            defaultValue={group}
+            className="h-10 rounded-md border bg-background px-3 text-sm outline-none focus:ring-2 focus:ring-primary"
+          >
+            <option value="all">All followers</option>
+            {groups.map((g) => (
+              <option key={g} value={g}>
+                {g}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="flex-1 min-w-56">
+          <label className="mb-1 block text-sm text-muted-foreground">Search</label>
+          <input
+            name="q"
+            defaultValue={q}
+            placeholder="username or name..."
+            className="h-10 w-full rounded-md border bg-background px-3 text-sm outline-none focus:ring-2 focus:ring-primary"
           />
-          <span className="text-sm text-muted-foreground ml-auto">
-            {visible.length} shown
-          </span>
-        </CardContent>
-      </Card>
+        </div>
+        <button
+          type="submit"
+          className="h-10 rounded-md bg-primary px-4 text-sm font-semibold text-primary-foreground transition hover:bg-primary/90"
+        >
+          Filter
+        </button>
+      </form>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <IconUsers className="w-5 h-5" />
-            Followers
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          {loading ? (
-            <div className="space-y-2">
-              {Array.from({ length: 8 }).map((_, i) => (
-                <Skeleton key={i} className="h-10 w-full" />
-              ))}
-            </div>
-          ) : visible.length === 0 ? (
-            <p className="text-sm text-muted-foreground py-8 text-center">
-              No followers yet. Go to <strong>Scrape</strong> and fetch your
-              following/followers first.
+      <div className="rounded-xl border bg-card">
+        <div className="flex items-center justify-between border-b px-5 py-4">
+          <h2 className="flex items-center gap-2 font-semibold">
+            <IconUsers className="h-5 w-5" /> Followers
+          </h2>
+          <span className="text-sm text-muted-foreground">{followers.length} shown</span>
+        </div>
+        <div className="p-2 sm:p-5">
+          {followers.length === 0 ? (
+            <p className="py-8 text-center text-sm text-muted-foreground">
+              No followers match. Try a different filter, or scrape data first.
             </p>
           ) : (
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Username</TableHead>
-                  <TableHead>Name</TableHead>
-                  <TableHead className="text-right">Followers</TableHead>
-                  <TableHead>Groups</TableHead>
-                  <TableHead className="w-72">Assign</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {visible.map((f) => {
-                  const current = (f.groups || '')
-                    .split(',')
-                    .map((s) => s.trim())
-                    .filter(Boolean);
-                  const target = rowTarget[f.username] ?? groups[0]?.name ?? '';
-                  return (
-                    <TableRow key={f.username}>
-                      <TableCell className="font-medium">
-                        <div className="flex items-center gap-2">
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b text-left text-muted-foreground">
+                    <th className="py-2 pr-4 font-medium">Username</th>
+                    <th className="py-2 pr-4 font-medium">Name</th>
+                    <th className="py-2 pr-4 text-right font-medium">Followers</th>
+                    <th className="py-2 pr-4 font-medium">Groups</th>
+                    <th className="py-2 font-medium">Assign</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {followers.map((f) => {
+                    const current = (f.groups || '')
+                      .split(',')
+                      .map((s) => s.trim())
+                      .filter(Boolean);
+                    return (
+                      <tr key={f.id} className="border-b last:border-0 align-top">
+                        <td className="py-3 pr-4">
                           <a
                             href={`https://x.com/${f.username}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-blue-500 hover:underline"
+                            className="font-medium text-blue-500 hover:underline"
                           >
                             @{f.username}
                           </a>
-                          {f.verified && <Badge variant="outline">verified</Badge>}
-                        </div>
-                      </TableCell>
-                      <TableCell className="max-w-xs truncate text-sm text-muted-foreground">
-                        {f.display_name || '—'}
-                      </TableCell>
-                      <TableCell className="text-right font-mono text-sm">
-                        {f.followers_count.toLocaleString()}
-                      </TableCell>
-                      <TableCell>
-                        <div className="flex flex-wrap gap-1">
-                          {current.length === 0 ? (
-                            <span className="text-xs text-muted-foreground">none</span>
-                          ) : (
-                            current.map((g) => (
-                              <Badge key={g} variant="secondary">
-                                {g}
-                              </Badge>
-                            ))
+                          {f.verified && (
+                            <span className="ml-1 rounded border px-1 text-xs">verified</span>
                           )}
-                        </div>
-                      </TableCell>
-                      <TableCell>
-                        {groups.length === 0 ? (
-                          <span className="text-xs text-muted-foreground">
-                            Create a group first
-                          </span>
-                        ) : (
-                          <div className="flex items-center gap-2">
-                            <Select
-                              value={target}
-                              onValueChange={(v) =>
-                                setRowTarget((prev) => ({
-                                  ...prev,
-                                  [f.username]: v ?? ''
-                                }))
-                              }
-                            >
-                              <SelectTrigger className="w-36">
-                                <SelectValue />
-                              </SelectTrigger>
-                              <SelectContent>
-                                {groups.map((g) => (
-                                  <SelectItem key={g.name} value={g.name}>
-                                    {g.name}
-                                  </SelectItem>
-                                ))}
-                              </SelectContent>
-                            </Select>
-                            <Button
-                              size="icon"
-                              variant="outline"
-                              title="Add to group"
-                              disabled={busy !== null || current.includes(target)}
-                              onClick={() => mutate(f.username, target, 'add')}
-                            >
-                              <IconPlus className="w-4 h-4" />
-                            </Button>
-                            <Button
-                              size="icon"
-                              variant="outline"
-                              title="Remove from group"
-                              disabled={busy !== null || !current.includes(target)}
-                              onClick={() => mutate(f.username, target, 'remove')}
-                            >
-                              <IconMinus className="w-4 h-4" />
-                            </Button>
+                        </td>
+                        <td className="py-3 pr-4 text-muted-foreground">{f.display_name || '—'}</td>
+                        <td className="py-3 pr-4 text-right font-mono">{f.followers_count.toLocaleString()}</td>
+                        <td className="py-3 pr-4">
+                          <div className="flex flex-wrap gap-1">
+                            {current.length === 0 ? (
+                              <span className="text-xs text-muted-foreground">none</span>
+                            ) : (
+                              current.map((g) => (
+                                <span
+                                  key={g}
+                                  className="inline-flex items-center gap-1 rounded bg-muted px-1.5 py-0.5 text-xs"
+                                >
+                                  {g}
+                                  <form action={removeFollowerAction} className="inline">
+                                    <input type="hidden" name="username" value={f.username} />
+                                    <input type="hidden" name="group" value={g} />
+                                    <button
+                                      type="submit"
+                                      title={`Remove from ${g}`}
+                                      className="text-muted-foreground hover:text-destructive"
+                                    >
+                                      <IconMinus className="h-3 w-3" />
+                                    </button>
+                                  </form>
+                                </span>
+                              ))
+                            )}
                           </div>
-                        )}
-                      </TableCell>
-                    </TableRow>
-                  );
-                })}
-              </TableBody>
-            </Table>
+                        </td>
+                        <td className="py-3">
+                          {groups.length === 0 ? (
+                            <span className="text-xs text-muted-foreground">Create a group first</span>
+                          ) : (
+                            <form action={assignFollowerAction} className="flex items-center gap-2">
+                              <input type="hidden" name="username" value={f.username} />
+                              <select
+                                name="group"
+                                defaultValue={groups[0]}
+                                className="h-8 rounded-md border bg-background px-2 text-xs outline-none"
+                              >
+                                {groups.map((g) => (
+                                  <option key={g} value={g}>
+                                    {g}
+                                  </option>
+                                ))}
+                              </select>
+                              <button
+                                type="submit"
+                                title="Add to group"
+                                className="inline-flex h-8 w-8 items-center justify-center rounded-md border transition hover:bg-muted"
+                              >
+                                <IconPlus className="h-4 w-4" />
+                              </button>
+                            </form>
+                          )}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
           )}
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }

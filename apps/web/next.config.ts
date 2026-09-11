@@ -11,6 +11,9 @@ loadEnvConfig(path.resolve(process.cwd(), '../..'));
 
 // Define the base Next.js configuration
 const baseConfig: NextConfig = {
+  // Keep Next's workspace-root inference pointed at this app, not a stray
+  // lockfile in the user's home directory.
+  turbopack: { root: '.' },
   output: process.env.BUILD_STANDALONE === 'true' ? 'standalone' : undefined,
   images: {
     remotePatterns: [
