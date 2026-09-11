@@ -106,6 +106,35 @@ def init_dbs():
     db.execute('ALTER TABLE posted_log ADD COLUMN IF NOT EXISTS source_key TEXT')
     db.execute('ALTER TABLE posted_log ADD COLUMN IF NOT EXISTS posted_tweet_id TEXT')
 
+    # --- post queue (migrated from social-agent's SQLite `posts` table) ---
+    # Distinct from posted_log: posted_log records what was published and
+    # from which source (provenance + engagement learning); post_queue is
+    # the pending-work list the scheduler drains.
+    db.execute('''CREATE TABLE IF NOT EXISTS post_queue (
+        id SERIAL PRIMARY KEY,
+        platform TEXT NOT NULL,
+        status TEXT NOT NULL DEFAULT 'pending'
+            CHECK (status IN ('pending','posted','failed')),
+        scheduled_at TIMESTAMPTZ,
+        posted_at TIMESTAMPTZ,
+        content TEXT NOT NULL,
+        permalink TEXT,
+        error TEXT,
+        created_at TIMESTAMPTZ DEFAULT NOW()
+    )''')
+    db.execute('''CREATE INDEX IF NOT EXISTS idx_post_queue_due
+        ON post_queue (status, scheduled_at)''')
+
+    # --- counters (migrated from social-agent's SQLite `counters` table) ---
+    db.execute('''CREATE TABLE IF NOT EXISTS counters (
+        key TEXT PRIMARY KEY,
+        value INTEGER NOT NULL DEFAULT 0
+    )''')
+
+    # --- opt-in auto-reply support ---
+    db.execute('ALTER TABLE mentions ADD COLUMN IF NOT EXISTS replied BOOLEAN DEFAULT FALSE')
+    db.execute('ALTER TABLE reddit_mentions ADD COLUMN IF NOT EXISTS replied BOOLEAN DEFAULT FALSE')
+
 
 def add_follower(follower_data):
     db.execute('''INSERT INTO followers
@@ -386,3 +415,68 @@ def upsert_source_score(source_key, engagement):
 
 def get_source_scores():
     return db.query_all('SELECT * FROM source_scores ORDER BY sum_engagement DESC')
+
+
+# --- post queue --------------------------------------------------------------
+# Implements the PostQueue contract expected by social_agent.scheduler.
+# See packages/agent/README.md for the injection contract.
+
+def queue_add_post(platform, content, scheduled_at=None):
+    row = db.query_one('''INSERT INTO post_queue (platform, content, scheduled_at)
+        VALUES (%s, %s, %s) RETURNING id''', (platform, content, scheduled_at))
+    return row['id']
+
+
+def queue_due_posts(now_iso):
+    return db.query_all('''SELECT * FROM post_queue
+        WHERE status = 'pending'
+          AND (scheduled_at IS NULL OR scheduled_at <= %s)
+        ORDER BY scheduled_at ASC NULLS FIRST''', (now_iso,))
+
+
+def queue_mark_posted(post_id, permalink):
+    """Mark a queue row posted and append it to posted_log, atomically.
+
+    posted_log is what feeds the engagement-learning loop, so it must not
+    drift from the queue. Both writes happen on one connection/transaction.
+    """
+    # Permalinks end in the platform's post id (e.g. .../status/123 -> 123).
+    posted_id = (permalink or '').rstrip('/').rsplit('/', 1)[-1] or None
+
+    conn = db.get_conn()
+    with conn.cursor() as cur:
+        cur.execute('''UPDATE post_queue
+            SET status = 'posted', posted_at = NOW(), permalink = %s
+            WHERE id = %s''', (permalink, post_id))
+        cur.execute('SELECT platform, content FROM post_queue WHERE id = %s', (post_id,))
+        row = cur.fetchone()
+        if row:
+            platform, content = row[0], row[1]
+            cur.execute('''INSERT INTO posted_log
+                (content, posted_at, source_key, posted_tweet_id)
+                VALUES (%s, NOW(), %s, %s)''',
+                (content, f'queue:{platform}', posted_id))
+    conn.commit()
+
+
+def queue_mark_failed(post_id, error):
+    db.execute('''UPDATE post_queue SET status = 'failed', error = %s
+        WHERE id = %s''', (error, post_id))
+
+
+def queue_posts_today():
+    row = db.query_one('''SELECT COUNT(*) AS c FROM post_queue
+        WHERE status = 'posted' AND posted_at::date = NOW()::date''')
+    return row['c'] if row else 0
+
+
+# --- counters ----------------------------------------------------------------
+
+def counter_increment(key, n=1):
+    db.execute('''INSERT INTO counters (key, value) VALUES (%s, %s)
+        ON CONFLICT (key) DO UPDATE SET value = counters.value + %s''', (key, n, n))
+
+
+def counter_get(key):
+    row = db.query_one('SELECT value FROM counters WHERE key = %s', (key,))
+    return row['value'] if row else 0

@@ -30,6 +30,15 @@ POST_JITTER_MIN = int(os.environ.get("POST_JITTER_MIN", "2"))
 POST_JITTER_MAX = int(os.environ.get("POST_JITTER_MAX", "8"))
 POST_MAX_RETRIES = int(os.environ.get("POST_MAX_RETRIES", "3"))
 
+# Agent safety switch. Defaults to True so an unconfigured deployment
+# can never post by accident. Set DRY_RUN=false to go live.
+DRY_RUN = os.environ.get("DRY_RUN", "true")
+
+
+def is_dry_run():
+    """Return True when DRY_RUN is truthy (default True)."""
+    return str(DRY_RUN).lower() in ("true", "1", "yes")
+
 REDDIT_CLIENT_ID = os.environ.get("REDDIT_CLIENT_ID", "")
 REDDIT_CLIENT_SECRET = os.environ.get("REDDIT_CLIENT_SECRET", "")
 REDDIT_USERNAME = os.environ.get("REDDIT_USERNAME", "")
