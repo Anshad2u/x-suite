@@ -50,6 +50,61 @@ def init_dbs():
         content TEXT,
         posted_at TIMESTAMPTZ DEFAULT NOW()
     )''')
+    db.execute('''CREATE TABLE IF NOT EXISTS mentions (
+        id SERIAL PRIMARY KEY,
+        tweet_id TEXT UNIQUE,
+        username TEXT,
+        author TEXT,
+        content TEXT,
+        tweet_url TEXT,
+        posted_at TEXT,
+        alerted BOOLEAN DEFAULT FALSE,
+        seen_at TIMESTAMPTZ DEFAULT NOW()
+    )''')
+    db.execute('''CREATE TABLE IF NOT EXISTS reddit_mentions (
+        id TEXT PRIMARY KEY,
+        author TEXT,
+        content TEXT,
+        permalink TEXT,
+        posted_at TEXT,
+        alerted BOOLEAN DEFAULT FALSE,
+        seen_at TIMESTAMPTZ DEFAULT NOW()
+    )''')
+    db.execute('''CREATE TABLE IF NOT EXISTS reddit_posts_log (
+        id SERIAL PRIMARY KEY,
+        title TEXT,
+        content TEXT,
+        subreddit TEXT,
+        permalink TEXT,
+        posted_at TIMESTAMPTZ DEFAULT NOW()
+    )''')
+    db.execute('''CREATE TABLE IF NOT EXISTS reddit_feed_log (
+        id SERIAL PRIMARY KEY,
+        entry_id TEXT UNIQUE,
+        subreddit TEXT,
+        author TEXT,
+        title TEXT,
+        link TEXT,
+        updated_at TEXT,
+        alerted BOOLEAN DEFAULT FALSE,
+        seen_at TIMESTAMPTZ DEFAULT NOW()
+    )''')
+    db.execute('''CREATE TABLE IF NOT EXISTS posted_engagement (
+        id SERIAL PRIMARY KEY,
+        tweet_id TEXT UNIQUE,
+        likes INTEGER DEFAULT 0,
+        reposts INTEGER DEFAULT 0,
+        replies INTEGER DEFAULT 0,
+        fetched_at TIMESTAMPTZ DEFAULT NOW()
+    )''')
+    db.execute('''CREATE TABLE IF NOT EXISTS source_scores (
+        source_key TEXT PRIMARY KEY,
+        posts INTEGER DEFAULT 0,
+        sum_engagement INTEGER DEFAULT 0,
+        updated_at TIMESTAMPTZ DEFAULT NOW()
+    )''')
+    db.execute('ALTER TABLE posted_log ADD COLUMN IF NOT EXISTS source_key TEXT')
+    db.execute('ALTER TABLE posted_log ADD COLUMN IF NOT EXISTS posted_tweet_id TEXT')
 
 
 def add_follower(follower_data):
@@ -186,3 +241,148 @@ def add_tweet(tweet_data):
          tweet_data.get('like_count', 0),
          tweet_data.get('view_count', 0),
          tweet_data.get('posted_at')))
+
+
+def add_mention(mention_data):
+    db.execute('''INSERT INTO mentions
+        (tweet_id, username, author, content, tweet_url, posted_at)
+        VALUES (%s, %s, %s, %s, %s, %s)
+        ON CONFLICT (tweet_id) DO NOTHING''',
+        (mention_data.get('tweet_id'),
+         mention_data.get('username'),
+         mention_data.get('author', ''),
+         mention_data.get('content', ''),
+         mention_data.get('tweet_url', ''),
+         mention_data.get('posted_at')))
+
+
+def get_mentions(limit=50):
+    return db.query_all(
+        'SELECT * FROM mentions ORDER BY seen_at DESC LIMIT %s', (limit,))
+
+
+def get_unseen_mentions():
+    return db.query_all(
+        'SELECT * FROM mentions WHERE alerted = FALSE ORDER BY seen_at DESC')
+
+
+def mark_mentions_alerted(ids):
+    if not ids:
+        return
+    db.execute('UPDATE mentions SET alerted = TRUE WHERE id = ANY(%s)', (ids,))
+
+
+def add_reddit_mention(mention_data):
+    db.execute('''INSERT INTO reddit_mentions
+        (id, author, content, permalink, posted_at)
+        VALUES (%s, %s, %s, %s, %s)
+        ON CONFLICT (id) DO NOTHING''',
+        (mention_data.get('id'),
+         mention_data.get('author', ''),
+         mention_data.get('content', ''),
+         mention_data.get('permalink', ''),
+         mention_data.get('posted_at')))
+
+
+def get_reddit_mentions(limit=50):
+    return db.query_all(
+        'SELECT * FROM reddit_mentions ORDER BY seen_at DESC LIMIT %s', (limit,))
+
+
+def get_unseen_reddit_mentions():
+    return db.query_all(
+        'SELECT * FROM reddit_mentions WHERE alerted = FALSE ORDER BY seen_at DESC')
+
+
+def mark_reddit_mentions_alerted(ids):
+    if not ids:
+        return
+    db.execute('UPDATE reddit_mentions SET alerted = TRUE WHERE id = ANY(%s)', (ids,))
+
+
+def add_reddit_post_log(post_data):
+    db.execute('''INSERT INTO reddit_posts_log
+        (title, content, subreddit, permalink)
+        VALUES (%s, %s, %s, %s)''',
+        (post_data.get('title', ''),
+         post_data.get('content', ''),
+         post_data.get('subreddit', ''),
+         post_data.get('permalink', '')))
+
+
+def get_reddit_post_log(limit=50):
+    return db.query_all(
+        'SELECT * FROM reddit_posts_log ORDER BY posted_at DESC LIMIT %s', (limit,))
+
+
+def add_reddit_feed_item(feed_data):
+    db.execute('''INSERT INTO reddit_feed_log
+        (entry_id, subreddit, author, title, link, updated_at)
+        VALUES (%s, %s, %s, %s, %s, %s)
+        ON CONFLICT (entry_id) DO NOTHING''',
+        (feed_data.get('entry_id'),
+         feed_data.get('subreddit', ''),
+         feed_data.get('author', ''),
+         feed_data.get('title', ''),
+         feed_data.get('link', ''),
+         feed_data.get('updated_at', '')))
+
+
+def get_unseen_reddit_feed_items():
+    return db.query_all(
+        'SELECT * FROM reddit_feed_log WHERE alerted = FALSE ORDER BY seen_at DESC')
+
+
+def mark_reddit_feed_alerted(ids):
+    if not ids:
+        return
+    db.execute('UPDATE reddit_feed_log SET alerted = TRUE WHERE id = ANY(%s)', (ids,))
+
+
+def get_reddit_feed_log(limit=50):
+    return db.query_all(
+        'SELECT * FROM reddit_feed_log ORDER BY seen_at DESC LIMIT %s', (limit,))
+
+
+def get_reddit_candidates(limit=20):
+    return db.query_all('''SELECT f.* FROM reddit_feed_log f
+        WHERE f.alerted = FALSE
+          AND NOT EXISTS (SELECT 1 FROM posted_log p
+                          WHERE p.source_tweet_id = 'r:' || f.entry_id)
+        ORDER BY f.seen_at DESC LIMIT %s''', (limit,))
+
+
+def add_posted_engagement(data):
+    db.execute('''INSERT INTO posted_engagement (tweet_id, likes, reposts, replies)
+        VALUES (%s, %s, %s, %s)
+        ON CONFLICT (tweet_id) DO UPDATE SET
+            likes = EXCLUDED.likes,
+            reposts = EXCLUDED.reposts,
+            replies = EXCLUDED.replies,
+            fetched_at = NOW()''',
+        (data.get('tweet_id'),
+         data.get('likes', 0),
+         data.get('reposts', 0),
+         data.get('replies', 0)))
+
+
+def get_unscored_posts(limit=20):
+    return db.query_all('''SELECT p.* FROM posted_log p
+        WHERE p.posted_tweet_id IS NOT NULL
+          AND NOT EXISTS (SELECT 1 FROM posted_engagement e
+                          WHERE e.tweet_id = p.posted_tweet_id)
+        ORDER BY p.posted_at DESC LIMIT %s''', (limit,))
+
+
+def upsert_source_score(source_key, engagement):
+    db.execute('''INSERT INTO source_scores (source_key, posts, sum_engagement)
+        VALUES (%s, 1, %s)
+        ON CONFLICT (source_key) DO UPDATE SET
+            posts = source_scores.posts + 1,
+            sum_engagement = source_scores.sum_engagement + EXCLUDED.sum_engagement,
+            updated_at = NOW()''',
+        (source_key, engagement))
+
+
+def get_source_scores():
+    return db.query_all('SELECT * FROM source_scores ORDER BY sum_engagement DESC')

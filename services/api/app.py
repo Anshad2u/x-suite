@@ -10,7 +10,8 @@ from data_models import (
     get_followers_with_groups, create_group, get_groups, assign_follower_to_group,
     remove_follower_from_group, get_follower_groups, delete_group,
     update_group_scrape_config, get_group_scrape_config, get_group_stats,
-    get_group_usernames,
+    get_group_usernames, get_mentions, get_reddit_mentions, get_reddit_feed_log,
+    get_source_scores,
 )
 from scraper import FollowerScraper
 import os
@@ -92,6 +93,159 @@ def posted_log():
     for r in rows:
         r['posted_at'] = str(r['posted_at'])
     return jsonify(rows)
+
+
+@app.route('/api/mentions', methods=['GET'])
+def api_mentions():
+    limit = int(request.args.get('limit', 50))
+    rows = get_mentions(limit)
+    for r in rows:
+        r['seen_at'] = str(r['seen_at'])
+    return jsonify(rows)
+
+
+@app.route('/api/reddit/mentions', methods=['GET'])
+def api_reddit_mentions():
+    limit = int(request.args.get('limit', 50))
+    rows = get_reddit_mentions(limit)
+    for r in rows:
+        r['seen_at'] = str(r['seen_at'])
+    return jsonify(rows)
+
+
+@app.route('/api/reddit/health', methods=['GET'])
+def api_reddit_health():
+    from reddit_health import check
+    return jsonify(check())
+
+
+@app.route('/api/reddit/feeds', methods=['GET'])
+def api_reddit_feeds():
+    limit = int(request.args.get('limit', 50))
+    rows = get_reddit_feed_log(limit)
+    for r in rows:
+        r['seen_at'] = str(r['seen_at'])
+    return jsonify(rows)
+
+
+@app.route('/api/source-scores', methods=['GET'])
+def api_source_scores():
+    rows = get_source_scores()
+    for r in rows:
+        r['updated_at'] = str(r['updated_at'])
+    return jsonify(rows)
+
+
+@app.route('/api/engagements', methods=['GET'])
+def api_engagements():
+    limit = int(request.args.get('limit', 50))
+    rows = db.query_all(
+        'SELECT * FROM posted_engagement ORDER BY fetched_at DESC LIMIT %s', (limit,))
+    for r in rows:
+        r['fetched_at'] = str(r['fetched_at'])
+    return jsonify(rows)
+
+
+@app.route('/api/health', methods=['GET'])
+def api_health():
+    return jsonify({
+        'configured': bool(config.X_AUTH_TOKEN),
+        'telegram': bool(config.TELEGRAM_BOT_TOKEN and config.TELEGRAM_CHAT_ID),
+        'db': bool(os.environ.get("POSTGRES_URL") or os.environ.get("DATABASE_URL")),
+        'auth_enabled': bool(config.APP_PASSWORD),
+        'autopost_group': config.AUTO_POST_GROUP,
+        'autopost_max_per_day': config.AUTO_POST_MAX_PER_DAY,
+        'reddit': bool(config.REDDIT_CLIENT_ID and config.REDDIT_CLIENT_SECRET),
+        'reddit_feed': bool(config.REDDIT_FEED_SUBREDDITS),
+    })
+
+
+@app.route('/api/watchlist', methods=['GET'])
+def api_watchlist():
+    import memory as mem
+    mem.init_memory()
+    limit = int(request.args.get('limit', 50))
+    rows = mem.get_watchlist(limit=limit)
+    for r in rows:
+        for k in ('first_seen', 'last_seen'):
+            if r.get(k):
+                r[k] = str(r[k])
+        if r.get('topics') and isinstance(r['topics'], str):
+            import json as _j
+            try:
+                r['topics'] = _j.loads(r['topics'])
+            except Exception:
+                pass
+    return jsonify(rows)
+
+
+@app.route('/api/memory/summary', methods=['GET'])
+def api_memory_summary():
+    import memory as mem
+    mem.init_memory()
+    return jsonify(mem.summary())
+
+
+@app.route('/api/memory/topics', methods=['GET'])
+def api_memory_topics():
+    import memory as mem
+    mem.init_memory()
+    limit = int(request.args.get('limit', 50))
+    rows = mem.top_topics(limit=limit)
+    for r in rows:
+        if r.get('last_seen'):
+            r['last_seen'] = str(r['last_seen'])
+    return jsonify(rows)
+
+
+@app.route('/api/memory/recent_actions', methods=['GET'])
+def api_memory_recent_actions():
+    import db as _db
+    limit = int(request.args.get('limit', 20))
+    rows = _db.query_all("SELECT post_id, decision, reason, created_at FROM decisions_log ORDER BY created_at DESC LIMIT %s", (limit,))
+    for r in rows:
+        if r.get('created_at'):
+            r['created_at'] = str(r['created_at'])
+    return jsonify(rows)
+
+
+@app.route('/api/observe/run', methods=['POST'])
+def api_observe_run():
+    if not _autopost_secret_ok():
+        auth_resp = _require_auth()
+        if auth_resp is not None:
+            return auth_resp
+    import memory as mem
+    import runner as rn
+    max_new = int((request.json or {}).get('max_new', 20))
+    include_x = bool((request.json or {}).get('include_x', False))
+    result = rn.run_cycle(max_new=max_new, include_x=include_x)
+    return jsonify(result)
+
+
+@app.route('/api/approvals/pending', methods=['GET'])
+def api_approvals_pending():
+    import db as _db
+    limit = int(request.args.get('limit', 20))
+    rows = _db.query_all("SELECT id, post_id, draft, reason, topic, source_link, status, created_at FROM pending_drafts ORDER BY id DESC LIMIT %s", (limit,))
+    for r in rows:
+        if r.get('created_at'):
+            r['created_at'] = str(r['created_at'])
+    return jsonify(rows)
+
+
+@app.route('/api/approvals/<int:did>/approve', methods=['POST'])
+def api_approvals_approve(did):
+    import telegram_approval as _ta
+    res = _ta.handle_callback(f"approve_{did}")
+    return jsonify({"result": res})
+
+
+@app.route('/api/approvals/<int:did>/reject', methods=['POST'])
+def api_approvals_reject(did):
+    import telegram_approval as _ta
+    res = _ta.handle_callback(f"reject_{did}")
+    return jsonify({"result": res})
 
 
 @app.route('/')

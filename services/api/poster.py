@@ -1,5 +1,14 @@
 """Post tweets using X session cookies (auth_token + ct0) via internal GraphQL API."""
-import requests
+import random
+import time
+
+try:
+    from curl_cffi import requests as cffi_requests
+    HAS_CFFI = True
+except ImportError:
+    import requests as cffi_requests
+    HAS_CFFI = False
+import requests as _requests
 
 import config
 
@@ -77,7 +86,26 @@ class XPoster:
             }
 
         payload = {"variables": variables, "features": FEATURES, "queryId": QUERY_ID}
-        resp = requests.post(ENDPOINT, headers=self._headers(), json=payload, timeout=30)
+        time.sleep(random.uniform(config.POST_JITTER_MIN, config.POST_JITTER_MAX))
+        try:
+            if HAS_CFFI:
+                _s = cffi_requests.Session(impersonate="chrome")
+                _s.get("https://x.com/home", headers={"cookie": f"auth_token={self.auth_token}; ct0={self.ct0}"}, timeout=10)
+                _s.close()
+        except Exception:
+            pass
+        retryable = {429, 500, 502, 503, 504}
+        resp = None
+        for attempt in range(config.POST_MAX_RETRIES + 1):
+            if HAS_CFFI:
+                sess = cffi_requests.Session(impersonate="chrome")
+                resp = sess.post(ENDPOINT, headers=self._headers(), json=payload, timeout=30)
+                sess.close()
+            else:
+                resp = _requests.post(ENDPOINT, headers=self._headers(), json=payload, timeout=30)
+            if resp.status_code not in retryable or attempt == config.POST_MAX_RETRIES:
+                break
+            time.sleep(min(2 ** attempt, 15))
 
         if resp.status_code != 200:
             raise PostError(f"HTTP {resp.status_code}: {resp.text[:300]}")

@@ -14,6 +14,13 @@ def _get_scweet():
         _proxy = config.X_PROXY
         _scweet = None
         if _token:
+            cookie_str = f"auth_token={_token}"
+            ct0 = getattr(config, "CT0", None) or ""
+            if ct0:
+                cookie_str = cookie_str + f"; ct0={ct0}"
+            os.environ["SCWEET_TID_COOKIES"] = cookie_str
+            if ct0:
+                os.environ["SCWEET_TID_CT0"] = ct0
             # Scweet keeps its own SQLite state DB - must live in a writable
             # dir (config.DATA_DIR resolves to /tmp on Vercel).
             from Scweet.config import ScweetConfig

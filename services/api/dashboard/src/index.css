@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html, body, #root {
+  height: 100%;
+  background: #0a0a0a;
+  color: #e7e7ea;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+* { box-sizing: border-box; }
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: #2a2a31; border-radius: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+
+@layer components {
+  .card {
+    @apply bg-panel border border-border rounded-2xl;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium bg-panel2 border border-border text-dim;
+  }
+  .chip-ok { @apply text-ok border-ok/30; }
+  .chip-warn { @apply text-warn border-warn/30; }
+  .chip-err { @apply text-err border-err/30; }
+  .chip-accent { @apply text-accent border-accent/30; }
+  .btn {
+    @apply inline-flex items-center gap-2 px-3.5 py-2 rounded-lg text-[13px] font-medium transition-colors;
+  }
+  .btn-primary { @apply bg-accent text-bg hover:bg-accent2; }
+  .btn-ghost { @apply text-ink/80 hover:text-ink hover:bg-panel2; }
+  .btn-outline { @apply border border-border text-ink/80 hover:border-ink/40 hover:text-ink; }
+  .stat-num {
+    @apply text-[44px] leading-none font-semibold tracking-tight text-ink font-mono;
+  }
+  .grid-bg {
+    background-image: linear-gradient(to right, rgba(255,255,255,0.025) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+}

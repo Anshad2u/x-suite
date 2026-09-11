@@ -449,6 +449,18 @@
                 <div class="nav-item" :class="{active: currentView === 'scrape'}" @click="currentView = 'scrape'">
                     🔄 Scrape
                 </div>
+                <div class="nav-item" :class="{active: currentView === 'watchlist'}" @click="currentView = 'watchlist'; fetchWatchlist()">
+                    ⭐ Watchlist
+                </div>
+                <div class="nav-item" :class="{active: currentView === 'insights'}" @click="currentView = 'insights'; fetchInsights()">
+                    💡 Insights
+                </div>
+                <div class="nav-item" :class="{active: currentView === 'approvals'}" @click="currentView = 'approvals'; fetchApprovals()">
+                    ✉️ Approvals
+                </div>
+                <div class="nav-item" :class="{active: currentView === 'memory'}" @click="currentView = 'memory'; fetchMemory()">
+                    🧠 Memory
+                </div>
             </div>
             
             <div class="main">
@@ -565,6 +577,81 @@
                     </div>
                 </div>
                 
+                <!-- Watchlist View -->
+                <div v-if="currentView === 'watchlist'">
+                    <div class="header">
+                        <h1>Watchlist</h1>
+                        <button class="btn btn-outline" @click="fetchWatchlist">Refresh</button>
+                    </div>
+                    <div class="card">
+                        <p style="color: var(--text2); margin-bottom: 16px;">Curated accounts worth following — relevance + confidence. Auto-grown from your feeds.</p>
+                        <div v-if="watchlist.length === 0" class="empty-state">No watchlist yet. Run Observe.</div>
+                        <div v-for="a in watchlist" :key="a.username" class="follower-item">
+                            <div class="follower-avatar">{{ a.username[0].toUpperCase() }}</div>
+                            <div class="follower-info">
+                                <div class="follower-name">@{{ a.username }} <span style="color: var(--text2); font-size: 12px;">{{ a.platform }}</span></div>
+                                <div class="follower-username">score {{ Number(a.relevance_score).toFixed(2) }} · conf {{ Number(a.confidence).toFixed(2) }} · posts {{ a.observed_posts }} ({{ a.relevant_posts }} relevant)</div>
+                            </div>
+                            <span class="tag" v-for="t in (a.topics || [])" :key="t">{{ t }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Insights View -->
+                <div v-if="currentView === 'insights'">
+                    <div class="header">
+                        <h1>Insights</h1>
+                        <button class="btn btn-outline" @click="fetchInsights">Refresh</button>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-card"><h3>Posts Observed</h3><div class="value">{{ memorySummary.posts || 0 }}</div></div>
+                        <div class="stat-card"><h3>Analyzed</h3><div class="value">{{ memorySummary.analyzed || 0 }}</div></div>
+                        <div class="stat-card"><h3>Topics</h3><div class="value">{{ memorySummary.topics || 0 }}</div></div>
+                    </div>
+                    <div class="card">
+                        <h3 style="margin-bottom: 12px;">Top Topics</h3>
+                        <div v-for="t in topics" :key="t.name" class="follower-item">
+                            <div class="follower-info"><div class="follower-name">{{ t.name }}</div><div class="follower-username">{{ t.relevant_count }} relevant / {{ t.observed_count }} total</div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Approvals View -->
+                <div v-if="currentView === 'approvals'">
+                    <div class="header">
+                        <h1>Approvals</h1>
+                        <button class="btn btn-primary" @click="triggerObserve">Run Observe Now</button>
+                    </div>
+                    <div class="card">
+                        <h3>Pending Drafts</h3>
+                        <p style="color: var(--text2); font-size: 14px; margin-bottom: 12px;">Approve in Telegram. Dashboard shows queue.</p>
+                        <div v-if="pendingDrafts.length === 0" class="empty-state">No pending drafts. Observer will propose next.</div>
+                        <div v-for="d in pendingDrafts" :key="d.id" class="card" style="background: var(--bg3);">
+                            <div style="font-weight: 600; margin-bottom: 8px;">#{{ d.id }} — {{ d.topic }} — {{ d.status }}</div>
+                            <div style="white-space: pre-wrap; margin-bottom: 8px;">{{ d.draft }}</div>
+                            <div style="color: var(--text2); font-size: 12px;">Source: <a :href="d.source_link" target="_blank" style="color: var(--accent2);">{{ d.source_link }}</a></div>
+                            <div style="margin-top: 10px;">
+                                <button class="btn btn-success btn-sm" @click="approveDraft(d.id)">Approve</button>
+                                <button class="btn btn-danger btn-sm" @click="rejectDraft(d.id)" style="margin-left: 8px;">Reject</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Memory View -->
+                <div v-if="currentView === 'memory'">
+                    <div class="header"><h1>Memory</h1><button class="btn btn-outline" @click="fetchMemory">Refresh</button></div>
+                    <div class="card">
+                        <h3>Summary</h3>
+                        <div class="stats-grid" style="margin-top: 12px;">
+                            <div class="stat-card"><h3>Posts</h3><div class="value">{{ memorySummary.posts || 0 }}</div></div>
+                            <div class="stat-card"><h3>Accounts</h3><div class="value">{{ memorySummary.accounts || 0 }}</div></div>
+                            <div class="stat-card"><h3>Watchlist</h3><div class="value">{{ memorySummary.watchlist || 0 }}</div></div>
+                        </div>
+                        <p style="color: var(--text2); font-size: 13px; margin-top: 12px;">Feeds: m/ai_tools, m/saudi + 8 subreddits. Next: Telegram summary + daily digest.</p>
+                    </div>
+                </div>
+
                 <!-- Group Detail View -->
                 <div v-if="currentView === 'group-detail'">
                     <div class="header">
@@ -672,6 +759,10 @@
                 const scrapeKeywords = ref('');
                 const scrapeSince = ref('');
                 const scrapeLimit = ref(100);
+                const watchlist = ref([]);
+                const topics = ref([]);
+                const pendingDrafts = ref([]);
+                const memorySummary = ref({});
                 
                 const colors = ['#6366f1', '#ec4899', '#22c55e', '#f59e0b', '#ef4444', '#3b82f6', '#8b5cf6', '#14b8a6'];
                 
@@ -689,6 +780,40 @@
                 const fetchStats = async () => {
                     const res = await axios.get('/api/stats');
                     stats.value = res.data;
+                };
+                const fetchWatchlist = async () => {
+                    const res = await axios.get('/api/watchlist?limit=50');
+                    watchlist.value = res.data;
+                };
+                const fetchInsights = async () => {
+                    const r1 = await axios.get('/api/memory/topics?limit=20');
+                    topics.value = r1.data;
+                    const r2 = await axios.get('/api/memory/summary');
+                    memorySummary.value = r2.data;
+                };
+                const fetchMemory = async () => {
+                    const res = await axios.get('/api/memory/summary');
+                    memorySummary.value = res.data;
+                };
+                const fetchApprovals = async () => {
+                    try {
+                        const res = await axios.get('/api/approvals/pending?limit=20');
+                        pendingDrafts.value = res.data;
+                    } catch(e) {
+                        pendingDrafts.value = [];
+                    }
+                };
+                const triggerObserve = async () => {
+                    await axios.post('/api/observe/run', {max_new: 10});
+                    fetchMemory(); fetchInsights();
+                };
+                const approveDraft = async (id) => {
+                    await axios.post('/api/approvals/' + id + '/approve');
+                    fetchApprovals();
+                };
+                const rejectDraft = async (id) => {
+                    await axios.post('/api/approvals/' + id + '/reject');
+                    fetchApprovals();
                 };
                 
                 const createGroup = async () => {
@@ -807,9 +932,11 @@
                     selectedGroup, stats, searchQuery, groupSearchQuery, showCreateGroup,
                     newGroup, colors, scrapeConfig, scrapeResult, scraping,
                     scrapeKeywords, scrapeSince, scrapeLimit,
+                    watchlist, topics, pendingDrafts, memorySummary,
                     createGroup, viewGroup, assignToGroup, removeFromGroup,
                     updateScrapeConfig, deleteCurrentGroup, scrapeFollowing,
-                    scrapeFollowers, scrapeGroup, filterFollowers, filteredGroupFollowers
+                    scrapeFollowers, scrapeGroup, filterFollowers, filteredGroupFollowers,
+                    fetchWatchlist, fetchInsights, fetchMemory, fetchApprovals, triggerObserve, approveDraft, rejectDraft
                 };
             }
         }).mount('#app');

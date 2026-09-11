@@ -8,7 +8,7 @@ _BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 load_dotenv(os.path.join(_BASE_DIR, ".env"))
 load_dotenv(os.path.join(_BASE_DIR, ".env.local"))
 
-POSTGRES_URL = os.environ.get("POSTGRES_URL") or os.environ.get("DATABASE_URL", "")
+POSTGRES_URL = os.environ.get("POSTGRES_URL_NON_POOLING") or os.environ.get("POSTGRES_URL") or os.environ.get("DATABASE_URL_UNPOOLED") or os.environ.get("DATABASE_URL", "")
 
 
 _conn_cache = None

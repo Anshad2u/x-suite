@@ -4,3 +4,4 @@ python-dotenv>=1.0
 psycopg2-binary>=2.9
 Scweet>=5.0
 requests>=2.31
+praw>=8.0
