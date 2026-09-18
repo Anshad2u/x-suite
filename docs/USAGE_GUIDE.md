@@ -30,8 +30,13 @@ These are Windows Task Scheduler tasks on your PC. You never have to start them.
 | Task | When | What it does |
 |------|------|--------------|
 | **FollowerDashboard-Observe** | daily 09:00 | Scans your feeds, scores topics, updates the watchlist, and writes **one fresh draft** into the console. |
-| **FollowerDashboard-Digest** | daily 18:00 | Sends you a Telegram summary of what it learned (read-only — just FYI). |
+| **FollowerDashboard-Digest** | daily 18:00 | Builds a Telegram summary. **Paused** — see note below. |
 | **FollowerDashboard-PublishApproved** | hourly | Publishes any draft **you approved**. Nothing else. |
+
+> **Telegram is paused (2026-09-18).** Every Telegram message — the daily digest, the draft-approval
+> pings from the morning run, and failure alerts — is switched off by commenting out
+> `TELEGRAM_BOT_TOKEN` / `TELEGRAM_CHAT_ID` in the root `.env`. The pipeline itself is unaffected:
+> drafts are still created and approvals still publish. To resume, uncomment those two lines.
 
 **Important:** these run on your machine, so they only fire while your PC is **on and you are logged
 in**. If the PC is asleep at 09:00, that run is skipped. (Moving them to a cloud cron is possible if
