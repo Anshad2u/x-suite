@@ -6,7 +6,9 @@ import { IconLock, IconMail } from '@tabler/icons-react';
 
 export default function LoginPage() {
   const router = useRouter();
-  const [email, setEmail] = useState('anshadputtur@gmail.com');
+  // Deliberately not prefilled: this repo is public, so the admin address must
+  // not be hardcoded here. It lives in the ADMIN_EMAIL env var.
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -61,6 +63,7 @@ export default function LoginPage() {
                 id="email"
                 type="email"
                 autoComplete="username"
+                placeholder="you@example.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="h-10 w-full rounded-md border bg-background pl-9 pr-3 text-sm outline-none focus:ring-2 focus:ring-primary"

@@ -12,13 +12,12 @@ monitor plus the one human step — approving drafts.
 ## 1. How to open it
 
 - **URL:** https://x-suite-puce.vercel.app
-- **Email:** `anshadputtur@gmail.com`
-- **Password:** kept in the root `.env` (`ADMIN_PASSWORD`) and the Vercel project environment
-  variable of the same name — deliberately **not** written in this file, because this repository is
-  public.
+- **Email / Password:** both live in the root `.env` (`ADMIN_EMAIL`, `ADMIN_PASSWORD`) and the
+  matching Vercel environment variables — deliberately **not** written in this file, because this
+  repository is public.
 
-> Forgot it? Read `ADMIN_PASSWORD` from the root `.env`. To change it, edit that file **and** the
-> Vercel env var, then redeploy.
+> Forgot them? Read `ADMIN_EMAIL` / `ADMIN_PASSWORD` from the root `.env`. To change either, edit
+> that file **and** the Vercel env var, then redeploy.
 
 After login you stay signed in for 7 days (browser cookie). Use **Log out** in the top bar when done.
 
