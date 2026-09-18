@@ -267,14 +267,20 @@ export async function getSourceScores(): Promise<
 }
 
 export async function getFullPendingDrafts(): Promise<PendingDraftRow[]> {
+  // 'pending' = needs your call; 'queued' = you approved it, the local
+  // publisher will send it within the hour. Both are shown so an approval
+  // never disappears into a black hole.
   return query<PendingDraftRow>(
     `SELECT id, post_id, draft, reason, topic, source_link, status, created_at
-     FROM pending_drafts WHERE status = 'pending' ORDER BY created_at DESC`
+     FROM pending_drafts WHERE status IN ('pending', 'queued')
+     ORDER BY CASE status WHEN 'pending' THEN 0 ELSE 1 END, created_at DESC`
   );
 }
 
 export async function approveDraft(id: number): Promise<void> {
-  await query("UPDATE pending_drafts SET status = 'approved' WHERE id = $1 AND status = 'pending'", [
+  // 'queued' (not 'approved') — the legacy Telegram flow used 'approved' to mean
+  // "already posted", so a distinct status keeps this safe from re-posting.
+  await query("UPDATE pending_drafts SET status = 'queued' WHERE id = $1 AND status = 'pending'", [
     id
   ]);
 }

@@ -15,8 +15,7 @@ import {
   getRecentPosted,
   getTopTopics,
   getPendingDrafts,
-  getWatchlist,
-  getGroupStats
+  getWatchlist
 } from '@/lib/server/queries';
 
 function fmtDate(d: Date | string | null): string {
@@ -51,13 +50,12 @@ function StatCard({
 }
 
 export default async function DashboardPage() {
-  const [stats, recent, topics, pending, watchlist, groups] = await Promise.all([
+  const [stats, recent, topics, pending, watchlist] = await Promise.all([
     getDashboardStats(),
     getRecentPosted(5),
     getTopTopics(6),
     getPendingDrafts(5),
-    getWatchlist(5),
-    getGroupStats()
+    getWatchlist(5)
   ]);
 
   return (
@@ -197,46 +195,13 @@ export default async function DashboardPage() {
         </section>
       </div>
 
-      {/* Groups */}
-      <section className="rounded-xl border bg-card">
-        <div className="flex items-center justify-between border-b px-5 py-4">
-          <h2 className="font-semibold">Groups</h2>
-          <Link href="/groups" className="text-sm text-primary hover:underline">
-            Manage
-          </Link>
-        </div>
-        <div className="flex flex-wrap gap-3 p-5">
-          {groups.length === 0 ? (
-            <p className="text-sm text-muted-foreground">No groups yet.</p>
-          ) : (
-            groups.map((g) => (
-              <Link
-                key={g.name}
-                href="/groups"
-                className="flex items-center gap-2 rounded-full border px-3 py-1.5 text-sm transition hover:bg-muted"
-              >
-                <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: g.color }} />
-                {g.name}
-                <span className="text-muted-foreground">({g.member_count})</span>
-              </Link>
-            ))
-          )}
-        </div>
-      </section>
-
-      {/* Quick links */}
+      {/* Single action: review the drafts the autopilot wrote */}
       <section className="flex flex-wrap gap-3">
-        <Link
-          href="/followers"
-          className="flex items-center gap-2 rounded-lg border bg-card px-4 py-2 text-sm font-medium transition hover:bg-muted"
-        >
-          Manage followers <IconArrowRight className="h-4 w-4" />
-        </Link>
         <Link
           href="/activity"
           className="flex items-center gap-2 rounded-lg border bg-card px-4 py-2 text-sm font-medium transition hover:bg-muted"
         >
-          Review activity <IconArrowRight className="h-4 w-4" />
+          Review drafts <IconArrowRight className="h-4 w-4" />
         </Link>
       </section>
     </div>

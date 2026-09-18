@@ -4,18 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
   IconLayoutDashboard,
-  IconUsers,
-  IconFolder,
   IconActivity,
-  IconSearch,
-  IconUsersGroup,
-  IconUserCircle,
-  IconCalendar,
-  IconClock,
-  IconSparkles,
-  IconCopy,
-  IconUserPlus,
-  IconCloudDownload,
   IconLogout,
   IconBrandX
 } from '@tabler/icons-react';
@@ -33,28 +22,15 @@ interface NavGroup {
   items: NavItem[];
 }
 
+// Lean by design: the autopilot does the work, so the console is just a
+// monitor plus the one human step (approving drafts). The old on-demand
+// "Growth Tools" pages still exist as routes but are deliberately hidden.
 const navGroups: NavGroup[] = [
   {
-    label: 'Overview',
+    label: 'Console',
     items: [
       { title: 'Dashboard', href: '/', icon: IconLayoutDashboard },
-      { title: 'Followers', href: '/followers', icon: IconUsers },
-      { title: 'Groups', href: '/groups', icon: IconFolder },
       { title: 'Activity', href: '/activity', icon: IconActivity }
-    ]
-  },
-  {
-    label: 'Growth Tools',
-    items: [
-      { title: 'Analyze Profile', href: '/analyze', icon: IconSearch },
-      { title: 'Compare Accounts', href: '/compare', icon: IconUsersGroup },
-      { title: 'My Account', href: '/my-account', icon: IconUserCircle },
-      { title: 'Content Calendar', href: '/tools/calendar', icon: IconCalendar },
-      { title: 'Best Time to Post', href: '/tools/best-time', icon: IconClock },
-      { title: 'Pattern Recognition', href: '/tools/patterns', icon: IconSparkles },
-      { title: 'Tweet Cloner', href: '/tools/clone', icon: IconCopy },
-      { title: 'Growth Scraper', href: '/tools/scraper', icon: IconUserPlus },
-      { title: 'Scrape Data', href: '/scrape', icon: IconCloudDownload }
     ]
   }
 ];

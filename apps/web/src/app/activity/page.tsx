@@ -37,24 +37,26 @@ export default async function ActivityPage() {
     getSourceScores()
   ]);
 
+  const pendingCount = approvals.filter((a) => a.status === 'pending').length;
+
   return (
     <div className="space-y-8">
       <div>
         <h1 className="text-3xl font-bold">Activity</h1>
         <p className="mt-1 text-muted-foreground">
-          Autopilot state: pending drafts, watched accounts, learned topics, and what has
-          actually been posted.
+          Review the drafts the autopilot wrote. Approve one and it is queued — the publisher
+          running on your machine sends it to X within the hour. Reject one and it is discarded.
         </p>
       </div>
 
-      {/* Pending drafts */}
+      {/* Drafts — pending needs your call, queued is about to be published */}
       <section className="rounded-xl border bg-card">
         <div className="flex items-center justify-between border-b px-5 py-4">
           <h2 className="flex items-center gap-2 font-semibold">
-            <IconCheck className="h-5 w-5" /> Pending drafts
-            {approvals.length > 0 && (
+            <IconCheck className="h-5 w-5" /> Drafts
+            {pendingCount > 0 && (
               <span className="rounded bg-primary px-2 py-0.5 text-xs text-primary-foreground">
-                {approvals.length}
+                {pendingCount}
               </span>
             )}
           </h2>
@@ -62,7 +64,7 @@ export default async function ActivityPage() {
         <div className="p-5">
           {approvals.length === 0 ? (
             <p className="py-6 text-center text-sm text-muted-foreground">
-              Nothing awaiting approval. The autopilot posts directly when approval mode is off.
+              Nothing waiting. A new draft lands here every morning after the 09:00 run.
             </p>
           ) : (
             <ul className="space-y-4">
@@ -71,6 +73,11 @@ export default async function ActivityPage() {
                   <div className="mb-2 flex items-center gap-2 text-xs text-muted-foreground">
                     <span>#{a.id}</span>
                     {a.topic && <span className="rounded bg-muted px-1.5 py-0.5">#{a.topic}</span>}
+                    {a.status === 'queued' && (
+                      <span className="rounded bg-green-500/15 px-1.5 py-0.5 font-medium text-green-600 dark:text-green-400">
+                        Queued · publishing within the hour
+                      </span>
+                    )}
                   </div>
                   <p className="text-sm">{a.draft}</p>
                   {a.reason && (
@@ -86,26 +93,28 @@ export default async function ActivityPage() {
                       source →
                     </a>
                   )}
-                  <div className="mt-3 flex gap-2">
-                    <form action={approveDraftAction}>
-                      <input type="hidden" name="id" value={a.id} />
-                      <button
-                        type="submit"
-                        className="flex h-8 items-center gap-1 rounded-md bg-primary px-3 text-sm font-medium text-primary-foreground transition hover:bg-primary/90"
-                      >
-                        <IconCheck className="h-4 w-4" /> Approve
-                      </button>
-                    </form>
-                    <form action={rejectDraftAction}>
-                      <input type="hidden" name="id" value={a.id} />
-                      <button
-                        type="submit"
-                        className="flex h-8 items-center gap-1 rounded-md border px-3 text-sm font-medium transition hover:bg-muted"
-                      >
-                        <IconX className="h-4 w-4" /> Reject
-                      </button>
-                    </form>
-                  </div>
+                  {a.status === 'pending' && (
+                    <div className="mt-3 flex gap-2">
+                      <form action={approveDraftAction}>
+                        <input type="hidden" name="id" value={a.id} />
+                        <button
+                          type="submit"
+                          className="flex h-8 items-center gap-1 rounded-md bg-primary px-3 text-sm font-medium text-primary-foreground transition hover:bg-primary/90"
+                        >
+                          <IconCheck className="h-4 w-4" /> Approve
+                        </button>
+                      </form>
+                      <form action={rejectDraftAction}>
+                        <input type="hidden" name="id" value={a.id} />
+                        <button
+                          type="submit"
+                          className="flex h-8 items-center gap-1 rounded-md border px-3 text-sm font-medium transition hover:bg-muted"
+                        >
+                          <IconX className="h-4 w-4" /> Reject
+                        </button>
+                      </form>
+                    </div>
+                  )}
                 </li>
               ))}
             </ul>
